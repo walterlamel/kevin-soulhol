@@ -1,0 +1,73 @@
+.account{
+    .liste-compte{
+        margin-bottom: 2em;
+    
+        .compte{
+            width: 100%;
+            display: flex;
+            padding: 5px;
+    
+            .name{
+                flex: 50%;
+                font-weight: bold;
+            }
+            .email{
+                flex:15%;
+                opacity: 0.7;
+    
+            }
+            .meta{
+                flex:15%;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+
+        .container-input{
+            width: 100%;
+            display: flex;
+            gap: 1em;
+            margin: 0.5em 0;
+
+            input{
+                width: 100%;
+                padding: 5px 10px;
+                background-color: transparent;
+                border: 1px solid $color_strong2;
+                border-radius: 5px;
+                color: $color_strong2;
+                font-family: $font-family;
+            }
+
+
+        }
+        #btn-add-account{
+            align-self: end;
+            padding: 0.5em 1em;
+            background-color: $color_strong2;
+            color: $color_font;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+
+    .list-dossier{
+        .file{
+            width: 100%;
+            padding: 1em 2em;
+            background-color: $color_background_1;
+            border-radius: 8px;
+            text-transform: capitalize;
+            color: $color_strong2;
+            font-weight: bold;
+        }
+    }
+
+    
+}

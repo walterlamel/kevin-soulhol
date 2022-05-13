@@ -1,0 +1,1500 @@
+:root{
+    --red:#CF1525;
+    --orange:#d66616;
+    --gris:#dadada;
+    --noir:#2B2B2D;
+    --smarge: 180px;
+    --marge : 250px;
+    --blue:#0088CF;
+    --bluefonce:#006faa;
+}
+
+@keyframes shiny
+{
+    0%
+    {
+        left: 300px;
+    }
+    25%
+    {
+        left: -350px;
+    }
+    29%{
+        opacity: 0;
+    }
+    30%
+    {
+        left: 300px;
+    }
+    100%
+    {
+        left: 300px;
+        opacity: 0.2;
+    }
+}
+
+@keyframes sweetmove{
+    0%,
+    100% {
+        top: 50%;
+        left: -60%; 
+        transform: rotate(55deg);
+        transform-origin: 0% 0%;
+    }
+
+    30% {
+        transform-origin: 200% 50%;
+    }
+
+    50% {
+        top: 50%;
+        left: -60%;
+        transform: rotate(-50deg);
+        transform-origin: 100% 100%;
+    }
+}
+
+@keyframes send{
+    0%,
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+    20%{
+        left: -10px;
+        transform: scaleX(0.8);
+    }
+    29%{
+        transform: scaleX(1.1);
+        transform: skewX(5deg);
+    }
+    30% {
+        transform: scaleX(1.5);
+        left: 2000px;
+        opacity: 1;
+    }
+    35%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+        left: -2000px;
+    }
+    80% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes shake {
+    from,
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-10px, 0, 0);
+    }
+  
+    20%,
+    40%,
+    60%,
+    80% {
+      -webkit-transform: translate3d(10px, 0, 0);
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+
+  @keyframes shake
+  {
+      from,
+      to {
+        transform: translate3d(0,0,0);
+      }
+
+      37%,
+      55% {
+        transform: translate3d(0,0,0);
+      }
+      
+      40%,
+      45% {
+        transform: translate3d(5px, 0, 0);
+      }
+      43%,
+      47% {
+        transform: translate3d(-5px, 0, 0);
+      }
+      
+      50% {
+        transform: translate3d(3px, 0, 0);
+      }
+      53% {
+        transform: translate3d(-3px, 0, 0);
+      }
+  }
+
+/* ############################################# TITRES ############################# */
+h1
+{
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-left: 1em;
+}
+
+h2
+{
+    font-size: 3em;
+}
+
+h3
+{
+    text-transform: uppercase;
+    font-size: 0.9em;
+    position: relative;
+    padding-bottom: 2em;
+}
+
+h3::after
+{
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 70%;
+    height: 3px;
+    background-color: var(--red);
+}*/
+
+h3 + p
+{
+    margin-top: 3em;
+}
+
+h4
+{
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+    color: var(--noir);
+    margin-top: 3em;
+}
+
+h5
+{
+    font-size: 1em;
+    position: relative;
+    padding-bottom: 2em;
+    font-weight: bold;
+}
+
+h5::after
+{
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 10px;
+    width: 75%;
+    height: 3px;
+    background-color: var(--red);
+}
+
+p
+{
+    font-size: 0.8em;
+}
+
+em{
+    font-style: normal;
+    /*background: linear-gradient(0.15turn, var(--blue), var(--bluefonce));
+    padding: 0px 20px;*/
+}
+/* ############################################# MAIN ############################# */
+body
+{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    
+    font-family: 'Montserrat', sans-serif;
+}
+
+#page
+{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    transition: 0.2s ease-in-out;
+}
+
+header
+{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 5;
+    padding: 2em 0;
+    padding-right: var(--marge);
+
+    color: white;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap-reverse;
+
+    box-sizing: border-box;
+
+    transition: 0.2s ease-in-out;
+}
+
+header #bloc-logo
+{
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: var(--marge);
+}
+
+header #logo
+{
+    height: 100%;
+}
+
+header ul
+{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 0.9em;
+}
+
+header ul > *
+{
+    margin-left: 8em;
+}
+
+header #menu-burger
+{
+    width: 40px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: 8em;
+
+    cursor: pointer;
+}
+
+
+header #menu-burger .ligne
+{
+    height: 5px;
+    width: 100%;
+    background-color: white;
+
+    transition: 0.2s ease-in;
+}
+
+header #menu-burger .ligne:nth-child(2)
+{
+    width: 50%;
+}
+
+header #menu-burger:hover .ligne
+{
+    width: 80%;
+}
+header #menu-burger:hover .ligne:nth-child(2)
+{
+    width: 100%;
+}
+
+header a
+{
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+
+header #link-newsletter::after
+{
+    content:"";
+    background-color: white;
+    display: block;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -2em;
+    left: 0;
+    transition: 0.2s ease-in-out;
+    transform: scaleX(0);
+}
+
+header #link-newsletter:hover::after
+{
+    transform: scaleX(1);
+}
+
+.buttonDevis, .buttonEnseigne
+{
+    border: 2px solid white;
+    box-sizing: border-box;
+    padding: 2em;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.buttonDevis::before, .buttonEnseigne::before
+{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height: 0%;
+    background:linear-gradient(0.15turn, var(--blue), var(--bluefonce));
+    box-sizing: border-box;
+    border-radius: 50% 50% 0 0;
+    z-index: -1;
+
+    transition: 0.2s ease-in-out;
+}
+
+.buttonDevis:hover::before, .buttonEnseigne:hover::before
+{
+    height: 200%;
+}
+
+/* ############################################# NAV TOP STICKY ############################# */
+#headerSticky
+{
+    position: fixed;
+    font-size: 0.55em;
+    background: linear-gradient(0.15turn, hsla(25, 81%, 46%, 0.8), hsla(355, 82%, 45%, 1));
+}
+
+/*header #logo
+{
+    max-height: 8em;
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}*/
+
+/* ############################################# sectiona ccueil ############################# */
+#section-accueil
+{
+    width: 100vw;
+    background: url("../img/CNC-machining-1080x675.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--marge);
+    padding-top:20%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.gradient
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0.15turn, var(--orange), var(--red));
+    opacity: 85%;
+    overflow: hidden;
+}
+
+.gradient::after{
+    content: "";
+    display: block;
+    width: 200%;
+    height: 2px;
+    background-color: white;
+    opacity: 0.2;
+    position: absolute;
+    top: 50%;
+    left: -60%;
+    transform: rotate(55deg);
+
+    animation: sweetmove 20s infinite;
+}
+
+#section-accueil .col
+{
+    color: white;
+    z-index: 1;
+}
+
+#section-accueil #accueil-col-1
+{
+    box-sizing: border-box;
+    width: 800px;
+    margin-right: auto;
+}
+
+#section-accueil .col #blocDevis1
+{
+    background-color: white;
+    box-sizing: border-box;
+    max-width: 450px;
+    position: relative;
+    padding: 4em 7em;
+    margin-left: 100px;
+    color: var(--noir);
+    box-shadow: 0px 0px 57px var(--noir);
+    font-size: 1em;
+}
+
+#section-accueil .col #blocDevis1 h3::after{
+    background-color: var(--bluefonce);
+}
+
+#section-accueil .col #blocDevis1 a
+{
+    text-transform: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    width: min-content;
+}
+
+#section-accueil .col #blocDevis1 a .buttonDemander
+{
+    background: linear-gradient(0.15turn, var(--orange), var(--red));
+    padding: 2em 2em;
+    position: relative;
+    
+    margin-top: 3em;
+    overflow: hidden;
+
+    transition: 0.2s ease;
+    text-align: center;
+}
+
+#section-accueil .col #blocDevis1 a .buttonbleu{
+    background: linear-gradient(0.15turn, var(--blue), var(--bluefonce));
+}
+
+#section-accueil .col #blocDevis1 a .buttonDemander::after
+{
+    content:"";
+    border: 50px solid white;
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    top: -50px;
+    left: 300;
+    z-index: 0;
+    transform: skew(25deg);
+    opacity: 0.2;
+
+    transition: 0.8s ease-in-out;
+    animation: shiny 5s ease-in infinite;
+}
+
+#section-accueil .col #blocDevis1 a:hover .buttonDemander
+{
+    box-shadow: 0px 0px 100px -25px var(--blue);
+}
+
+
+/* ############################################# description ############################# */
+#section-description
+{
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding: var(--smarge) var(--marge);
+}
+
+#section-description p:nth-child(1)
+{
+    text-align: center;
+    opacity: 0.8;
+    width: 70%;
+    margin:auto;
+}
+
+#section-description #domaines
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#section-description #domaines .domaine
+{
+    width: 20vw;
+    height: 20vw;
+    overflow: hidden;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 1.1em;
+    text-align:center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    
+    transition: 0.2s ease-in-out;
+}
+
+#section-description #domaines .domaine::after
+{
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0.15turn, var(--red), var(--orange));
+    position: absolute;
+    bottom: -200%;
+    left: -200%;
+    z-index: 0;
+
+    transition: 0.1s ease-in-out;
+
+    transform: rotate(160deg);
+}
+
+#section-description #domaines .domaine:hover::after
+{
+    bottom: -15%;
+    left: -5%;
+    transform: rotate(250deg);
+}
+
+#section-description #domaines .domaine:hover .descript-domaine
+{
+    opacity: 1;
+    transition: 0.2s ease;
+}
+
+#section-description #domaines .domaine .picto-domaine
+{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#section-description #domaines .domaine .picto-domaine i
+{
+    color: var(--red);
+    font-size: 3em;
+}
+
+#section-description #domaines .domaine .descript-domaine
+{
+    position: absolute;
+    color: white;
+    box-sizing: border-box;
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: 2em;
+    padding-top: 60%;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+/* ############################################# vers enseigne ############################# */
+#section-enseigne
+{
+    width: 100%;
+    background: url("../img/realisation 3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    margin: auto;
+    padding: var(--marge);
+
+
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#section-enseigne a
+{
+    text-decoration: none;
+    color: white;
+    z-index: 3;
+    min-width: 300px;
+    text-align: center;
+}
+
+#section-enseigne .text
+{
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+#section-enseigne .text *:nth-child(1)
+{
+    text-align: left;
+    color: white;
+    font-size: 2em;
+}
+
+#section-enseigne p
+{
+    margin-right: 200px;
+    color: white;
+    z-index: 1;
+    font-size: 1.1em;
+}
+
+#section-enseigne .buttonEnseigne i
+{
+    margin-left: 1em;
+    font-size: 1.2em;
+}
+
+/* ############################################# Cinq axes ############################# */
+#section-axes
+{
+    position: relative;
+    margin: auto;
+    padding: var(--marge);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#section-axes h4
+{
+    width: 40vw;
+    margin: auto;
+}
+
+#section-axes .axes
+{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 8em;
+
+    margin: auto;
+    margin-top: 5em;
+}
+
+#section-axes .axes .axe
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--noir);
+    letter-spacing: 0.2em;
+    font-weight: bold;
+}
+
+#section-axes .axes .axe .picto-axe
+{
+    font-size: 2em;
+    color: var(--red);
+    margin-bottom: 1em;
+}
+
+#section-axes .axes .axe p
+{
+    opacity: 0.5;
+}
+
+#section-axes .axes #CTA
+{
+    background-color: var(--red);
+    text-align: left;
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    animation: shake 5s infinite;
+}
+
+#section-axes .axes #CTA p:nth-child(1)
+{
+    text-transform: initial;
+    letter-spacing: 0;
+    font-weight: initial;
+}
+
+#section-axes .axes #CTA p
+{
+    opacity: 1;
+}
+
+#section-axes .axes #CTA::after
+{
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(0.15turn, var(--orange), var(--red));
+    margin: auto;
+    z-index: -1;
+
+    transition: 0.2s ease-in-out;
+}
+
+#section-axes .axes #CTA:hover::after
+{
+    bottom: 0px;
+    left: 0px;
+    transform: rotate(90deg);
+}
+
+
+/* ############################################# ACTUS ############################# */
+/* ############################################# CLIENTS ############################# */
+#section-clients
+{
+    position: relative;
+    background-color: var(--gris);
+    color: var(--noir);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2em var(--marge);
+}
+
+#section-clients p
+{
+    margin-right: 3em;
+    opacity: 0.7;
+}
+
+#section-clients #clients
+{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: stretch;
+}
+
+#section-clients #clients .client
+{
+    height: 100px;
+    filter: grayscale(1);
+    margin: 0 2em;
+    
+}
+
+#section-clients #clients .client img
+{
+    height: 100%;
+    max-width: 100px;
+    object-fit: contain;
+    opacity: 0.4;
+    transition: 0.2s linear;
+}
+
+#section-clients #clients .client:hover img
+{
+    opacity: 1;
+}
+
+/* ############################################# DEVIS ############################# */
+#section-devis 
+{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 3em 0;
+    box-sizing: border-box;
+    background: url("../img/3D\ printing\ theme.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#section-devis #devis
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+    background-color: white;
+    box-shadow: 0px 0px 50px var(--noir);
+    box-sizing: border-box;
+    padding: 5em;
+    margin: auto;
+    width: 40vw;
+    font-size: 0.9em;
+}
+
+#section-devis #devis label span
+{
+    color: var(--red);
+}
+
+#section-devis #devis input, #section-devis #devis textarea
+{
+    border: none;
+    background-color: none;
+    box-shadow: 0px 0px 15px hsla(0, 0%, 0%, 0.1);
+    height: 2em;
+    width:100%;
+    margin-bottom:2em;
+    margin-top: 1em;
+    padding: 2em;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    transition: 0.3s ease;
+}
+
+#section-devis #devis input::placeholder, #section-devis #devis textarea::placeholder
+{
+    color: hsla(0, 0%, 0%, 0.3);
+}
+
+#section-devis #devis input:focus, #section-devis #devis textarea:focus
+{
+    background-color: hsla(0, 0%, 0%, 0.2);
+}
+
+#section-devis #devis textarea
+{
+    height: 100px;
+}
+
+#section-devis #devis form .buttonDemander
+{
+    display: block;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    width: 200px;
+    padding: 0;
+    transform-origin: left;
+    overflow: hidden;
+    margin-top: 3em;
+}
+
+#section-devis #devis form .buttonDemander input
+{
+    background-color: var(--red);
+    margin:auto auto;
+    padding: 2em 4em;
+    color: white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    height: auto;
+    cursor: pointer;
+}
+
+#section-devis #devis form .buttonDemander::after
+{
+    content: "";
+    display: block;
+    width: 10%;
+    height: 200%;
+    position: absolute;
+    top: -50px;
+    bottom: 0;
+    left: 300;
+    right: 0;
+    border: 30px solid white;
+    border-right: 15px solid white;
+    opacity: 0.2;
+    transform: skew(25deg);
+
+    transition: 0.8s ease-in-out;
+    animation: shiny 5s ease-in infinite;
+
+}
+
+#section-devis #devis form .buttonDemander:active
+{
+    animation: send 5s;
+}
+
+/* ############################################# SECTION FOOTER ############################# */
+#section-footer
+{
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 10em var(--marge);
+    background-color: var(--noir);
+    color: white;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#section-footer .col
+{
+    text-align: left;
+}
+
+#section-footer .col a
+{
+    text-transform: none;
+    color: white;
+    opacity: 0.7;
+}
+
+#section-footer .col a:hover
+{
+    opacity: 1;
+}
+
+#section-footer .col p
+{
+    opacity: 0.7;
+    margin-bottom: 2em;
+}
+
+#section-footer form
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+}
+
+#section-footer form input[type="email"]
+{
+    border: none;
+    border-bottom: 1px solid var(--gris);
+    background:none;
+    color: white;
+    opacity: 0.2;
+    padding: 1em;
+}
+
+#section-footer form input[type="button"]
+{
+    margin: 0;
+    margin-left: 10px;
+    padding: 1em 2em;
+    background-color: var(--red);
+    color: white;
+    border: none;
+
+    cursor: pointer;
+}
+
+/* ############################################# FOOTER ############################# */
+footer{
+    width: 100%;
+    position: relative;
+    background-color: var(--red);
+    margin: auto;
+    padding: 10px var(--marge);
+    box-sizing: border-box;
+    color: white;
+    font-size: 0.7em;
+    letter-spacing: 0.1em;
+    font-weight: unset;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer p
+{
+    opacity: 0.7;
+}
+
+footer a
+{
+    text-decoration: none;
+    color: white;
+}
+
+
+/* ############################################# MENU ############################# */
+#menuSlide
+{
+    height: 100%;
+    height: 100vh;
+    background-color: var(--noir);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 50;
+
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+
+    box-sizing: border-box;
+    padding: 3em;
+
+    transition: 0.2s ease-in-out;
+    transform-origin: right center;
+    transform: scaleX(0);
+}
+
+#menuSlide #closeMenu
+{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 10em;
+    transition: 0.1s ease-in-out;
+
+    cursor: pointer;
+}
+
+#menuSlide #closeMenu:hover
+{
+    color: var(--orange);
+}
+
+
+#menuSlide a{
+    text-decoration: none;
+    color: white;
+    list-style: none;
+}
+
+#menuSlide li
+{
+    position: relative;
+    z-index: 1;
+    padding: 1.2em;
+    width: min-content;
+
+    transition: 0.2s ease-in;
+}
+#menuSlide li *{
+    position: relative;
+    z-index: 1;
+}
+#menuSlide ul i
+{
+    font-size: 1.5em;
+}
+
+#menuSlide li::before
+{
+    content:attr(data-text);
+    color: white;
+    font-size: 2em;
+    opacity: 0;
+    position: absolute;
+    left: -40%;
+    top: -1em;
+    z-index: 0;
+    letter-spacing: 1em;
+    font-weight: bold;
+    text-align: center;
+    pointer-events: none;
+    white-space: nowrap;
+
+    transform-origin: center;
+    transform:translate(50%, 50%);
+
+    transition: 0.2s ease-in-out;
+}
+
+#menuSlide li:hover
+{
+    background-color: var(--orange);
+}
+
+#menuSlide li:hover::before
+{
+    letter-spacing: 0.2em;
+    opacity: 0.2;
+}
+
+#menuSlide li[data-text="Vitre de protection"]
+{
+    color: var(--orange);
+}
+
+#menuSlide li[data-text="Vitre de protection"]:hover
+{
+    background: none;
+    transform: scale(1.1);
+}
+
+#menuSlide li[data-text="Vitre de protection"]::before
+{
+    content: "";
+}
+
+/* ############################################# ############################# */
+/* ############################################# ############################# */
+/* ############################################# ############################# */
+/* ############################################# MEDIA QUERIES ############################# */
+@media (max-width:1430px)
+{
+    :root
+    {
+        --marge:100px;
+        --smarge : 80px;
+    }
+
+    header
+    {
+        flex-wrap: wrap;
+       padding: 2em var(--marge);
+       font-size : 0.7em;
+    }
+
+    header #bloc-logo 
+    {
+        height: 70px;
+        order: -2;
+    }
+
+    #section-accueil
+    {
+        padding-top: 30%;
+    }
+
+    #section-accueil .col #blocDevis1
+    {
+        padding: 5em;
+    }
+
+    #section-devis #devis
+    {
+        width: 60vw;
+    }
+
+    #section-footer
+    {
+        padding: var(--smarge) var(--marge);
+    }
+
+    #section-enseigne
+    {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width:1115px){
+    header #bloc-logo{
+        position: initial;
+    }
+}
+
+@media (max-width:922px)
+{
+    header #menu-burger{
+        order: -1;
+    }
+
+    #section-accueil
+    {
+        padding-top: 300px;
+        flex-wrap: wrap;
+    }
+
+    #section-accueil #accueil-col-1
+    {
+        margin-bottom: 100px;
+    }
+
+    #section-accueil .col #blocDevis1
+    {
+        margin-left: 0;
+    }
+
+    #section-description #domaines
+    {
+        flex-wrap: wrap;
+        font-size: 0.8em;
+    }
+
+    #section-description #domaines .domaine
+    {
+        width: 160px;
+        height: 160px;
+    }
+
+    #section-description #domaines .domaine .descript-domaine
+    {
+        padding-top: 40%;
+    }
+
+    #section-enseigne
+    {
+        font-size: 0.9em;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    #section-enseigne .text
+    {
+        margin-bottom: 5em;
+    }
+
+    #section-enseigne p
+    {
+        margin-right: 0;
+    }
+
+    #section-axes h4
+    {
+        width: 70vw;
+    }
+
+    #section-axes .axes
+    {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+    }
+
+    #section-devis
+    {
+        padding: var(--smarge) var(--marge);
+    }
+
+    #section-devis #devis
+    {
+        margin: 0 auto;
+        width: auto;
+    }
+
+    #section-devis #devis label
+    {
+        font-size: 0.9em;
+    }
+
+    #section-footer .col:nth-child(2)
+    {
+        display: none;
+    }
+}
+
+
+@media (max-width:670px)
+{
+    :root
+    {
+        --marge:50px;
+    }
+    header
+    {
+        font-size: 0.7em;
+    }
+
+    #tel
+    {
+        display: none;
+    }
+
+    #section-enseigne
+    {
+        font-size: 0.7em;
+    }
+
+    #section-clients
+    {
+        display: none;
+    }
+
+    #section-devis #devis
+    {
+        grid-template-columns: 1fr;
+    }
+
+    #section-footer
+    {
+        justify-content: center;
+    }
+
+    #section-footer .col:nth-child(1)
+    {
+        display: none;
+    }
+
+    footer
+    {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (max-width:490px)
+{
+    :root
+    {
+        --smarge:100px;
+        --marge:25px;
+    }
+
+    header
+    {
+        justify-content: space-between;
+        font-size: 0.6em;
+    }
+
+    header #bloc-logo
+    {
+        align-self: flex-start;
+        font-size: 0.5em;
+    }
+
+    header #bloc-logo img
+    {
+        height: 65%;    
+    }
+
+    header #menu-burger,  header ul, header ul > *
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    header ul
+    {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    header ul a[href="#section-devis"]
+    {
+        margin-right: 10px;
+    }
+
+    h2
+    {
+        font-size: 1.8em;
+    }
+
+    #section-description p:nth-child(1)
+    {
+        width: 100%;
+    }
+
+    #section-enseigne a
+    {
+        min-width: unset;
+    }
+
+    #section-axes
+    {
+        width: unset;
+        padding: var(--smarge) var(--marge);
+    }
+
+    #section-axes .axes
+    {
+        grid-template-columns: 1fr;
+    }
+
+    #section-devis #devis
+    {
+        padding: 2em;
+    }
+
+    #section-devis #devis form
+    {
+        width: 100%;
+    }
+
+    #section-footer form
+    {
+        flex-wrap: wrap;
+    }
+
+    #section-footer form input[type="button"]
+    {
+       margin-left: 0; 
+       margin-top: 20px;
+    }
+
+    #menuSlide 
+    {
+        padding: 1em;
+    }
+}
+
+@media (max-width:280px)
+{
+    header #bloc-logo
+    {
+        height: 80px;
+    }
+}
+

@@ -1,0 +1,192 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usipanel</title>
+
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,400i,700&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/b31076ddf9.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+<div id="page">
+    <header>
+        <div id="bloc-logo"> <img id="logo" src="./img/USIPA_LOGO_GRIS_INV_Opti-web.png" alt=""><h1>Usipanel</h1></div>
+        <ul>
+            <li id="tel">06.7307.64.27</li>
+            <a href="#section-devis"><li class="buttonDevis">Demander un devis</li></a>
+            <a href="#section-newsletter" id="link-newsletter"><li>Newsletter</li></a>
+        </ul>
+        <div id="menu-burger" onclick="openMenu()"><div class="ligne"></div><div class="ligne"></div></div>
+    </header>
+
+    <section id="section-accueil">
+        <div class="gradient"></div>
+        <div class="col" id="accueil-col-1">
+            <h2>Créateurs de <em>solutions.</em></h2>
+            <p>Pour vous, nous concevons et fabriquons toutes sortes de pièces et pour tout secteur d'activité afin de répondre à vos besoins. Notre savoir-faire et nos procédés d'industrialisation permettent d'usiner des pièces à petite et grande série grâce nos machines de haute précision.</p>
+        </div>
+        <div class="col">
+            <div id="blocDevis1">
+                <h3 onclick="navSticky()">Il n'y a que des solutions.</h3>
+                <p>N'hésitez pas à nous écrire afin de nous exposer votre demande et nous serons à même de vous trouver une solution dans les plus brefs délais.</p>
+                <a href="#section-devis"><div class="buttonDemander buttonbleu">Demander votre devis</div></a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="section-description">
+        <p>Usipanel est une société spécialisée dans la découpe de panneaux plastiques et bois. Située à Toulouse en Midi-Pyrénées, Usipanel bénéficie d'un savoir-faire qui lui permet de répondre à tout vos problèmes en créant les/la pièce qu'il vous faut. Équipée d'une CNC 3 axes dotée d'un plateau de 4 x 2 mètres, nous pouvons répondre à toutes vos demandes d'usinage de panneaux.</p>
+        <h4>Nos domaines de prédilections sont :</h4>
+        <div id="domaines">
+            <div class="domaine">
+                <div class="picto-domaine"><i class="fas fa-border-all"></i></div>
+                <p>Enseigne</p>
+                <p class="descript-domaine">découpe de lettrage <br> Dibond...</p>
+            </div>
+            <div class="domaine">
+                <div class="picto-domaine"><i class="fas fa-tools"></i></div>
+                <p>industrie</p>
+                <p class="descript-domaine">Usinage PEHD <br> PP <br> POM C ...</p>
+            </div>
+            <div class="domaine">
+                <div class="picto-domaine"><i class="fas fa-home"></i></div>
+                <p>Bâtiment</p>
+                <p class="descript-domaine">découpe de Trespa <br> Fundermax ...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-enseigne">
+        <div class="gradient"></div>
+        <div class="text">
+            <h2>Votre enseigne sur mesure</h2>
+            <p>Usipanel peut vous aider dans la réalisation d'enseignes pour votre entreprise. Pour vous, nous avons mis en place un système efficace afin que votre enseigne soit réalisé en un temps record. N'hésitez plus et essayez notre outil en ligne.</p>
+        </div>
+        <a href="tut"><div class="buttonEnseigne">Réaliser mon enseigne <i class="fas fa-hammer"></i></div></a>
+    </section>
+
+    <section id="section-axes">
+        <h4>Quelque soit votre demande, nous pouvons vous trouver une solution grâce à nos cinq axes</h4>
+        <div class="axes">
+            <div class="axe">
+                <div class="picto-axe"><i class="fas fa-tachometer-alt"></i></div>
+                <p>Rapidité</p>
+            </div>
+            <div class="axe">
+                <div class="picto-axe"><i class="fas fa-chart-line"></i></div>
+                <p>Efficacité</p>
+            </div>
+            <div class="axe">
+                <div class="picto-axe"><i class="fas fa-hand-holding-usd"></i></div>
+                <p>Prix</p>
+            </div>
+            <div class="axe">
+                <div class="picto-axe"><i class="fab fa-stack-overflow"></i></div>
+                <p>Expérience</p>
+            </div>
+            <div class="axe">
+                <div class="picto-axe"><i class="fas fa-layer-group"></i></div>
+                <p>Innovation</p>
+            </div>
+            <div class="axe" id="CTA">
+                <p>A votre service, rapidement, Usipanel se met en quatre pour vous.</p>
+                <p>N'hésitez plus</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-actus"></section>
+
+    <section id="section-clients">
+        <p>Ils nous ont fait confiance.</p>
+        <div id="clients">
+            <div class="client"><img src="./img/hex-lab.png" alt=""></div>
+            <div class="client"><img src="./img/hex-lab.png" alt=""></div>
+            <div class="client"><img src="./img/aven.png" alt=""></div>
+            <div class="client"><img src="./img/hex-lab.png" alt=""></div>
+            <div class="client"><img src="./img/hex-lab.png" alt=""></div>
+        </div>
+    </section>
+
+    <section id="section-devis">
+        <div id="devis">
+            <div>
+                <h3>Demandez votre devis</h3>
+                <p>N'hésitez pas à nous écrire afin de nous exposer votre demande et nous serons à même de vous trouver une solution dans les plus brefs délais.</p>
+            </div>
+            <form action="get">
+                <label for="nom">Votre nom<span>*</span></label>
+                <input type="text" name="nom" placeholder="Paul Dupont">
+                <label for="email">Votre email<span>*</span></label>
+                <input type="email" name="email" placeholder="paul.dupont@gmail.com">
+                <label for="content">Votre demande<span>*</span></label>
+                <textarea name="content" placeholder="J'ai un projet incroyable avec des chats et un salon de thé, mais j'ai besoin de meubles bien spécifique pour mes petites bêtes."></textarea>
+                <div class=buttonDemander><input type="button" value="Demander"></div>
+            </form>
+        </div>
+    </section>
+
+    <section id="section-footer">
+        <div class="col">
+            <h5>Contacts</h5>
+            <p>18, rue des frères Peugeot, 31200, Toulouse</p>
+            <p>usipanel@usipanel.com</p>
+            <p>06.73.07.64.27</p>
+        </div>
+        <div class="col">
+            <h5>Usipanel</h5>
+            <a href="#section-devis"><p>Devis</p>
+            <a href="#"><p>Actus</p></a>
+        </div>
+        <div class="col" id="section-newsletter">
+            <h5>Soyez au courant de nos nouveautés</h5>
+            <form action="" id="newsletter">
+                <input type="email" placeholder="votre email">
+                <div><input type="button" value="s'abonner"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>C2020 Usipanel. Tout droits réservés</p>
+        <a href="#"><p>Mentions légales</p></a>
+    </footer>
+
+</div>
+
+<aside id="menuSlide">
+    <div id="closeMenu" onclick="closeMenu()"><i class="fas fa-times"></i></div>
+    <ul>
+        <a href="index.html">
+            <li data-text="Accueil">Accueil</li>
+        </a>
+        <a href="#">
+            <li data-text="Vitre de protection">Vitre de protection</li>
+        </a>
+        <a href="#section-devis">
+            <li data-text="Devis">Devis</li>
+        </a>
+        <a href="#">
+            <li data-text="Actus">Actus</li>
+        </a>
+        <div class="pictos">
+            <a href="https://www.facebook.com/Usipanel/">
+                <li data-text="Facebook"><i class="fab fa-facebook-square"></i></li>
+            </a>
+        </div>
+    </ul>
+</aside>
+
+
+<script type="text/javascript" src="./index.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+
+</body>
+</html>

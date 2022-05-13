@@ -1,0 +1,36 @@
+.bg-popup{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup{
+    background-color: $color_background_1;
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    border-radius: 12px;
+    padding: 2em;
+    box-shadow: 0 0 10px black;
+
+    .contain-details{
+        min-height: 100%;
+        display: flex;
+        gap: 1em;
+        flex-direction: column;
+    }
+
+    .contain-close{
+        cursor: pointer;
+    }
+}

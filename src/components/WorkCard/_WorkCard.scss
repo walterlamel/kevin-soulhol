@@ -1,0 +1,111 @@
+.liste-work-card{
+    width: 100%;
+    //overflow-x: hidden;
+    position: relative;
+
+    .slider{
+        width: fit-content;
+        display: flex;
+        gap: 1em;
+        overflow-x: scroll;
+        padding: 1em 0;
+
+        .work-card{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            overflow: hidden;
+            padding: 50px;
+            border-radius: 24px;
+            background-color: $color_background_1;
+            position: relative;
+            width: 490px;
+            height: 242px;
+            cursor: pointer;
+            opacity: 0.7;
+            user-select: none;
+
+            a{
+                display: flex;
+                justify-content: start;
+                align-items: center;
+
+            }
+        
+            .container-text{
+                position: relative;
+                z-index: 2;
+                width: 70%;
+        
+                h4{
+                 color: $color_strong2;   
+                 text-transform: uppercase;
+                 font-size: 25px;
+                }
+        
+                .container-infos-sup{
+                    display: flex;
+                    gap:2em;
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    color: $color_background_2;
+                    font-weight: bold;
+                    margin-bottom: 24px;
+                }
+            }
+        
+            .container-img{
+                position: absolute;
+                z-index: 1;
+                right: -150px;
+                width: 313px;
+                height: 313px;
+                overflow: hidden;
+                border-radius: 100%;
+                background-color: $color_background_2;
+                opacity: 0.8;
+        
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .container-summary-slides{
+        font-size: 66px;
+        font-weight: bold;
+        position: relative;
+        bottom: 38px;
+        left: -43px;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .max-slides{
+            color: $color_strong;
+            font-size: 49px;
+            position: relative;
+            bottom: -14px;
+        }
+
+        .ico{
+            margin-left: 1em;
+            font-size: 25px;
+            color: $color_strong2;
+        }
+    }
+}
+
+
+.inside-popup-experience{
+    .link-to-site{
+        padding: 0.5em 1em;
+        border:1px solid $color_strong2;
+        color: $color_strong2;
+    }
+}
