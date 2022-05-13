@@ -14,7 +14,7 @@ import Login from "../../Login/Login";
 import useIsConnect from "../../../hooks/useIsConnect";
 import { Link } from "react-router-dom";
 
-const Menu = () => {
+const Menu = ({ setOnAccount }) => {
        const { createPopup } = useContext(PopupContext);
        const [loginOpen, setLoginOpen] = useState(false);
        const { isConnect } = useIsConnect();
@@ -22,17 +22,16 @@ const Menu = () => {
        return (
               <div className="menu">
                      <ul>
-                            <li className="menu-item">
-                                   <Link to="/">
-                                          <div className="icon">
-                                                 <FontAwesomeIcon
-                                                        icon={
-                                                               faEnvelopeOpenText
-                                                        }
-                                                 />
-                                          </div>
-                                          <span>Acuceil</span>
-                                   </Link>
+                            <li
+                                   className="menu-item"
+                                   onClick={(e) => setOnAccount(false)}
+                            >
+                                   <div className="icon">
+                                          <FontAwesomeIcon
+                                                 icon={faEnvelopeOpenText}
+                                          />
+                                   </div>
+                                   <span>Acuceil</span>
                             </li>
                             <li
                                    className="menu-item"
@@ -51,24 +50,21 @@ const Menu = () => {
                                    <span>Contacts</span>
                             </li>
                             {isConnect ? (
-                                   <li className="menu-item container-connect-session">
-                                          <Link to="/account">
-                                                 <div className="icon">
-                                                        <FontAwesomeIcon
-                                                               icon={
-                                                                      faUserAstronaut
-                                                               }
-                                                        />
-                                                 </div>
-                                                 <div className="container-text">
-                                                        <span className="identifiant">
-                                                               Kevin Soulhol
-                                                        </span>
-                                                        <span>
-                                                               Professionnel
-                                                        </span>
-                                                 </div>
-                                          </Link>
+                                   <li
+                                          className="menu-item container-connect-session"
+                                          onClick={(e) => setOnAccount(true)}
+                                   >
+                                          <div className="icon">
+                                                 <FontAwesomeIcon
+                                                        icon={faUserAstronaut}
+                                                 />
+                                          </div>
+                                          <div className="container-text">
+                                                 <span className="identifiant">
+                                                        Kevin Soulhol
+                                                 </span>
+                                                 <span>Professionnel</span>
+                                          </div>
                                    </li>
                             ) : (
                                    <li

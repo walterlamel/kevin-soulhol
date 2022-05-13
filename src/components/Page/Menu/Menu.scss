@@ -66,3 +66,38 @@
 
     
 }
+
+
+
+@media screen and (max-width:1130px) {
+    .menu{
+        padding: 15px;
+
+        ul{
+            gap: 2em;
+
+            .menu-item{
+                a{
+                    .icon{
+                        margin-right: 5px ;
+                    }
+                }
+                    .icon{
+                        margin-right: 5px;
+                    }
+                
+            }
+        }
+
+        .container-connect-session{
+            .icon{
+                margin-right: 10px;
+            }
+
+            .container-text{
+                display: none;
+            }
+        }
+    }
+        
+}

@@ -42,6 +42,7 @@ export default class Connecter {
                                           }
 
                                           dataSend.append(key, value);
+                                          console.log(value);
                                    }
                             }
                      }

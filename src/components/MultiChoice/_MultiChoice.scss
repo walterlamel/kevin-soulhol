@@ -10,6 +10,10 @@
         align-items: stretch;
         gap: 2em;
 
+        >div{
+            height: 100%;
+        }
+
         .message{
             padding: 0.5em 1em;
             border-radius: 6px;
@@ -57,4 +61,14 @@
         }
     }
 
+}
+
+
+
+
+
+@media screen and (max-width:1130px) {
+    .container-multichoices .container-bulles{
+        flex-wrap: wrap;
+    }
 }

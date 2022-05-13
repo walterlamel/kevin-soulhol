@@ -27,6 +27,21 @@ class Session
         }
     }
 
+    public function getMeta()
+    {
+        if (!$this->isConnect()) {
+            r(false, "Vous n'êtes pas connecté");
+        }
+
+        $U = new User();
+        $r = $U->getBy(array('id' => $this->getId()), false, false);
+        $r = $r[0];
+        $r = htmlspecialchars_decode($r['meta']);
+        $r = json_decode($r, true);
+
+        return $r;
+    }
+
 
     /**
      * Créer la session selon infos envoyée
@@ -47,8 +62,11 @@ class Session
         $this->id = $infos_session['id'];
 
         foreach ($infos_session as $key => $value_info) {
-            $_SESSION[$key] = $value_info;
+
+            $_SESSION[$key] = htmlspecialchars_decode($value_info);
         }
+
+        $_SESSION['meta'] = $this->getMeta();
 
         $this->createTokenConnect();
 

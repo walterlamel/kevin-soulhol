@@ -12,7 +12,7 @@ const Account = () => {
        const { isConnect } = useIsConnect();
 
        return (
-              <Page classname="account">
+              <>
                      <section>
                             <h2>Votre Compte</h2>
                             {isConnect ? (
@@ -40,7 +40,7 @@ const Account = () => {
                             </section>
                      )}
                      {isConnect && <div onClick={deco}>Se déconnecter</div>}
-              </Page>
+              </>
        );
 };
 

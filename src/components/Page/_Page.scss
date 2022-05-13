@@ -16,15 +16,34 @@
     
 
     .container-page{
-        flex-basis: 75%;
+        flex-basis: 100%;
         padding: 100px;
         position: relative;
         overflow: hidden;
+        margin-left: 465px;
+        min-height: 110vh;
     }
 
     .container-world{
-        flex-basis: 25%;
-        position: relative;
+        width: 465px;
+        position: absolute;
         flex-shrink: 0;
+        height: 100%;
     }
+}
+
+
+@media screen and (max-width:1130px) {
+    .page{
+        .container-world{
+            width: 100%;
+            z-index: 5;
+        }
+
+        .container-page{
+            margin-left: 0;
+            padding: 50px;
+        }
+    }
+        
 }

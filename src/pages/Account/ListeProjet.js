@@ -6,7 +6,6 @@ const ListeProjet = () => {
 
        useEffect(() => {
               new Connecter("get_projets").connect_to_api().then((res) => {
-                     console.log(res);
                      if (res && Array.isArray(res.text)) {
                             setList(res.text);
                      }

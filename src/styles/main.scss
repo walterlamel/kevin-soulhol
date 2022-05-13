@@ -129,6 +129,20 @@ body{
 
 
 
+@media screen and (max-width:550px) {
+    h2{
+        font-size: 40px;
+        line-height: 35px
+    }
+
+    h3{
+        font-size: 30px;
+        line-height: 25px;
+    }
+}
+
+
+
 @import '../pages/Home/Home.scss';
 @import '../components/MultiChoice/MultiChoice';
 @import '../components/WorkCard/WorkCard';

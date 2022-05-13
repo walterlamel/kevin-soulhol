@@ -36,7 +36,7 @@ const Account = ({ account }) => {
               <div className="compte">
                      <span className="name">{account.pseudo}</span>
                      <span className="email">{account.email}</span>
-                     <span className="meta">{account.meta}</span>
+                     <span className="meta">{account.meta?.auth_dir}</span>
               </div>
        );
 };

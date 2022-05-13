@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Connecter from "../../services/Connecter.class";
 import ListAccount from "./ListAccount";
 
@@ -6,8 +6,9 @@ const AddAccount = () => {
        const [email, setEmail] = useState("");
        const [password, setPassword] = useState("");
        const [pseudo, setPseudo] = useState("");
-       const [meta, setMeta] = useState("");
+       const [metaAuth, setMetaAuth] = useState("");
        const [reloadListAccount, setReloadListAccount] = useState(0);
+       const [errorMessage, setErrorMessage] = useState("");
        const [role, setRole] = useState(false);
 
        useEffect(() => {
@@ -20,15 +21,21 @@ const AddAccount = () => {
 
        function handleSubmit(e) {
               e.preventDefault();
+              let newmeta = { auth_dir: metaAuth };
               new Connecter("add_compte")
                      .connect_to_api({
                             email: email,
                             password: password,
                             pseudo: pseudo,
-                            meta: meta,
+                            meta: JSON.stringify(newmeta),
                      })
                      .then((res) => {
-                            setReloadListAccount((prev) => prev + 1);
+                            console.log(res);
+                            if (res && !res.res) {
+                                   setErrorMessage(res.text);
+                            } else {
+                                   setReloadListAccount((prev) => prev + 1);
+                            }
                      });
        }
 
@@ -84,21 +91,23 @@ const AddAccount = () => {
                                                         type="text"
                                                         placeholder="id_valid"
                                                         name="meta"
-                                                        value={meta}
+                                                        value={metaAuth}
                                                         onChange={(e) =>
-                                                               setMeta(
+                                                               setMetaAuth(
                                                                       e.target
                                                                              .value,
                                                                )
                                                         }
                                                  />
                                           </div>
-
-                                          <input
-                                                 id="btn-add-account"
-                                                 type="submit"
-                                                 value="Ajouter"
-                                          />
+                                          <div className="container-input display-right">
+                                                 <p>{errorMessage}</p>
+                                                 <input
+                                                        id="btn-add-account"
+                                                        type="submit"
+                                                        value="Ajouter"
+                                                 />
+                                          </div>
                                    </form>
                             </section>
                      )}

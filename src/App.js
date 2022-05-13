@@ -5,42 +5,33 @@ import "./styles/main.scss";
 
 import Home from "./pages/Home/Home";
 import Account from "./pages/Account/Account";
+import Page from "./components/Page/Page";
 
 import { PopupProvider } from "./context/PopupProvider";
 import { SessionProvider } from "./context/SessionProvider";
 
-import useIsConnect from "./hooks/useIsConnect";
-
 function App() {
-       const { isConnect } = useIsConnect();
-
        return (
-              <SessionProvider>
-                     <PopupProvider>
-                            <div className="App">
-                                   <Helmet>
-                                          <meta charSet="utf-8" />
-                                          <title>
-                                                 Kevin Soulhol | Développeur web
-                                          </title>
-                                   </Helmet>
+              <div className="App">
+                     <Helmet>
+                            <meta charSet="utf-8" />
+                            <title>Kevin Soulhol | Développeur web</title>
+                     </Helmet>
+
+                     <SessionProvider>
+                            <PopupProvider>
                                    <BrowserRouter>
                                           <Routes>
                                                  <Route
                                                         index
                                                         path="/"
-                                                        element={<Home />}
-                                                 />
-                                                 <Route
-                                                        index
-                                                        path="/account"
-                                                        element={<Account />}
+                                                        element={<Page />}
                                                  />
                                           </Routes>
                                    </BrowserRouter>
-                            </div>
-                     </PopupProvider>
-              </SessionProvider>
+                            </PopupProvider>
+                     </SessionProvider>
+              </div>
        );
 }
 

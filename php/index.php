@@ -82,11 +82,10 @@ switch ($_POST['action']) {
 
     case 'get_meta':
         $S = new Session();
-        if (!$S->isConnect()) {
-            r(false, "Vous n'êtes pas connecté", false, true);
+        $r = $S->getMeta();
+        if ($r) {
+            r(true, $r, false, true);
         }
-
-        r(false, $_SESSION['meta'], false, true);
         break;
 
     case 'login':
@@ -135,11 +134,12 @@ switch ($_POST['action']) {
             r(false, "Vous n'êtes pas connecté", false, true);
         }
 
-        $files_ok = explode(';', $_SESSION['meta']);
+        $files_ok = explode(';', $_SESSION['meta']['auth_dir']);
 
         $url = '../works/';
         $scandir = scandir($url);
         $files = array();
+
 
         foreach ($scandir as $fichier) {
             if ($fichier != '.' && $fichier != '..') {
@@ -154,7 +154,7 @@ switch ($_POST['action']) {
             }
         }
 
-        r(true, $files, $_SERVER, true);
+        r(true, $files, false, true);
 
 
         break;
@@ -169,7 +169,14 @@ switch ($_POST['action']) {
 
         $U = new User();
 
-        $r = $U->addItem(array('email' => $_POST['email'], 'pseudo' => $_POST['pseudo'], 'password' => $_POST['password'], "meta" => $_POST['meta']));
+
+        //$_POST['blocs'] = json_decode($_POST['blocs'], true);
+        //$newvalue = json_encode($contain, JSON_UNESCAPED_UNICODE);
+
+        $meta = json_decode($_POST['meta'], true);
+        $meta2 = json_encode($meta, JSON_UNESCAPED_UNICODE);
+
+        $r = $U->addItem(array('email' => $_POST['email'], 'pseudo' => $_POST['pseudo'], 'password' => $_POST['password'], "meta" => htmlspecialchars_decode($meta2)));
         if ($r) {
             r(true, "Compte ajouté", array('id' => $r), true);
         } else {
@@ -188,7 +195,11 @@ switch ($_POST['action']) {
         $U = new User();
         $r = $U->getAll();
         if ($r) {
-            r(true, $r, $_SESSION, true);
+            foreach ($r as $key => $account) {
+                $r[$key]['meta'] = htmlspecialchars_decode($account['meta']);
+                $r[$key]['meta'] = json_decode($r[$key]['meta'], true);
+            }
+            r(true, $r, false, true);
         } else {
             r(false, "Une erreur est survenue", false, true);
         }

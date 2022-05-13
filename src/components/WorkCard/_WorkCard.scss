@@ -109,3 +109,35 @@
         color: $color_strong2;
     }
 }
+
+
+
+
+@media screen and (max-width:650px) {
+    .liste-work-card .slider .work-card{
+        width: 50%;
+    }
+
+    .liste-work-card .slider .work-card .container-text h4{
+        font-size:17px;
+        color: $color_font;
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.363);
+    }
+
+    .liste-work-card .slider .work-card .container-text .container-infos-sup{
+        font-size: 15px;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .liste-work-card .container-desc{
+        display: none;
+    }
+
+    .liste-work-card .slider .work-card .container-img{
+        bottom: 56px;
+        width: 272px;
+        height: 272px;
+        right: -50px;
+    }
+}

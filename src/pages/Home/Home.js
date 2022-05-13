@@ -4,11 +4,10 @@ import Page from "../../components/Page/Page";
 import ListeWorkCards from "../../components/WorkCard/ListeWorkCards";
 import Experiences from "../../components/Experiences/Experiences";
 import Multichoice from "../../components/MultiChoice/Multichoice";
-import { AnimatePresence } from "framer-motion";
 
 const Home = () => {
        return (
-              <Page classname="home">
+              <>
                      <section>
                             <h2 className="accent">Bonjour.</h2>
                             <p>
@@ -46,7 +45,7 @@ const Home = () => {
                             </p>
                             <Experiences />
                      </section>
-              </Page>
+              </>
        );
 };
 
