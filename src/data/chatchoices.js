@@ -1,123 +1,100 @@
 export const Phases = {
-       1: {
-              text: " ",
-              choices: ["client01", "compte01", "balade01"],
-       },
+       1: { text: " ", choices: ["pro01", "account01", "idle01"] },
        2: {
-              text: "Enchanté et bienvenue =) Que cherchez-vous ?",
-              choices: ["client03", "client02", "voir_works"],
+              text: "Avec un ouija. Sinon, plus simplement, en cliquant ci-dessous :",
+              choices: ["contact00", "retour01"],
        },
-       3: {
-              text: "Voilà qui est fort plaisant ! Dites-m'en plus...",
-              choices: ["voir_works", "client05"],
+       200: {
+              text: "Bienvenue à vous !",
+              choices: ["mail01", "contact01", "retour01"],
        },
-       4: {
-              text: "Aucun problème ! C'est juste *(en-dessous)[#works]* !",
-              choices: ["retour_depart"],
+       201: {
+              text: "Ah oui ! De ma part.<br/> Utilisez-les pour vous connecter puis allez sur votre profil. Vous trouverez ici les liens vers les projets qui vous concernent.",
+              choices: ["connect01", "retour01"],
        },
-       5: {
-              text: "N'hésitez pas à me contacter via un de ces liens.",
-              action: "contact",
-              choices: ["contact01", "retour_depart"],
+       300: {
+              text: "Voilà qui est fort agréable ! Connectez-vous donc !",
+              choices: ["connect01", "works01", "contact02", "retour01"],
        },
-       6: {
-              text: "Voilà une bonne chose !",
-              choices: ["contact01", "balade02", "retour_depart"],
+       301: {
+              text: "C'est bien simple ! Ils sont (ci-dessous)[#works] !",
+              choices: ["works00", "retour01"],
        },
-       7: {
-              text: "On ne peut mieux ! Et vous ?",
-              choices: ["oui01", "bof01", "mal01"],
+       400: {
+              text: "Parfait ! Ce site est aussi fait pour ça.",
+              choices: ["works01", "contact01", "idle02", "retour01"],
        },
-       8: {
+       401: {
+              text: "Merci pour cette question ! Très bien et vous ?",
+              choices: ["idle03", "idle04", "idle05"],
+       },
+       402: {
               text: "J'aime lire ça. Comment vous vous appelez ?",
-              choices: ["ask_name", "retour_depart"],
+              choices: ["ask_name", "retour01"],
        },
-       9: {
-              text: "Enchanté *$name*. Moi c'est Kévin du coup. Je peux peut-être te joindre via un e-mail ?",
-              choices: ["ask_email", "retour_depart"],
+       403: {
+              text: "Enchanté *$name*. Moi c'est Kévin du coup. Tu as un e-mail ?",
+              choices: ["ask_email", "retour01"],
        },
-       10: {
+       404: {
               text: "Merci beaucoup *$name* ! Je te contacterai aussi vite que possible !",
-              choices: ["voir_works", "retour_depart"],
+              choices: ["voir_works", "retour01"],
        },
-       11: {
-              text: "Ah ! On se connaît donc ! Connectez-vous avec les codes envoyés et vous serez redirigé au bon endroit.",
-              choices: ["compte02", "retour_depart"],
+       405: {
+              text: "Ah bon ? Je ne peux pas trop aider d'ici. Je ne suis qu'un logiciel codé (je le rappelle).",
+              choices: ["idle06"],
        },
-       12: {
-              text: "Ah ? Est-ce que je peux faire quelque chose pour vous ?",
-              choices: ["bof02", "retour_depart"],
+       406: {
+              text: "Mais peut-être que vous baladez sur mon site et y chercher les bidouilles cachées vous amusera",
+              choices: ["idle07"],
        },
-       13: {
-              text: "Ca ne m'aide pas du tout. Peut-être que vous pouvez vous occupez en regardant mon site.",
-              choices: ["bof04", "bof03", "retour_depart"],
+       407: {
+              text: "Je sais bien, je sais bien ! Bonne visite à vous alors. Et prenez-donc cet objet.",
+              choices: ["take_gold", "retour01"],
        },
-       14: {
-              text: "Bonne visite !",
-              choices: ["contact01", "voir_works", "retour_depart"],
-       },
-       15: {
-              text: "Je vais avoir du mal à vous aider d'ici. Mais vous pouvez toujours m'écrire ou vous balader sur l'illustration ci-contre.",
-              choices: ["contact01", "voir_works", "mal02", "retour_depart"],
+       408: {
+              text: "Ah mince. Je ne vais pas pouvoir beaucoup aidé (je ne suis pas psy après tout), mais vous pouvez toujours me contacter ou vous baladez sur mon site",
+              choices: ["idle07", "contact00", "retour01"],
        },
 };
 
 export const Messages = {
-       client01: {
-              text: "Je suis client",
-              to: 2,
-       },
-       client02: {
-              text: "Je veux travailler avec toi",
-              to: 3,
-       },
-       client03: {
-              text: "J'ai reçu un email avec des codes",
-              accent: "fort",
-              to: 11,
-       },
-       voir_works: {
-              text: "Je veux voir un de tes travaux",
-              to: 4,
-       },
-       client05: {
-              text: "Je veux te contacter",
-              accent: "fort",
-              to: 5,
-       },
-       compte01: {
-              text: "J'ai un compte",
-              textconnect: "Je suis déjà connecté",
-              to: "connect",
-       },
-       compte02: {
+       retour01: { text: "Retour", accent: "light", to: 1 },
+       pro01: { text: "Je suis un professionnel", to: 200 },
+       mail01: { text: "J'ai reçu un e-mail avec des identifiants", to: 201 },
+       connect01: {
               text: "Je me connecte",
-              textconnect: "C'est bon !",
+              textconnect: "C'est bon ! Je le suis déjà",
               accent: "fort",
               to: "connect",
        },
-       balade01: {
-              text: "Je me balade",
+       account01: { text: "J'ai un compte", to: 300 },
+       idle01: { text: "Je me balade", accent: "fort", to: 400 },
+       idle02: { text: "Comment allez-vous ?", to: 401 },
+       idle03: { text: "Très bien !", to: 402 },
+       idle04: { text: "Bof...", to: 405 },
+       idle05: { text: "Pas très bien...", to: 408 },
+       idle06: { text: "Moui c'est vrai...", to: 406 },
+       idle07: { text: "Bonne idée !", to: 407 },
+       works00: { text: "<a href='#works'>Y aller.</a>" },
+       works01: { text: "Je veux voir vos travaux.", to: 301 },
+       contact00: { text: "Contacter", accent: "fort", to: "contact" },
+       contact01: { text: "Comment vous contacter ?", to: 2 },
+       contact02: { text: "Je préfère vous contacter", to: "contact" },
+       ask_name: {
+              input: true,
+              name: "name",
+              to: 403,
+       },
+       ask_email: {
+              input: true,
+              name: "email",
+              to: 404,
+       },
+       confirmform: {
+              text: "Valider",
               accent: "fort",
-              to: 6,
-       },
-       balade02: {
-              text: "Comment vas-tu ?",
-              to: 7,
-       },
-       contact01: {
-              text: "Me contacter",
-              accent: "fort",
-              to: "contact",
-       },
-       retour_depart: {
-              text: "Retour",
-              to: 1,
-              accent: "light",
-       },
-       oui01: {
-              text: "Parfait !",
-              to: 8,
+              valid: true,
        },
        bof01: {
               text: "Bof...",
@@ -127,36 +104,8 @@ export const Messages = {
               text: "Bof...",
               to: 13,
        },
-       bof03: {
-              text: "Moui je vais faire ça...",
-              to: 6,
-       },
-       bof04: {
-              text: "Bonne idée ! Je vais de suite mieux.",
-              accent: "fort",
-              to: 14,
-       },
-       mal01: {
-              text: "Très mal !",
-              to: 15,
-       },
-       mal02: {
+       take_gold: {
               text: "Merci !",
-              to: 8,
-       },
-       ask_name: {
-              input: true,
-              name: "name",
-              to: 9,
-       },
-       ask_email: {
-              input: true,
-              name: "email",
-              to: 10,
-       },
-       confirmform: {
-              text: "Valider",
-              accent: "fort",
-              valid: true,
+              to: "take_gold",
        },
 };

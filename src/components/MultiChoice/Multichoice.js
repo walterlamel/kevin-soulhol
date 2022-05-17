@@ -7,7 +7,7 @@ import Contact from "../Page/Contact/Contact";
 import MessagesBulle from "./MessagesBulle";
 
 const Multichoice = () => {
-       const { createPopup } = useContext(PopupContext);
+       const { createPopup, toggleLogin } = useContext(PopupContext);
        const [currentPhase, setCurrentPhase] = useState(1);
        const [currentMessages, setCurrentMessages] = useState([]);
        const [currentText, setCurrentText] = useState("");
@@ -31,15 +31,19 @@ const Multichoice = () => {
                      setTimeout(() => {
                             let messages = [];
                             Phases[phase_id].choices.forEach((message_id) => {
-                                   messages.push(Messages[message_id]);
-                                   if (Messages[message_id].input) {
-                                          let add_valid =
-                                                 Messages["confirmform"];
-                                          add_valid.to =
-                                                 Messages[message_id].to;
-                                          add_valid.name =
-                                                 Messages[message_id].name;
-                                          messages.push(add_valid);
+                                   if (Messages[message_id]) {
+                                          messages.push(Messages[message_id]);
+                                          if (Messages[message_id].input) {
+                                                 let add_valid =
+                                                        Messages["confirmform"];
+                                                 add_valid.to =
+                                                        Messages[message_id].to;
+                                                 add_valid.name =
+                                                        Messages[
+                                                               message_id
+                                                        ].name;
+                                                 messages.push(add_valid);
+                                          }
                                    }
                             });
                             setCurrentMessages(messages);
@@ -60,6 +64,13 @@ const Multichoice = () => {
                             return;
                      case "contact":
                             createPopup(<Contact />, "popup-contact");
+                            break;
+                     case "connect":
+                            toggleLogin(true);
+                            break;
+                     case "take_gold":
+                            //if pas de piece
+                            console.log("recup pièce");
                             break;
               }
        }

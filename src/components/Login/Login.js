@@ -36,6 +36,7 @@ const Login = ({ opener }) => {
                             password: password,
                      })
                      .then((res) => {
+                            console.log(res);
                             setLoader(false);
                             if (res && res.res) {
                                    setPseudo(res.identifiant);

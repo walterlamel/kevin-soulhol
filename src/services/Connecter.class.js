@@ -59,7 +59,7 @@ export default class Connecter {
                                    r(res.data);
                             })
                             .catch((err) => {
-                                   console.log(err);
+                                   //console.log(err);
                                    f(err);
                             });
               });

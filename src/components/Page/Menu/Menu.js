@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 
 import Contact from "../Contact/Contact";
 
@@ -12,11 +12,9 @@ import {
 import Login from "../../Login/Login";
 
 import useIsConnect from "../../../hooks/useIsConnect";
-import { Link } from "react-router-dom";
 
 const Menu = ({ setOnAccount }) => {
-       const { createPopup } = useContext(PopupContext);
-       const [loginOpen, setLoginOpen] = useState(false);
+       const { createPopup, loginOpen, toggleLogin } = useContext(PopupContext);
        const { isConnect } = useIsConnect();
 
        return (
@@ -61,15 +59,15 @@ const Menu = ({ setOnAccount }) => {
                                           </div>
                                           <div className="container-text">
                                                  <span className="identifiant">
-                                                        Kevin Soulhol
+                                                        ??
                                                  </span>
-                                                 <span>Professionnel</span>
+                                                 <span>??</span>
                                           </div>
                                    </li>
                             ) : (
                                    <li
                                           className="menu-item"
-                                          onClick={(e) => setLoginOpen(true)}
+                                          onClick={(e) => toggleLogin()}
                                    >
                                           <div className="icon">
                                                  <FontAwesomeIcon
