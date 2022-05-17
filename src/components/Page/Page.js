@@ -6,6 +6,12 @@ import Menu from "./Menu/Menu";
 import Popup from "./Popup";
 import Home from "../../pages/Home/Home";
 import Account from "../../pages/Account/Account";
+import Conversation from "./World/Conversation";
+
+const variants_page = {
+       hidden: { opacity: 0 },
+       visible: { opacity: 1 },
+};
 
 const variants = {
        open: {
@@ -16,7 +22,7 @@ const variants = {
        },
 };
 
-const Page = ({ classname, children }) => {
+const Page = () => {
        const [worldOpen, setWorldOpen] = useState(false);
        const [onAccount, setOnAccount] = useState(false);
 
@@ -27,40 +33,48 @@ const Page = ({ classname, children }) => {
        }, []);
 
        return (
-              <div className={"page " + (onAccount ? "account" : "home")}>
+              <AnimatePresence>
                      <motion.div
-                            className="container-world"
-                            variants={variants}
-                            initial={false}
-                            animate={worldOpen ? "open" : "close"}
+                            className={
+                                   "page " + (onAccount ? "account" : "home")
+                            }
+                            variants={variants_page}
+                            initial="hidden"
+                            animate="visible"
+                            exit="hidden"
                      >
-                            <World></World>
-                     </motion.div>
-                     <div className="container-page">
-                            <Menu setOnAccount={setOnAccount} />
-                            <div
-                                   className="tes"
-                                   onClick={(e) => {
-                                          setWorldOpen((prev) =>
-                                                 prev ? false : true,
-                                          );
-                                   }}
+                            <Conversation />
+                            <motion.div
+                                   className="container-world"
+                                   variants={variants}
+                                   initial={false}
+                                   animate={worldOpen ? "open" : "close"}
                             >
-                                   Test
-                            </div>
+                                   <World />
+                            </motion.div>
+                            <div className="container-page">
+                                   <Menu setOnAccount={setOnAccount} />
 
-                            <AnimatePresence>
-                                   <motion.div
-                                          initial={{ opacity: 0, x: 100 }}
-                                          animate={{ opacity: 1, x: 0 }}
-                                          exit={{ opacity: 0, x: -10 }}
-                                   >
-                                          {onAccount ? <Account /> : <Home />}
-                                   </motion.div>
-                            </AnimatePresence>
-                     </div>
-                     <Popup />
-              </div>
+                                   <AnimatePresence>
+                                          <motion.div
+                                                 initial={{
+                                                        opacity: 0,
+                                                        x: 100,
+                                                 }}
+                                                 animate={{ opacity: 1, x: 0 }}
+                                                 exit={{ opacity: 0, x: -10 }}
+                                          >
+                                                 {onAccount ? (
+                                                        <Account />
+                                                 ) : (
+                                                        <Home />
+                                                 )}
+                                          </motion.div>
+                                   </AnimatePresence>
+                            </div>
+                            <Popup />
+                     </motion.div>
+              </AnimatePresence>
        );
 };
 

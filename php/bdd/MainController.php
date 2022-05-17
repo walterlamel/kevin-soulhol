@@ -61,7 +61,6 @@ class MainController
             $c++;
         }
 
-
         $query = $this->addOptionsToQuery($query, $orderby, $limit);
 
         $r = $this->Query($query);
@@ -259,6 +258,8 @@ class MainController
             $result = $this->bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (Exception $e) {
+            logger($query);
+            logger($e);
             return false;
             die('Erreur : ' . $e->getMessage());
         }
@@ -294,7 +295,7 @@ class MainController
     private function connect_bdd($bdd_name)
     {
         try {
-            $this->bdd = new PDO('mysql:host=' . HOST . ';dbname=' . ($bdd_name ?? BDD_NAME) . ';charset=utf8', USER, PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->bdd = new PDO('mysql:host=' . HOST . ';dbname=' . BDD_NAME . ';charset=utf8', USER, PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             return true;
         } catch (Exception $e) {
             return false;

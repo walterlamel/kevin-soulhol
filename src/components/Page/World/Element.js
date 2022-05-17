@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Element = ({ position, img }) => {
+import { ConversationContext } from "../../../context/ConversationProvider";
+
+const Element = ({ elem }) => {
+       const navigate = useNavigate();
+       const { openConv } = useContext(ConversationContext);
+
+       function handleClick() {
+              if (elem.action) {
+                     switch (elem.action.name) {
+                            default:
+                                   break;
+                            case "talk":
+                                   openConv(elem.action.details, elem.name);
+                                   break;
+                            case "play":
+                                   navigate(elem.action.details);
+                                   break;
+                     }
+              }
+       }
+
        return (
-              <div className="element" style={position}>
-                     <img src={"/images/" + img + ".png"} alt="" />
+              <div
+                     className="element"
+                     style={elem.position}
+                     onClick={handleClick}
+              >
+                     <img src={"/images/" + elem.img + ".gif"} alt="" />
               </div>
        );
 };

@@ -47,7 +47,7 @@
         }
 
         .display-right{
-            justify-content: end;
+            justify-content: flex-end;
             align-items: center;
 
             p{
@@ -57,7 +57,7 @@
         }
 
         #btn-add-account{
-            align-self: end;
+            align-self: flex-end;
             padding: 0.5em 1em;
             background-color: $color_strong2;
             color: $color_font;

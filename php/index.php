@@ -2,7 +2,6 @@
 session_start();
 
 
-
 //functions utiles
 
 
@@ -47,7 +46,7 @@ switch ($_POST['action']) {
         }
 
         $url_to_send = '/images/' . $_POST['path'] . '/presentation/';
-        $url = '../public/' . $url_to_send;
+        $url = '..' . $url_to_send;
         $scandir = scandir($url);
         $files = array();
         //Lister toutes images ayant les extensions jpg, jpeg, png, gif, bmp et tif
@@ -64,7 +63,7 @@ switch ($_POST['action']) {
     case 'isConnect':
         $S = new Session();
         $r = $S->isConnect();
-        r(true, $r, false, true);
+        r(true, $r, array('details' => 'Pas de session connectée'), true);
         break;
 
     case 'get_role':
@@ -95,8 +94,11 @@ switch ($_POST['action']) {
         if (!isset($_POST['password'])) {
             r(false, "Aucun password indiqué", false, true);
         }
-        $U = new User('alfred');
+
+        $U = new User();
+        echo "coucou4";
         $user = $U->pseudoExist($_POST['identifiant']);
+        echo "end";
         if (!$user) {
             $user = $U->emailExist($_POST['identifiant']);
         }
@@ -144,10 +146,10 @@ switch ($_POST['action']) {
         foreach ($scandir as $fichier) {
             if ($fichier != '.' && $fichier != '..') {
 
-                if (in_array($fichier, $files_ok)) {
+                if (in_array($fichier, $files_ok) || $_SESSION['role'] == 1) {
                     $item = array(
                         'name' => $fichier,
-                        'path' => $_SERVER['HTTP_ORIGIN'] . '/' . $fichier
+                        'path' => $_SERVER['HTTP_ORIGIN'] . '/works/' . $fichier
                     );
                     array_push($files, $item);
                 }

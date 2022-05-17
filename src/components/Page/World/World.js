@@ -5,6 +5,8 @@ import TileMap from "./TileMap";
 
 import Element from "./Element";
 
+import ElementsWorld from "../../../data/elementsworld";
+
 const Map = [
        {
               type: "water",
@@ -32,12 +34,17 @@ const Map = [
 const World = () => {
        const ref = createRef();
        const [heightMax, setHeightMax] = useState(0);
+       const [allElements, setAllElements] = useState(ElementsWorld);
 
        useEffect(() => {
               if (ref && ref.current) {
                      setHeightMax(ref.current.clientHeight);
               }
        }, [ref]);
+
+       useEffect(() => {
+              setAllElements(allElements);
+       }, [ElementsWorld]);
 
        return (
               <motion.div className="world">
@@ -48,11 +55,11 @@ const World = () => {
                             {Map.map((tile, key) => (
                                    <TileMap key={key} />
                             ))}
-                            {/* 
-                            <Element
-                                   img={"pinguin"}
-                                   position={{ left: "78%", top: "9%" }}
-                            />*/}
+
+                            {ElementsWorld.map((elem, key) => (
+                                   <Element elem={elem} key={key} />
+                            ))}
+
                             <div className="bg-world" ref={ref}>
                                    <img src="/images/world.png" alt="" />
                             </div>

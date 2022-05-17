@@ -1,0 +1,36 @@
+.container-game-runner{
+    height: 300px;
+    width: 100vw;
+    background-color: white;
+    overflow: hidden;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position:relative;
+
+    .player{
+        width: 30px;
+        height: 30px;
+        background:red;
+        position: absolute;
+        left:25%;
+        z-index : 10;
+    }
+
+    .decors{
+        width: 6000px;
+        height: 100%;
+        display:flex;
+        align-items: flex-end;
+    }
+
+    .ennemy{
+        width:50px;
+        height:50px;
+        background:blue;
+        position: absolute;
+        z-index : 5;
+    }
+}

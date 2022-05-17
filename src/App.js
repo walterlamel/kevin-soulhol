@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/main.scss";
 
-import Home from "./pages/Home/Home";
-import Account from "./pages/Account/Account";
 import Page from "./components/Page/Page";
 
 import { PopupProvider } from "./context/PopupProvider";
 import { SessionProvider } from "./context/SessionProvider";
+import { ConversationProvider } from "./context/ConversationProvider";
+import MiniGameRunner from "./pages/MiniGame/MiniGameRunner";
 
 function App() {
        return (
@@ -20,15 +20,26 @@ function App() {
 
                      <SessionProvider>
                             <PopupProvider>
-                                   <BrowserRouter>
-                                          <Routes>
-                                                 <Route
-                                                        index
-                                                        path="/"
-                                                        element={<Page />}
-                                                 />
-                                          </Routes>
-                                   </BrowserRouter>
+                                   <ConversationProvider>
+                                          <BrowserRouter>
+                                                 <Routes>
+                                                        <Route
+                                                               index
+                                                               path="/"
+                                                               element={
+                                                                      <Page />
+                                                               }
+                                                        />
+                                                        <Route
+                                                               index
+                                                               path="/runner"
+                                                               element={
+                                                                      <MiniGameRunner />
+                                                               }
+                                                        />
+                                                 </Routes>
+                                          </BrowserRouter>
+                                   </ConversationProvider>
                             </PopupProvider>
                      </SessionProvider>
               </div>

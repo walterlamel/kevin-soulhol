@@ -21,14 +21,14 @@ const ListeWorkCards = () => {
 
        function getTo(page) {
               let p = page;
+              let diff = -(currentSee - page);
 
-              setCurrentSee(p);
-
-              if (p > 2) {
-                     let arr = [...works];
-                     arr.push(arr[p - 3]);
-                     setWorks(arr);
+              let arr = [...works];
+              for (let index = 0; index < diff; index++) {
+                     arr.push(arr[p - (diff - index) - 1]);
               }
+              setWorks(arr);
+              setCurrentSee(p);
        }
 
        function next() {

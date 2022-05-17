@@ -1,11 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {
-       createRef,
-       useContext,
-       useEffect,
-       useRef,
-       useState,
-} from "react";
+import React, { createRef, useContext, useEffect, useState } from "react";
 
 import { faUser, faEye } from "@fortawesome/free-solid-svg-icons";
 import Connecter from "../../services/Connecter.class";

@@ -12,8 +12,10 @@ $color_background_2 : #6B6E8D;
 
 //Poppins FONT
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 $font_family : 'Poppins', sans-serif;
+$font_family_pixel : 'VT323', monospace;
 $font_size : "20px";
 
 
@@ -159,3 +161,6 @@ body{
 @import '../components/Page/Menu/Menu.scss';
 
 @import '../pages/Account/Account.scss';
+
+
+@import '../pages/MiniGame/MiniGameRunner';

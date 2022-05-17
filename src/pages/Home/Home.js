@@ -27,9 +27,10 @@ const Home = () => {
                                    par millier
                             </h3>
                             <p className="sous-paraph">
-                                   Lorem ipsum dolor sit amet, consetetur
-                                   sadipscing elitr, sed diam nonumy eirmod
-                                   tempor invidunt ut labore et dolore
+                                   Ci-dessous, vous pourrez découvrir
+                                   quelques-uns des projets sur lesquels j'ai
+                                   travaillé. Du graphisme, des sites web, un
+                                   peu d'illustration...
                             </p>
                             <ListeWorkCards />
                      </section>
@@ -39,9 +40,8 @@ const Home = () => {
                                    pro
                             </h3>
                             <p className="sous-paraph">
-                                   Lorem ipsum dolor sit amet, consetetur
-                                   sadipscing elitr, sed diam nonumy eirmod
-                                   tempor invidunt ut labore et dolore
+                                   Si mes expériences vous intéressent, les
+                                   voici dans l'ordre chronologique.
                             </p>
                             <Experiences />
                      </section>

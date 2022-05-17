@@ -7,13 +7,13 @@
     padding: 30px 84px;
 
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 
     font-size: 0.9em;
 
     ul{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         gap:6em;
 
@@ -53,8 +53,8 @@
         .container-text{
             display: flex;
             flex-direction: column;
-            justify-content: start;
-            align-items: start;
+            justify-content: flex-start;
+            align-items: flex-start;
             font-size: 10px;
             text-align: left;
 

@@ -6,7 +6,7 @@ class User extends MainController
 {
     public function __construct($bdd_name = false)
     {
-        parent::__construct('alf_user', 'alfred');
+        parent::__construct('alf_user', false);
     }
 
 

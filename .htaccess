@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.kevin-soulhol.fr/$1 [R,L]
+
+
+#reecrit l'url pour ne pas afficher le dossier works
+#RewriteCond %{REQUEST_URI} !^/works
+#RewriteRule  "^(.*)$"               "/works/$1"  [L]
+
+#empeche accès au dossier works
+RewriteRule ^works$ / [R=301,NC,L]
+RewriteRule ^works/$ / [R=301,NC,L]
+

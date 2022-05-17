@@ -31,7 +31,7 @@ const Menu = ({ setOnAccount }) => {
                                                  icon={faEnvelopeOpenText}
                                           />
                                    </div>
-                                   <span>Acuceil</span>
+                                   <span>Accueil</span>
                             </li>
                             <li
                                    className="menu-item"
