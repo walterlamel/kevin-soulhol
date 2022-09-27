@@ -1,0 +1,163 @@
+
+// Main Colors
+$color_background : #1A1B26;
+$color_font: white;
+$color_strong : #EC186F;
+$color_strong2 : #04D9C4;
+
+//Teinte Color
+$color_background_1 : #272837;
+$color_background_2 : #6B6E8D;
+
+
+//Poppins FONT
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+$font_family : 'Poppins', sans-serif;
+$font_family_pixel : 'VT323', monospace;
+$font_size : "20px";
+
+
+//reinitializer
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    color: $color_font;
+    text-decoration: none;
+}
+
+p{
+    a{
+        color: $color_strong;
+        font-weight: bold;
+        text-decoration: underline 2px;
+    }
+}
+input{
+    border: none;
+    outline: none;
+}
+
+
+//TITRES
+h2{
+    font-size: 65px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 55px;
+    margin-bottom: 22px;
+}
+
+h3{
+    font-size: 39px;
+    line-height: 35px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 62px;
+}
+
+.accent{
+    color: $color_strong;
+}
+
+.no-visible-scroll{
+    -ms-overflow-style: none; // IE 10+
+    overflow: -moz-scrollbars-none; // Firefox
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $color_background;
+    color: $color_font;
+    font-family: $font_family;
+    font-size: $font_size;
+    scroll-behavior: smooth;
+    
+    -ms-overflow-style: none; // IE 10+
+    overflow: -moz-scrollbars-none; // Firefox
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+#root,
+.App{
+    
+    -ms-overflow-style: none; // IE 10+
+    overflow: -moz-scrollbars-none; // Firefox
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+
+@media screen and (max-width:550px) {
+    h2{
+        font-size: 40px;
+        line-height: 35px
+    }
+
+    h3{
+        font-size: 30px;
+        line-height: 25px;
+    }
+}
+
+
+//Css des pages
+@import 'pages/home',
+     'pages/contact',
+     'pages/game';
+
+//Css des différents composants
+@import 'components/menu',
+    'components/popup',
+    'components/multiChoice',
+    'components/workCard',
+    'components/experiences',
+    'components/login',
+    'components/slider';
+
+//Css des jeux
+@import 'games/windowGame',
+        'games/jumper';

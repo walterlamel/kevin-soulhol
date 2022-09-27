@@ -1,0 +1,37 @@
+.windowGame{
+    width: 100vw;
+    height: 100vh;
+    border-radius: 5px;
+    background-color: $color_background;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .containName{
+        position: relative;
+        text-align: center;
+        margin-bottom: 2em;
+
+        .surcouche{
+            color: $color_strong;
+            font-weight: bold;
+            position: absolute;
+            width: 100%;
+            top: -15px;
+            font-size: 1.5em;
+            letter-spacing: 0.9em;
+            text-transform: uppercase;
+        }
+    }
+
+    .container-window-game{
+        width: 90vw;
+        height: 90vh;
+        border-radius: 15px;
+        background-color: $color_font;
+        position: relative;
+        overflow: hidden;
+
+    }
+}
