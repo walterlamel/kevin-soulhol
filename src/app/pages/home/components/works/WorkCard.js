@@ -76,6 +76,9 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                                                         titre={projet.title}
                                                         desc={projet.desc}
                                                         link={projet.link}
+                                                        repertory={
+                                                               projet.repertory
+                                                        }
                                                  />,
                                           ),
                                    );
@@ -103,7 +106,7 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
        );
 };
 
-const InsidePopup = ({ id, date, titre, desc, link }) => {
+const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
        const [imgs, setImgs] = useState([]);
 
        useEffect(() => {
@@ -113,25 +116,11 @@ const InsidePopup = ({ id, date, titre, desc, link }) => {
        }, [id]);
 
        async function getImages(id) {
-              /*
-              function importAll(r) {
-                     return r.keys().map(r);
-              }
-
-              const path = "./" + id;
-              console.log(path);
-
-              const images = importAll(
-                     require.context(path, false, /\.(png|jpe?g|svg|gif)$/),
-              );
-
-              return images;
-              */
-
               return new Promise((r, f) => {
                      new Connecter("get_dossier_image")
-                            .connect_to_api({ path: id })
+                            .connect_to_api({ path: repertory })
                             .then((res) => {
+                                   console.log(res);
                                    if (res && res.res) {
                                           r(res.text);
                                    } else {

@@ -8,6 +8,7 @@
 
 import DeconnectionButton from "../../components/boutons/deconnectionButton/deconnectionButton";
 import SectionProjet from "./components/SectionProjet";
+import SectionUser from "./components/SectionUser";
 
 
 const Dashboard = () => {
@@ -22,12 +23,21 @@ const Dashboard = () => {
 
             <SectionProjet />
 
+            <SectionUser />
+
             
-            - liste user : admin
-            - liste projet : admin | user
+          
             <DeconnectionButton />
         </div>
     )
 }
 
 export default Dashboard;
+
+
+/*
+
+- liste user : admin
+- liste projet : admin | user
+
+*/

@@ -6,18 +6,19 @@
  */
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Menu from "../../components/menu/Menu";
-import { PageContext, PageProvider } from "../../providers/pageContext/PageContext";
+import Dashboard from "../dashboard/Dashboard";
 import Contactpage from "./components/contactpage";
 import Gamepage from "./components/gamepage/Gamepage";
 import Homepage from "./components/homepage";
 import SideIllustration from "./components/illustrationSide/SideIllustration";
+import { namePage } from "../../../types/pagesType";
 
 
 
-const Home = () => {
+const Home = ({openedPage}:{ openedPage: namePage}) => {
 
 
 
@@ -30,11 +31,7 @@ const Home = () => {
        <div className="page home">
               <SideIllustration />
               <div className="container-main-page">
-                     <PageProvider>
-                            <Inside />
-                     </PageProvider>
-                     
-        
+                     <Inside openedPage={openedPage} />
               </div>
        </div>
        </>
@@ -48,8 +45,7 @@ const Home = () => {
 export default Home;
 
 
-const Inside = () => {
-       const { seenPage } = useContext(PageContext);
+const Inside = ({openedPage}:{openedPage:namePage}) => {
 
        const variants = {
               initial : {
@@ -66,16 +62,20 @@ const Inside = () => {
               }
        }
 
+
        function renderSwitch(seenPage:string){
               switch(seenPage){
                      case "home":
                             return (<motion.div key="home" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Homepage /></motion.div>)
-                            break;
+
                      case "contact":
                             return (<motion.div key="contact" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Contactpage /></motion.div>)
-                            break;
+
                      case "games" :
-                            return (<motion.div key="contact" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Gamepage /></motion.div>)
+                            return (<motion.div key="games" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Gamepage /></motion.div>)
+
+                     case "dashboard" :
+                            return (<motion.div key="dashboard" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Dashboard /></motion.div>)
               }
 
        }
@@ -83,7 +83,7 @@ const Inside = () => {
        return (
               <AnimatePresence>
                      <Menu />
-                     {renderSwitch(seenPage)}
+                     {renderSwitch(openedPage)}
               </AnimatePresence>
        )
 }

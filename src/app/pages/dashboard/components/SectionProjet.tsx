@@ -7,14 +7,27 @@
  */
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEye, faLink } from "@fortawesome/free-solid-svg-icons";
 import useGetProjects from "../../../../hooks/useGetProjects";
 import { request } from "../../../../services/requestApi";
 import ProjectType from "../../../../types/projectType";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
+import useIsAdmin from "../../../../hooks/hooksSession";
 
 
 const headerTable = [ "Nom du projet", "Courte description", "Description", "Type", "Date", "Link", "Répertoire", "Brouillon", "Homepage", "Supprimer"];
+const initalItem = {
+    id: 0,
+    title: "",
+    short_desc: "",
+    desc: "",
+    type: "",
+    date: "",
+    link: "",
+    repertory: "",
+    is_brouillon: true,
+    in_homepage: false
+}
 
 const SectionProjet = () => {
     const [reload, setReload] = useState<number>(0);
@@ -22,6 +35,7 @@ const SectionProjet = () => {
     const [openedModal, setOpenedModal] = useState(false);
     const [selectedItem, setSelectedItem] = useState<ProjectType | null>(null);
     const [selectedKeyToModif, setSelectedKeyToModif] = useState<keyof ProjectType|null>(null);
+    const {isAdmin} = useIsAdmin();
 
 
     useEffect(() => {
@@ -68,9 +82,21 @@ const SectionProjet = () => {
             <table>
                 <thead>
                     <tr>
-                        {headerTable.map((key, index) => (
-                            <td key={index}>{key}</td>
-                        ))}
+                        <td>Nom du projet</td>
+                        <td>Courte description</td>
+                        <td>Description</td>
+                        <td>Type</td>
+                        <td>Date</td>
+                        <td>Link</td>
+                        {isAdmin && (
+                            <>
+                            <td>Répertoire</td>
+                            <td>Brouillon</td>
+                            <td>Homepage</td>
+                            <td>Supprimer</td>
+                            </>
+                        )}
+
                     </tr>
                 </thead>
                 <tbody>
@@ -79,6 +105,7 @@ const SectionProjet = () => {
                     ))}
                 </tbody>
             </table>
+            <button>Ajouter un projet</button>
             <ModalText open={openedModal} closeModal={closeModal} selectedItem={selectedItem} selectedKeyToModif={selectedKeyToModif} reloading={reloading}/>
         </section>
     )
@@ -88,13 +115,18 @@ export default SectionProjet;
 
 
 export const LigneProjet = ({item, reloading, openModal}:{item:ProjectType, reloading:Function, openModal:Function}) => {
+    const {isAdmin} = useIsAdmin();
+
 
     async function deleteItem(){
+        if(!isAdmin){ return }
+        if(item == null){ return; }
         await request("projects/"+item.id, "delete", {});
         reloading()
     }
 
     async function updateItem(){
+        if(!isAdmin){ return }
         await request("projects/"+item.id, "put", item)
         reloading()
     }
@@ -107,11 +139,36 @@ export const LigneProjet = ({item, reloading, openModal}:{item:ProjectType, relo
             <td className="littleRow" onClick={e => {openModal(item, "desc")}}><FontAwesomeIcon icon={faEye} /></td>
             <td onClick={e => {openModal(item, "type")}}>{item.type}</td>
             <td onClick={e => {openModal(item, "date")}}>{item.date}</td>
-            <td onClick={e => {openModal(item, "link")}}>{item.link}</td>
-            <td onClick={e => {openModal(item, "repertory")}}>{item.repertory}</td>
-            <td className="littleRow"><input type="checkbox" name="is_brouillon" id="" checked={item.is_brouillon} onChange={e => {item.is_brouillon = !item.is_brouillon; updateItem()}} /> </td>
-            <td className="littleRow"><input type="checkbox" name="in_homepage" id="" checked={item.in_homepage} onChange={e => {item.in_homepage = !item.in_homepage; updateItem()}} /></td>
-            <td className="littleRow" onClick={e => deleteItem()}><FontAwesomeIcon icon={faTrash} /></td>
+            <td className="littleRow" onClick={e => {openModal(item, "link")}}><FontAwesomeIcon icon={faLink} /></td>
+            {isAdmin && (
+                <>
+                <td onClick={e => {openModal(item, "repertory")}}>{item.repertory}</td>
+                <td className="littleRow">
+                    <input 
+                        type="checkbox" 
+                        name="is_brouillon" 
+                        id="" 
+                        checked={item?.is_brouillon} 
+                        onChange={e => {
+                                item.is_brouillon = !item.is_brouillon;
+                                updateItem()
+                            }}/>
+                </td>
+                <td className="littleRow">
+                    <input 
+                        type="checkbox" 
+                        name="in_homepage" 
+                        id="" 
+                        checked={item?.in_homepage} 
+                        onChange={e => {
+                            item.in_homepage = !item.in_homepage; 
+                            updateItem()
+                        }}/>
+                    </td>
+                <td className="littleRow" onClick={e => deleteItem()}><FontAwesomeIcon icon={faTrash} /></td>
+                </>
+            )}
+            
         </tr>
     )
 }

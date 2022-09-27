@@ -12,18 +12,16 @@
         faUserAstronaut,
         faHouse,
  } from "@fortawesome/free-solid-svg-icons";
- import { useNavigate } from "react-router-dom";
-
- //types
- import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import { useContext } from "react";
-import { PageContext } from "../../providers/pageContext/PageContext";
+import { useNavigate } from "react-router-dom";
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLogin } from "../login/slice/loginSlice";
 import Login from "../login/Login";
 import { loadingUser, selectUser } from "../../pages/slices/userSlice";
 import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
 
+
+ //types
  interface Props{
     clickFunction?: Function,
     ico: IconProp,
@@ -48,7 +46,7 @@ const Menu = () => {
         {
             ico: faEnvelopeOpenText,
             text: "Contacts",
-            toPage: "contact",
+            toPage: "contacts",
         },
         {
             ico: faUserAstronaut,
@@ -74,7 +72,6 @@ export default Menu;
 
 
 const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
-    const {changePage} = useContext(PageContext);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(selectUser);
@@ -87,7 +84,7 @@ const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
 
     function handleClick(){
         if(toPage){
-            changePage(toPage)
+            navigate("/"+toPage);
         }
         if(toDo){
             if(toDo === "login"){
