@@ -5,14 +5,19 @@ import { faUser, faEye } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { openedLogin, closeLogin } from "./slice/loginSlice";
 import {
+       getSession,
        getSessionFailed,
        getSessionSuccess,
+       loadingUser,
        messageLogin,
 } from "../../pages/slices/userSlice";
+import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
+import { motion } from "framer-motion";
 
 const Login = () => {
        const dispatch = useDispatch();
        const open = useSelector(openedLogin);
+       const loading = useSelector(loadingUser);
        const [identifiant, setIdentifiant] = useState("");
        const [text, setText] = useState(
               "Vous ne pouvez vous connecter qu'avec les identifiants que je vous ais envoyé par mail. Si non, tant pis.",
@@ -29,6 +34,7 @@ const Login = () => {
 
        async function handleSubmit(e) {
               e.preventDefault();
+              dispatch(getSession());
 
               fetch(process.env.REACT_APP_API_USER + "login", {
                      method: "POST",
@@ -59,13 +65,6 @@ const Login = () => {
                                    getSessionFailed(err.message);
                             },
                      );
-
-              /*
-              if (await login(identifiant, password)) {
-                     window.location.reload();
-                     setOpen(false);
-              }
-              */
               return;
        }
 
@@ -122,11 +121,18 @@ const Login = () => {
                                                  />
                                           </div>
                                    </div>
-                                   <input
-                                          id="submitLogin"
-                                          type="submit"
-                                          value="Log in"
-                                   />
+                                   {loading ? (
+                                          <div id="submitLogin">
+                                                 <LoaderLogin />
+                                          </div>
+                                   ) : (
+                                          <motion.input
+                                                 id="submitLogin"
+                                                 type="submit"
+                                                 value="Log in"
+                                                 whileTap={{ scale: 0.9 }}
+                                          />
+                                   )}
                             </form>
                      )}
                      {open && (

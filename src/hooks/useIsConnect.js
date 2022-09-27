@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
+       getSession,
        getSessionFailed,
        getSessionSuccess,
 } from "../app/pages/slices/userSlice";
@@ -14,7 +15,7 @@ export const useIsConnect = () => {
        });
 
        async function getApi() {
-              console.log("cherche");
+              dispatch(getSession());
               await fetch(process.env.REACT_APP_API_USER + "isConnect", {
                      credentials: "include",
               })

@@ -73,7 +73,7 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                                                  <InsidePopup
                                                         id={projet.id}
                                                         date={projet.date}
-                                                        titre={projet.titre}
+                                                        titre={projet.title}
                                                         desc={projet.desc}
                                                         link={projet.link}
                                                  />,
@@ -85,14 +85,16 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                      }}
               >
                      <div className="container-text">
-                            <h4>{projet.titre}</h4>
+                            <h4>{projet.title}</h4>
                             <div className="container-infos-sup">
                                    <span className="date">{projet.date}</span>
                                    <span className="category">
-                                          {projet.category}
+                                          {projet.type}
                                    </span>
                             </div>
-                            <div className="container-desc">{projet.text}</div>
+                            <div className="container-desc">
+                                   {projet.short_desc}
+                            </div>
                      </div>
                      <div className="container-img">
                             <img src={src} />

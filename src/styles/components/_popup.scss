@@ -85,3 +85,29 @@
     }
 
 }
+
+
+@media screen and (max-width:550px) {
+    .popup{
+        position: absolute;
+        //top: 2em;
+        height: 80%;
+        overflow: hidden;
+    }
+
+    .container-popup-contain{
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .inside-popup-experience{
+        flex-direction: column;
+
+        .container-slider{
+            flex: auto;
+            height: 250px;
+        }
+    }
+
+}
+

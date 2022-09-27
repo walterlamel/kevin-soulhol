@@ -7,12 +7,16 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import WorkCard from "./WorkCard";
 
 import WORKS from "../../../../../data/works";
+import useGetProjects from "../../../../../hooks/useGetProjects";
 
 const ListeWorkCards = () => {
        const ref = createRef();
        const [currentSee, setCurrentSee] = useState(1);
        const [widthMoving, setWidthMoving] = useState(0);
        const [works, setWorks] = useState(WORKS);
+       const { list } = useGetProjects({
+              params: { in_homepage: 1, is_brouillon: 0 },
+       });
 
        useEffect(() => {
               if (ref && ref.current && ref.current.clientWidth)
@@ -42,15 +46,16 @@ const ListeWorkCards = () => {
                             animate={{ x: -((currentSee - 1) * widthMoving) }}
                             ref={ref}
                      >
-                            {works.map((work, key) => (
-                                   <WorkCard
-                                          key={key}
-                                          projet={work}
-                                          actif={currentSee === key + 1}
-                                          getTo={getTo}
-                                          Key={key}
-                                   />
-                            ))}
+                            {list &&
+                                   list?.map((work, key) => (
+                                          <WorkCard
+                                                 key={key}
+                                                 projet={work}
+                                                 actif={currentSee === key + 1}
+                                                 getTo={getTo}
+                                                 Key={key}
+                                          />
+                                   ))}
                      </motion.div>
                      <div className="container-summary-slides" onClick={next}>
                             {currentSee && (

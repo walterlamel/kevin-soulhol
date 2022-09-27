@@ -1,0 +1,102 @@
+.dashboard-page{
+    padding: 2em;
+    padding-top: 298px;
+
+    section{
+        padding-top: 100px;
+    }
+
+    table{
+        width: 100%;
+        border: 1px solid $color_strong2;
+        border-collapse: collapse;
+
+        thead{
+            font-size: 0.7em;
+            opacity: 0.7;
+        }
+
+        td{
+            padding: 5px;
+            border: 1px solid $color_strong2;
+        }
+
+        .littleRow{
+            text-align: center;
+        }
+    }
+
+    .container-modal{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        form{
+            min-height: 200px;
+            width: 500px;
+            border-radius: 5px;
+            background-color: $color_background_2;
+            border: 5px solid $color_background_1;
+            overflow: hidden;
+            padding-top: 0.5em;
+            box-shadow: 0 0 10px black;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        td{
+            cursor: pointer;
+        }
+
+        label{
+            font-size: 0.8em;
+            opacity: 0.6;
+            color: $color_strong2;
+            padding: 1em;
+        }
+
+        textarea{
+           width: 100%; 
+           min-height: 500px;
+           border: none;
+           background-color: transparent;
+           padding: 15px;
+           color: white;
+           font-family: $font_family;
+           padding-right:60px;
+
+           &:focus{
+            border: none;
+            outline: none;
+           }
+        }
+
+        input[type='submit']{
+            padding: 15px;
+            color: white;
+            background-color: $color_strong2;
+            position: absolute;
+            bottom: 5px;
+            top: 5px;
+            right: 5px;
+            width: auto;
+            height: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bolder;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.8em;
+            cursor: pointer;
+        }
+    }
+}
+
+

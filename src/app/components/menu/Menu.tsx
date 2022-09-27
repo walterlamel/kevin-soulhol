@@ -21,7 +21,8 @@ import { PageContext } from "../../providers/pageContext/PageContext";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLogin } from "../login/slice/loginSlice";
 import Login from "../login/Login";
-import { selectUser } from "../../pages/slices/userSlice";
+import { loadingUser, selectUser } from "../../pages/slices/userSlice";
+import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
 
  interface Props{
     clickFunction?: Function,
@@ -77,6 +78,7 @@ const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(selectUser);
+    const loading = useSelector(loadingUser);
     const linkHref = link ? {
         href : link
     } : {};
@@ -108,7 +110,7 @@ const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
  >
         <a {...linkHref}>
                <div className="icon">
-                      <FontAwesomeIcon icon={ico} />
+                {toDo === "dashboard" && loading ? (<LoaderLogin />) : (<FontAwesomeIcon icon={ico} />)} 
                </div>
                <div className="container-text">
                     <span>{text}</span>

@@ -32,6 +32,7 @@ export const userSlice = createSlice({
 
 export const selectUser = (state) => state.app.session.user;
 export const messageLogin = (state) => state.app.session.messageLogin;
+export const loadingUser = (state) => state.app.session.loading;
 
 export const { getSession, getSessionSuccess, getSessionFailed } =
        userSlice.actions;
