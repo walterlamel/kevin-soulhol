@@ -1,4 +1,4 @@
-name: first-github-action
+name: Actions Testing
 on:
        push:
               branches:
