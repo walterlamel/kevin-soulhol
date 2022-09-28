@@ -9,3 +9,8 @@ jobs:
                      - run: echo "key = ${{secrets.SSH_PRIVATE_KEY }}"
                      - name: Connect SSH
                        uses: D3rHase/ssh-command-action@v0.2.1
+                       with:
+                              HOST: "192.168.1.19"
+                              PORT: "5789"
+                              USER: "kevin"
+                              PRIVATE_SSH_KEY: ${{secrets.SSH_PRIVATE_KEY}}
