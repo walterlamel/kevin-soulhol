@@ -8,15 +8,11 @@ jobs:
                      - run: echo "On tente de se connecter"
                      - name: Deploy to Staging server
                        uses: actions/checkout@v2
-                     - name: rsync deployments
-                       uses: burnett01/rsync-deployments@5.2
+                     - name: executing remote ssh commands to deploy
+                       uses: appleboy/ssh-action@v1.0.0
                        with:
-                              switches: -avzr --delete --exclude="" --include="" --filter=""
-                              path: src/
-                              remote_path: /home/debian/www/testgit
-                              remote_host: ${{secrets.HOST}}
-                              remote_port: ${{secrets.PORT}}
-                              remote_user: ${{secrets.USER}}
-                              remote_password: ${{secrets.PASS}}
-                              remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+                              host: ${{ secrets.HOST }}
+                              username: ${{ secrets.USER }}
+                              key: ${{ secrets.SSH_PRIVATE_KEY }}
+                              passphrase: ${{ secrets.PASS }}
                      - run: echo "FINI"
