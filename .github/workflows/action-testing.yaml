@@ -19,3 +19,4 @@ jobs:
                               remote_user: ${{secrets.USER}}
                               remote_password: ${{secrets.PASS}}
                               remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+                     - run: echo "FINI"
