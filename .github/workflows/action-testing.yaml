@@ -7,12 +7,15 @@ jobs:
               steps:
                      - run: echo "On tente de se connecter"
                      - name: Deploy to Staging server
-                       uses: easingthemes/ssh-deploy@v2.2.11
-                       env:
-                              SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-                              ARGS: "-rltgoDzvO"
-                              SOURCE: "dist/"
-                              REMOTE_HOST: ${{ secrets.HOST }}
-                              REMOTE_USER: ${{ secrets.USER }}
-                              TARGET: "/home/debian/www/testgit/"
-                              EXCLUDE: "/dist/, /node_modules/"
+                     - uses: actions/checkout@v2
+                     - name: rsync deployments
+                       uses: burnett01/rsync-deployments@5.2
+                       with:
+                              switches: -avzr --delete --exclude="" --include="" --filter=""
+                              path: src/
+                              remote_path: /home/debian/www/testgit
+                              remote_host: ${{secrets.HOST}}
+                              remote_port: ${{secrets.PORT}}
+                              remote_user: ${{secrets.USER}}
+                              remote_password: ${{secrets.PASS}}
+                              remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
