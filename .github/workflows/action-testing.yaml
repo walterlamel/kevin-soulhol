@@ -6,7 +6,6 @@ jobs:
               runs-on: ubuntu-latest
               steps:
                      - run: echo "Let's go test !"
-                     - run: echo "key = ${{secrets.SSH_PRIVATE_KEY }}"
                      - name: Deploy to Staging server
                        uses: easingthemes/ssh-deploy@v2.2.11
                        env:
@@ -15,5 +14,5 @@ jobs:
                               SOURCE: "dist/"
                               REMOTE_HOST: ${{ secrets.HOST }}
                               REMOTE_USER: ${{ secrets.USER }}
-                              TARGET: "/home/kevin/www/testgit/"
+                              TARGET: "/home/debian/www/testgit/"
                               EXCLUDE: "/dist/, /node_modules/"
