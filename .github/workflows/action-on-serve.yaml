@@ -2,7 +2,7 @@ name: first-github-action
 on:
        push:
               branches:
-                     - main
+                     - master
 jobs:
        write-to-console:
               name: Write to console
