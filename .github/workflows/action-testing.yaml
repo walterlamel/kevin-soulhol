@@ -16,4 +16,5 @@ jobs:
                               username: ${{ secrets.USER }}
                               key: ${{ secrets.SSH_PRIVATE_KEY }}
                               passphrase: ${{ secrets.PASS }}
-                     - run: echo "FINI"
+                     - name: "Deploy with rSync"
+                       run: rsync -avh -e "ssg -p ${{secrets.PORT}}" ./dist/ ${{ secrets.USER }}@${{ secrets.HOST }}:${{PATH}}
