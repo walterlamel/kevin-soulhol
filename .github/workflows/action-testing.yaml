@@ -7,3 +7,5 @@ jobs:
               steps:
                      - run: echo "Let's go test !"
                      - run: echo "key = ${{secrets.SSH_PRIVATE_KEY }}"
+                     - name: Connect SSH
+                       uses: D3rHase/ssh-command-action@v8.4
