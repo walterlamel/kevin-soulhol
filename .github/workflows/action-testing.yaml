@@ -5,7 +5,7 @@ jobs:
        Explore-GitHub-Actions:
               runs-on: ubuntu-latest
               steps:
-                     - run: echo "Let's go test !"
+                     - run: echo "On tente de se connecter"
                      - name: Deploy to Staging server
                        uses: easingthemes/ssh-deploy@v2.2.11
                        env:
