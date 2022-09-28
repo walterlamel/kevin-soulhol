@@ -9,7 +9,7 @@ jobs:
                      - name: Deploy to Staging server
                        uses: actions/checkout@v2
                      - name: executing remote ssh commands to deploy
-                       uses: appleboy/ssh-action@v1.0.0
+                       uses: appleboy/ssh-action@v1
                        with:
                               host: ${{ secrets.HOST }}
                               username: ${{ secrets.USER }}
