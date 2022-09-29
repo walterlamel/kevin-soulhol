@@ -8,7 +8,8 @@ jobs:
                      - run: echo "On tente de se connecter"
                      - name: Deploy to Staging server
                        uses: actions/checkout@v2
-                     - name: executing remote ssh commands to deploy
+                     - id: "ssh"
+                       name: executing remote ssh commands to deploy
                        uses: appleboy/ssh-action@master
                        with:
                               name: "ssh-var"
@@ -17,5 +18,6 @@ jobs:
                               username: ${{ secrets.USER }}
                               key: ${{ secrets.SSH_PRIVATE_KEY }}
                               passphrase: ${{ secrets.PASS }}
+
                      - name: "Action on Ssh"
-                       run: "ls -la /home/debian/"
+                       run: ssh -q ${{ steps.ssh.outputs.SERVER }} 'pwd && exit'
