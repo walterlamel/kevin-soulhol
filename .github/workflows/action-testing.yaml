@@ -32,25 +32,3 @@ jobs:
                         name: react-github-actions-build
                         path: build
 
-        deploy:
-              runs-on: ubuntu-latest
-              needs: build
-              steps:
-                    #download prev shared build
-                    - name: Get artifact
-                      uses: actions/download-artifact@v1
-                      with: 
-                        name: react-github-actions-build
-
-                    - name: ssh connect
-                      uses: easingthemes/ssh-deploy@main
-                      env:
-                        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-                        ARGS: "-rltgoDzvO"
-                        SOURCE: "dist/"
-                        REMOTE_HOST: ${{ secrets.HOST }}
-                        REMOTE_USER: ${{ secrets.USER }}
-                        REMOTE_PORT: ${{ secrets.PORT }}
-                        TARGET: ${{ secrets.PATH }}
-                        EXCLUDE: "/dist/, /node_modules/"
-
