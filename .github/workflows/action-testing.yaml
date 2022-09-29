@@ -1,23 +1,40 @@
 name: GitHub Actions
 run-name: ${{ github.actor }} lance le github action
-on: [push]
-jobs:
-       Explore-GitHub-Actions:
-              runs-on: ubuntu-latest
-              steps:
-                     - run: echo "On tente de se connecter"
-                     - name: Deploy to Staging server
-                       uses: actions/checkout@v2
-                     - id: "ssh"
-                       name: executing remote ssh commands to deploy
-                       uses: appleboy/ssh-action@master
-                       with:
-                              name: "ssh-var"
-                              host: ${{ secrets.HOST }}
-                              port: ${{ secrets.PORT }}
-                              username: ${{ secrets.USER }}
-                              key: ${{ secrets.SSH_PRIVATE_KEY }}
-                              passphrase: ${{ secrets.PASS }}
+on:
+       push:
+              branches:
+                     - main
 
-                     - name: "Action on Ssh"
-                       run: ssh -q ${{ steps.ssh.outputs.SERVER }} 'pwd && exit'
+env:
+       NODE_VERSION: "12.22.12"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+
+      - name: Set up Node.js
+        uses: action/setup-node@v3
+        with: 
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: npm install, build et test
+        run: |
+          npm install
+          npm install ssh
+
+      - id: "ssh"
+        name: ssh-action
+        uses: appleboy/ssh-action@master
+          with:
+            name: "ssh-var"
+            host: ${{ secrets.HOST }}
+            port: ${{ secrets.PORT }}
+            username: ${{ secrets.USER }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            passphrase: ${{ secrets.PASS }}
+      
+      - name: ssh stagging
+        run: ssh staging 'ls /home/debian/www'
