@@ -51,5 +51,3 @@ jobs:
                               REMOTE_USER: ${{ secrets.USER }}
                               REMOTE_PORT: ${{ secrets.PORT }}
                               TARGET: "./"
-
-                       run: ssh ${{ secrets.USER }}@${{ secrets.HOST }} -p ${{ secrets.PORT }}
