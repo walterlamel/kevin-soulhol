@@ -17,5 +17,5 @@ jobs:
                               username: ${{ secrets.USER }}
                               key: ${{ secrets.SSH_PRIVATE_KEY }}
                               passphrase: ${{ secrets.PASS }}
-                     - name: "Deploy with rSync"
-                       run: ssh ${{ steps.ssh-var.outputs.SERVER }} pwd
+                     - name: "Action on Ssh"
+                       run: "ls -la /home/debian/"
