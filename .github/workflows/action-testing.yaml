@@ -11,10 +11,11 @@ jobs:
                      - name: executing remote ssh commands to deploy
                        uses: appleboy/ssh-action@master
                        with:
+                              name: "ssh-var"
                               host: ${{ secrets.HOST }}
                               port: ${{ secrets.PORT }}
                               username: ${{ secrets.USER }}
                               key: ${{ secrets.SSH_PRIVATE_KEY }}
                               passphrase: ${{ secrets.PASS }}
                      - name: "Deploy with rSync"
-                       run: rsync -avh -e "ssg -p ${{secrets.PORT}}" ./dist/ ${{ secrets.USER }}@${{ secrets.HOST }}:${{ secrets.PATH }}
+                       run: ssh ${{ steps.ssh-var.outputs.SERVER }} pwd
