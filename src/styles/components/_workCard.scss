@@ -1,0 +1,162 @@
+.liste-work-card{
+    width: 100%;
+    //overflow-x: hidden;
+    position: relative;
+
+    .slider{
+        width: fit-content;
+        display: flex;
+        gap: 1em;
+        overflow-x: scroll;
+        padding: 1em 0;
+
+        .work-card{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            overflow: hidden;
+            padding: 40px;
+            border-radius: 24px;
+            background-color: $color_background_1;
+            position: relative;
+            width: 300px;
+            height: 242px;
+            cursor: pointer;
+            opacity: 0.7;
+            user-select: none;
+
+            a{
+                display: flex;
+                justify-content: start;
+                align-items: center;
+
+            }
+        
+            .container-text{
+                position: relative;
+                z-index: 2;
+                width: 90%;
+                height: 100%;
+        
+                h4{
+                 color: $color_strong2;   
+                 line-height: 24px;
+                 text-transform: uppercase;
+                 font-size: 25px;
+                }
+        
+                .container-infos-sup{
+                    display: flex;
+                    gap:1em;
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-size: 15px;
+                    color: $color_background_2;
+                    font-weight: bold;
+                    margin-bottom: 24px;
+                }
+
+                .container-desc{
+                    word-wrap: break-word;
+                    hyphens: auto;
+                    height: 100%;
+                }
+            }
+        
+            .container-img{
+                position: absolute;
+                z-index: 1;
+                right: -150px;
+                width: 313px;
+                height: 313px;
+                overflow: hidden;
+                border-radius: 100%;
+                background-color: $color_background_2;
+                opacity: 0.8;
+        
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .container-summary-slides{
+        font-size: 66px;
+        font-weight: bold;
+        position: relative;
+        bottom: 38px;
+        left: -43px;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .max-slides{
+            color: $color_strong;
+            font-size: 49px;
+            position: relative;
+            bottom: -14px;
+        }
+
+        .ico{
+            margin-left: 1em;
+            font-size: 25px;
+            color: $color_strong2;
+        }
+    }
+}
+
+
+.inside-popup-experience{
+    .link-to-site{
+        padding: 0.5em 1em;
+        border:1px solid $color_strong2;
+        color: $color_background_1;
+        font-weight: bold;
+        background-color: $color_strong2;
+    }
+}
+
+
+
+
+@media screen and (max-width:650px) {
+    .liste-work-card .slider .work-card{
+        width: 50%;
+    }
+
+    .liste-work-card .slider .work-card .container-text h4{
+        font-size:18px;
+        color: $color_font;
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.363);
+    }
+
+    .liste-work-card .slider .work-card .container-text .container-infos-sup{
+        font-size: 15px;
+        flex-direction: column;
+        gap: 0;
+        color: $color_font;
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.363);
+        font-weight: 500;
+    }
+
+    .liste-work-card .container-desc{
+        display: none;
+    }
+
+    .inside-popup-experience .link-to-site{
+        margin-top: 15px;
+    }
+
+    .liste-work-card .slider .work-card .container-img{
+        bottom: 56px;
+        width: 272px;
+        height: 272px;
+        right: -50px;
+        opacity: 0.4;
+    }
+
+}
