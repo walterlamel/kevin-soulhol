@@ -1,4 +1,4 @@
-name: GitHub Actions
+name: Test de GitHub Actions
 run-name: ${{ github.actor }} lance le github action
 on:
        push:
