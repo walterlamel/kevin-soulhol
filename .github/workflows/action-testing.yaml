@@ -40,7 +40,7 @@ jobs:
                        uses: actions/download-artifact@v1
                        with:
                               name: react-github-actions-build
-                       path: ./build
+                              path: ./build
 
                      - name: Deploy
                        uses: easingthemes/ssh-deploy@v2
