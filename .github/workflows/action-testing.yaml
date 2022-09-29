@@ -35,6 +35,3 @@ jobs:
                               username: ${{ secrets.USER }}
                               key: ${{ secrets.SSH_PRIVATE_KEY }}
                               passphrase: ${{ secrets.PASS }}
-
-                     - name: ssh stagging
-                       run: ssh staging 'ls /home/debian/www'
