@@ -9,32 +9,32 @@ env:
        NODE_VERSION: "12.22.12"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: action/checkout@v3
+       build:
+              runs-on: ubuntu-latest
+              steps:
+                     - uses: action/checkout@v3
 
-      - name: Set up Node.js
-        uses: action/setup-node@v3
-        with: 
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+                     - name: Set up Node.js
+                       uses: action/setup-node@v3
+                       with:
+                              node-version: ${{ env.NODE_VERSION }}
+                              cache: "npm"
 
-      - name: npm install, build et test
-        run: |
-          npm install
-          npm install ssh
+                     - name: npm install, build et test
+                       run: |
+                              npm install
+                              npm install ssh
 
-      - id: "ssh"
-        name: ssh-action
-        uses: appleboy/ssh-action@master
-          with:
-            name: "ssh-var"
-            host: ${{ secrets.HOST }}
-            port: ${{ secrets.PORT }}
-            username: ${{ secrets.USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            passphrase: ${{ secrets.PASS }}
-      
-      - name: ssh stagging
-        run: ssh staging 'ls /home/debian/www'
+                     - id: "ssh"
+                       name: ssh-action
+                       uses: appleboy/ssh-action@master
+                       with:
+                              name: "ssh-var"
+                              host: ${{ secrets.HOST }}
+                              port: ${{ secrets.PORT }}
+                              username: ${{ secrets.USER }}
+                              key: ${{ secrets.SSH_PRIVATE_KEY }}
+                              passphrase: ${{ secrets.PASS }}
+
+                     - name: ssh stagging
+                       run: ssh staging 'ls /home/debian/www'
