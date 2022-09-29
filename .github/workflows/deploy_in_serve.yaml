@@ -1,5 +1,5 @@
-name: Test de GitHub Actions
-run-name: ${{ github.actor }} lance le github action
+name: Deploy on Serve
+run-name: ${{ github.actor }} lance le deploiement
 on:
        push:
               branches:
