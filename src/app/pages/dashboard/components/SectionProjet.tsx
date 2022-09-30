@@ -11,23 +11,11 @@ import { faTrash, faEye, faLink } from "@fortawesome/free-solid-svg-icons";
 import useGetProjects from "../../../../hooks/useGetProjects";
 import { request } from "../../../../services/requestApi";
 import ProjectType from "../../../../types/projectType";
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import useIsAdmin from "../../../../hooks/hooksSession";
+import { useNavigate } from "react-router-dom";
 
 
-const headerTable = [ "Nom du projet", "Courte description", "Description", "Type", "Date", "Link", "Répertoire", "Brouillon", "Homepage", "Supprimer"];
-const initalItem = {
-    id: 0,
-    title: "",
-    short_desc: "",
-    desc: "",
-    type: "",
-    date: "",
-    link: "",
-    repertory: "",
-    is_brouillon: true,
-    in_homepage: false
-}
 
 const SectionProjet = () => {
     const [reload, setReload] = useState<number>(0);
@@ -36,6 +24,7 @@ const SectionProjet = () => {
     const [selectedItem, setSelectedItem] = useState<ProjectType | null>(null);
     const [selectedKeyToModif, setSelectedKeyToModif] = useState<keyof ProjectType|null>(null);
     const {isAdmin} = useIsAdmin();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -84,15 +73,15 @@ const SectionProjet = () => {
                     <tr>
                         <td>Nom du projet</td>
                         <td>Courte description</td>
-                        <td>Description</td>
+                        <td className="littleRow">Description</td>
                         <td>Type</td>
                         <td>Date</td>
-                        <td>Link</td>
+                        <td className="littleRow">Link</td>
                         {isAdmin && (
                             <>
                             <td>Répertoire</td>
-                            <td>Brouillon</td>
-                            <td>Homepage</td>
+                            <td className="littleRow">Brouillon</td>
+                            <td className="littleRow">Homepage</td>
                             <td>Supprimer</td>
                             </>
                         )}
@@ -105,7 +94,7 @@ const SectionProjet = () => {
                     ))}
                 </tbody>
             </table>
-            <button>Ajouter un projet</button>
+            <button onClick={e => navigate('/add')}>Ajouter un projet</button>
             <ModalText open={openedModal} closeModal={closeModal} selectedItem={selectedItem} selectedKeyToModif={selectedKeyToModif} reloading={reloading}/>
         </section>
     )
@@ -194,7 +183,7 @@ export const ModalText = ({open, closeModal, selectedItem, selectedKeyToModif, r
         if(selectedKeyToModif !== null && selectedItem !== null && value !== undefined){
                 selectedItem[selectedKeyToModif] = value;
 
-                const res = await request("projects/"+selectedItem.id, "PUT", selectedItem);
+                await request("projects/"+selectedItem.id, "PUT", selectedItem);
                 reloading()
                 closeModal()
             

@@ -27,7 +27,7 @@ import GameCard from "./GameCard";
 
 const Gamepage = () => {
     return (
-        <div className="gamepage">
+        <div className="gamepage otherpage">
             <h2 className="accent">Jeux.</h2>
             <ul>
             {games.map((game) => {

@@ -1,6 +1,4 @@
 .dashboard-page{
-    padding: 2em;
-    padding-top: 298px;
 
     section{
         padding-top: 100px;
@@ -115,3 +113,20 @@
 }
 
 
+
+
+@media screen and (max-width:550px) {
+    .dashboard-page{
+        table{
+        font-size: 0.7em;
+
+            td{
+                padding: 1px;
+            }
+
+            .littleRow{
+                width: 10px;
+            }
+        }
+    }
+}

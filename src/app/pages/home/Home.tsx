@@ -14,7 +14,7 @@ import Contactpage from "./components/contactpage";
 import Gamepage from "./components/gamepage/Gamepage";
 import Homepage from "./components/homepage";
 import SideIllustration from "./components/illustrationSide/SideIllustration";
-import { namePage } from "../../../types/pagesType";
+import { namePage, allPages } from "../../../types/pagesType";
 
 
 
@@ -64,20 +64,13 @@ const Inside = ({openedPage}:{openedPage:namePage}) => {
 
 
        function renderSwitch(seenPage:string){
-              switch(seenPage){
-                     case "home":
-                            return (<motion.div key="home" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Homepage /></motion.div>)
-
-                     case "contact":
-                            return (<motion.div key="contact" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Contactpage /></motion.div>)
-
-                     case "games" :
-                            return (<motion.div key="games" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Gamepage /></motion.div>)
-
-                     case "dashboard" :
-                            return (<motion.div key="dashboard" className="motion" variants={variants} initial="initial" animate="animate" exit="exit"><Dashboard /></motion.div>)
-              }
-
+              let elemTorender = null;
+              allPages.map(page => {
+                     if(page.link === seenPage){
+                            elemTorender = page.elemReact;
+                     }
+              })
+              return (<motion.div key={seenPage} className="motion" variants={variants} initial="initial" animate="animate" exit="exit">{elemTorender}</motion.div>);
        }
 
        return (

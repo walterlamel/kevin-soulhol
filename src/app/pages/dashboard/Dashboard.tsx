@@ -13,7 +13,7 @@ import SectionUser from "./components/SectionUser";
 
 const Dashboard = () => {
     return (
-        <div className="dashboard-page">
+        <div className="dashboard-page otherpage">
             <h2 className="accent">Dashboard.</h2>
             <p>
                     Ici vous trouverez les

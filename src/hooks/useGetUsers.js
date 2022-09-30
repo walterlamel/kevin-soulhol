@@ -14,7 +14,6 @@ const useGetUsers = ({ params, refresh }) => {
                      setListUsers(res.data);
               } else {
                      setListUsers([]);
-                     console.log(res);
               }
        }
 

@@ -1,13 +1,20 @@
 interface requestReponseType{
        res: boolean;
+       data: JSON | Array<any>;
        message: string;
        error?: any;
-       data?: JSON | Array<any>;
    }
    
    interface paramsRequestType{
-          in_homepage?:boolean;
-          is_brouillon?:boolean;
+       title?:string;
+       date?:string;
+       type?:string;
+       short_desc?:string;
+       desc?:string;
+       link?:string;
+       repertory?:string;
+       in_homepage?:boolean;
+       is_brouillon?:boolean;
    }
    
    export async function request<requestReponseType>(item:string, method:string, params:paramsRequestType) {
@@ -46,6 +53,7 @@ interface requestReponseType{
                                console.log(err);
                                return {
                                       res: false,
+                                      data: false,
                                       message : err.message,
                                       error: err
                                };

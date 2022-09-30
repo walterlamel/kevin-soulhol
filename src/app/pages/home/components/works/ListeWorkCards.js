@@ -69,15 +69,20 @@ const ListeWorkCards = () => {
                             animate={{ x: -widthMoving }}
                      >
                             {list &&
-                                   list?.map((work, key) => (
-                                          <WorkCard
-                                                 key={key}
-                                                 projet={work}
-                                                 actif={currentSee === key + 1}
-                                                 getTo={getTo}
-                                                 Key={key}
-                                          />
-                                   ))}
+                                   list?.map((work, key) => {
+                                          work && (
+                                                 <WorkCard
+                                                        key={key}
+                                                        projet={work}
+                                                        actif={
+                                                               currentSee ===
+                                                               key + 1
+                                                        }
+                                                        getTo={getTo}
+                                                        Key={key}
+                                                 />
+                                          );
+                                   })}
                      </motion.div>
                      <div className="container-summary-slides" onClick={next}>
                             {currentSee && (

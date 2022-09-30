@@ -5,7 +5,6 @@ import Slider from "../../../../components/slider/Slider";
 
 import { useDispatch } from "react-redux";
 import { createPopup } from "../../../../components/popup/slice/popupSlice";
-import Connecter from "../../../../../services/Connecter.class";
 
 const variants = {
        open: {
@@ -114,7 +113,10 @@ const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
                      body: formData,
               };
 
-              return await fetch("http://php-kevin-soulhol/", requestOptions)
+              return await fetch(
+                     process.env.REACT_APP_URL_GET_PROJECTS_IMAGES,
+                     requestOptions,
+              )
                      .then((res) => res.json())
                      .then(
                             (res) => {
