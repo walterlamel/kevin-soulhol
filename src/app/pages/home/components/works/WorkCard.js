@@ -41,21 +41,11 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
        const dispatch = useDispatch();
 
        useEffect(() => {
-              checkImg();
-       }, []);
-
-       function checkImg() {
-              var tester = new Image();
-              let url = "/images/" + projet.id + "/main.png";
-              tester.src = url;
-
-              tester.onload = function () {
+              if (projet.repertory) {
+                     let url = "/imgs/" + projet.repertory + "/main.png";
                      setSrc(url);
-              };
-              tester.onerror = function () {
-                     setSrc("/images/" + projet.id + "/main.jpg");
-              };
-       }
+              }
+       }, [projet]);
 
        return (
               <motion.div
@@ -110,24 +100,31 @@ const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
        const [imgs, setImgs] = useState([]);
 
        useEffect(() => {
-              getImages(id).then((imgs) => {
+              getImages().then((imgs) => {
                      setImgs(imgs);
               });
-       }, [id]);
+       }, [id, repertory]);
 
-       async function getImages(id) {
-              return new Promise((r, f) => {
-                     new Connecter("get_dossier_image")
-                            .connect_to_api({ path: repertory })
-                            .then((res) => {
-                                   console.log(res);
-                                   if (res && res.res) {
-                                          r(res.text);
-                                   } else {
-                                          f();
-                                   }
-                            });
-              });
+       async function getImages() {
+              var formData = new FormData();
+              formData.append("repertory", repertory);
+
+              const requestOptions = {
+                     method: "POST",
+                     body: formData,
+              };
+
+              return await fetch("http://php-kevin-soulhol/", requestOptions)
+                     .then((res) => res.json())
+                     .then(
+                            (res) => {
+                                   return res;
+                            },
+                            (err) => {
+                                   console.log(err);
+                                   return [];
+                            },
+                     );
        }
 
        return (

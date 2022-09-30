@@ -8,7 +8,7 @@ export default class Connecter {
 
               if (reg.exec(document.URL)) {
                      //en localhost
-                     this.path_ajax = `https://kevin-soulhol/${dossier}/${name_file_ajax}`;
+                     this.path_ajax = `http://php-kevin-soulhol/${name_file_ajax}`;
               } else {
                      //sur le serveur
                      this.path_ajax = `./${dossier}/${name_file_ajax}`;
@@ -43,13 +43,21 @@ export default class Connecter {
                      }
               }
 
-              const requestOptions = {
+              /*const requestOptions = {
                      method: "POST",
                      url: this.path_ajax,
                      headers: { "Content-Type": "application/json" },
                      body: dataSend,
                      withCredentials: true,
+              };*/
+
+              const requestOptions = {
+                     method: "POST",
+                     //headers: { "Content-Type": "application/json" },
+                     body: dataSend,
               };
+
+              console.log(this.path_ajax);
 
               return await fetch(this.path_ajax, requestOptions)
                      .then((res) => res.json())
