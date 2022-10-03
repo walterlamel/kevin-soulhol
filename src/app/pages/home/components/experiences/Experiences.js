@@ -41,35 +41,6 @@ const Experiences = () => {
                      }
               }
               setCurrentSee(page);
-
-              /*
-              if (page > EXP.length) {
-                     page = 1;
-                     setWidthMoving(0);
-                     setCurrentSee(page);
-              } else {
-                     console.log(page);
-                     if (page <= 0) {
-                            page = 1;
-                     }
-                     let exp = document.querySelectorAll(".contain-experience");
-                     let elem = exp[page - 2];
-                     if (page - 2 <= 0) {
-                            elem = exp[0];
-                     }
-
-                     if (page < currentSee) {
-                            setWidthMoving(
-                                   (prev) => prev - (elem.clientWidth + 100),
-                            );
-                     } else {
-                            setWidthMoving(
-                                   (prev) => prev + (elem.clientWidth + 100),
-                            );
-                     }
-                     setCurrentSee(page);
-              }
-              */
        }
 
        function next() {

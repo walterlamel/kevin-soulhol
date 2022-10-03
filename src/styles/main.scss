@@ -146,6 +146,8 @@ body{
 
 //Css des pages
 @import 'pages/home',
+     'pages/dashboard',
+     'pages/addprojet',
      'pages/contact',
      'pages/game';
 
@@ -156,6 +158,7 @@ body{
     'components/workCard',
     'components/experiences',
     'components/login',
+    'components/loaders',
     'components/slider';
 
 //Css des jeux

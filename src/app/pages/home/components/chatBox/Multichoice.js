@@ -8,9 +8,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { Phases, Messages } from "../../../../../data/chatchoices";
-import { PageContext } from "../../../../providers/pageContext/PageContext";
+import { openLogin } from "../../../../components/login/slice/loginSlice";
 import MessagesBulle from "./MessagesBulle";
 
 const Multichoice = () => {
@@ -18,7 +20,8 @@ const Multichoice = () => {
        const [currentMessages, setCurrentMessages] = useState([]);
        const [currentText, setCurrentText] = useState("");
        const [resAsking, setResAsking] = useState({});
-       const { changePage } = useContext(PageContext);
+       const navigate = useNavigate();
+       const dispatch = useDispatch();
 
        useEffect(() => {
               displayPhase(currentPhase);
@@ -73,14 +76,12 @@ const Multichoice = () => {
                      default:
                             return;
                      case "contact":
-                            //createPopup(<Contact />, "popup-contact");
                             break;
                      case "games":
-                            //createPopup(<Games />, "popup-games");
-                            changePage("games");
+                            navigate("/games");
                             break;
                      case "connect":
-                            //toggleLogin(true);
+                            dispatch(openLogin());
                             break;
                      case "take_gold":
                             //if pas de piece
@@ -88,7 +89,7 @@ const Multichoice = () => {
                             break;
                      case "link":
                             if (option) {
-                                   window.location.href = option;
+                                   navigate(option);
                             }
                             break;
               }

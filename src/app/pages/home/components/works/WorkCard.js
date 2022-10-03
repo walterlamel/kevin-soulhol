@@ -5,7 +5,6 @@ import Slider from "../../../../components/slider/Slider";
 
 import { useDispatch } from "react-redux";
 import { createPopup } from "../../../../components/popup/slice/popupSlice";
-import Connecter from "../../../../../services/Connecter.class";
 
 const variants = {
        open: {
@@ -41,21 +40,16 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
        const dispatch = useDispatch();
 
        useEffect(() => {
-              checkImg();
-       }, []);
+              if (projet.repertory) {
+                     let url = "/imgs/" + projet.repertory + "/main";
+                     let url_and_ext = url + ".png";
 
-       function checkImg() {
-              var tester = new Image();
-              let url = "/images/" + projet.id + "/main.png";
-              tester.src = url;
-
-              tester.onload = function () {
-                     setSrc(url);
-              };
-              tester.onerror = function () {
-                     setSrc("/images/" + projet.id + "/main.jpg");
-              };
-       }
+                     const img = new Image();
+                     img.src = url_and_ext;
+                     img.onload = () => setSrc(url_and_ext);
+                     img.onerror = () => setSrc(url + ".jpg");
+              }
+       }, [projet]);
 
        return (
               <motion.div
@@ -73,9 +67,12 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                                                  <InsidePopup
                                                         id={projet.id}
                                                         date={projet.date}
-                                                        titre={projet.titre}
+                                                        titre={projet.title}
                                                         desc={projet.desc}
                                                         link={projet.link}
+                                                        repertory={
+                                                               projet.repertory
+                                                        }
                                                  />,
                                           ),
                                    );
@@ -85,14 +82,16 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                      }}
               >
                      <div className="container-text">
-                            <h4>{projet.titre}</h4>
+                            <h4>{projet.title}</h4>
                             <div className="container-infos-sup">
                                    <span className="date">{projet.date}</span>
                                    <span className="category">
-                                          {projet.category}
+                                          {projet.type}
                                    </span>
                             </div>
-                            <div className="container-desc">{projet.text}</div>
+                            <div className="container-desc">
+                                   {projet.short_desc}
+                            </div>
                      </div>
                      <div className="container-img">
                             <img src={src} />
@@ -101,42 +100,38 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
        );
 };
 
-const InsidePopup = ({ id, date, titre, desc, link }) => {
+const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
        const [imgs, setImgs] = useState([]);
 
        useEffect(() => {
-              getImages(id).then((imgs) => {
+              getImages().then((imgs) => {
                      setImgs(imgs);
               });
-       }, [id]);
+       }, [id, repertory]);
 
-       async function getImages(id) {
-              /*
-              function importAll(r) {
-                     return r.keys().map(r);
-              }
+       async function getImages() {
+              var formData = new FormData();
+              formData.append("repertory", repertory);
 
-              const path = "./" + id;
-              console.log(path);
+              const requestOptions = {
+                     method: "POST",
+                     body: formData,
+              };
 
-              const images = importAll(
-                     require.context(path, false, /\.(png|jpe?g|svg|gif)$/),
-              );
-
-              return images;
-              */
-
-              return new Promise((r, f) => {
-                     new Connecter("get_dossier_image")
-                            .connect_to_api({ path: id })
-                            .then((res) => {
-                                   if (res && res.res) {
-                                          r(res.text);
-                                   } else {
-                                          f();
-                                   }
-                            });
-              });
+              return await fetch(
+                     process.env.REACT_APP_URL_GET_PROJECTS_IMAGES,
+                     requestOptions,
+              )
+                     .then((res) => res.json())
+                     .then(
+                            (res) => {
+                                   return res;
+                            },
+                            (err) => {
+                                   console.log(err);
+                                   return [];
+                            },
+                     );
        }
 
        return (

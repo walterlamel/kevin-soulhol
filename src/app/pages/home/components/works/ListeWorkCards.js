@@ -1,4 +1,4 @@
-import { createRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -6,43 +6,64 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import WorkCard from "./WorkCard";
 
-import WORKS from "../../../../../data/works";
+import useGetProjects from "../../../../../hooks/useGetProjects";
 
 const ListeWorkCards = () => {
-       const ref = createRef();
        const [currentSee, setCurrentSee] = useState(1);
        const [widthMoving, setWidthMoving] = useState(0);
-       const [works, setWorks] = useState(WORKS);
+       const [length, setLength] = useState(0);
+       const { list } = useGetProjects({
+              params: { in_homepage: 1, is_brouillon: 0 },
+       });
 
        useEffect(() => {
-              if (ref && ref.current && ref.current.clientWidth)
-                     setWidthMoving(ref.current.clientWidth / WORKS.length);
-       }, [ref]);
+              setLength(list.length);
+       }, [list]);
 
        function getTo(page) {
-              let p = page;
-              let diff = -(currentSee - page);
+              if (list) {
+                     if (page <= 0) {
+                            page = 1;
+                            setWidthMoving(0);
+                     } else if (page > list.length) {
+                            page = 1;
+                            setWidthMoving(0);
+                     } else {
+                            let exp = document.querySelectorAll(".work-card");
+                            let moving = 0;
+                            exp.forEach((element, key) => {
+                                   if (key >= page - 1) {
+                                          return;
+                                   }
 
-              let arr = [...works];
-              for (let index = 0; index < diff; index++) {
-                     arr.push(arr[p - (diff - index) - 1]);
+                                   moving = moving + element.clientWidth;
+                            });
+                            setWidthMoving((prev) => moving);
+                     }
+                     setCurrentSee(page);
               }
-              setWorks(arr);
-              setCurrentSee(p);
        }
 
        function next() {
               getTo(currentSee + 1);
        }
 
+       function getCurrentPage() {
+              let res = currentSee;
+              if (currentSee > length) {
+                     res = currentSee % length;
+                     res === 0 ? (res = length) : (res = res);
+              }
+              return res ? res : 0;
+       }
+
        return (
               <div className="liste-work-card">
                      <motion.div
                             className="slider no-visible-scroll"
-                            animate={{ x: -((currentSee - 1) * widthMoving) }}
-                            ref={ref}
+                            animate={{ x: -widthMoving }}
                      >
-                            {works.map((work, key) => (
+                            {list?.map((work, key) => (
                                    <WorkCard
                                           key={key}
                                           projet={work}
@@ -69,17 +90,11 @@ const ListeWorkCards = () => {
                                                  },
                                           }}
                                    >
-                                          {currentSee > WORKS.length
-                                                 ? currentSee % WORKS.length !==
-                                                   0
-                                                        ? currentSee %
-                                                          WORKS.length
-                                                        : 4
-                                                 : currentSee}
+                                          {getCurrentPage()}
                                    </motion.span>
                             )}
                             <span>/</span>
-                            <span className="max-slides">{WORKS.length}</span>
+                            <span className="max-slides">{length}</span>
                             <div className="ico">
                                    <FontAwesomeIcon icon={faArrowRight} />
                             </div>

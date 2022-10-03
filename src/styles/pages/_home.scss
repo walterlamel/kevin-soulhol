@@ -7,6 +7,10 @@
     width: 100%;
 }
 
+.otherpage{
+    padding-top: 198px;
+}
+
 
 
 
@@ -66,6 +70,44 @@
         object-fit: contain;
         object-position: top;
     }
+
+    .element{
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        z-index: 10;
+        cursor: pointer;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+
+    .conversation{
+        position: fixed;
+        bottom: 20px;
+        left: 15px;
+        width: 400px;
+        height: fit-content;
+        background-color: $color_background_1;
+        border-radius: 10px;
+        padding: 1em;
+        z-index: 5;
+        border: 5px solid $color_background_2;
+        font-family: $font_family_pixel;
+        font-size:20px;
+        z-index: 80;
+    
+        .name{
+            font-weight: bold;
+            color: $color_strong;
+        }
+    
+    }
+    
 }
 
 
@@ -73,5 +115,12 @@
 @media screen and (max-width:990px) {
     .container-side-illustration{
         display: none;
+    }
+}
+
+
+@media screen and (max-width:560px) {
+    .container-main-page{
+        padding:2em;
     }
 }

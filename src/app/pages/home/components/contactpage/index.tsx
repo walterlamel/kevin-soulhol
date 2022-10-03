@@ -17,7 +17,7 @@ import {
 
 const Contactpage = () => {
     return (
-        <div className="contactpage">
+        <div className="contactpage otherpage">
             <h2 className="accent">Contacts.</h2>
             <p>Si vous voulez me contacter, voici quelques moyens de le faire. Vous pouvez aussi essayer de tracer des symboles sur le sol, allumer des bougies et les disposer en cercle tout autours puis vous placer au centre en psalmodiant des mots alambiqués.</p>
             

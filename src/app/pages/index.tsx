@@ -6,20 +6,19 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-
-import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import useIsConnect from '../../hooks/useIsConnect';
 import Popup from '../components/popup/Popup';
 import Jumper from '../games/jumper/Jumper';
-import Dashboard from './dashboard/Dashboard';
 import Home from './home/Home';
 import { selectUser } from './slices/userSlice';
 
+import {allPages} from "../../types/pagesType";
+import useIsConnect from '../../hooks/useIsConnect';
+
 function App() {
-  const {isConnect} = useIsConnect();
+  const {isConnect} = useIsConnect(); //lance la détection de la session automatiquement. A garder.
 
   return (
     <BrowserRouter>
@@ -30,12 +29,10 @@ function App() {
           ></Helmet>
         <Popup />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={
-          <RequireAuth>
-            <Dashboard />
-          </RequireAuth>
-        } />
+        {allPages.map(page => (
+          <Route key={page.link} path={"/"+ page.link} element={page.authRequired ? <RequireAuth><Home openedPage={page.link} /></RequireAuth> : <Home openedPage={page.link} />} />
+        ))}
+        <Route path="/" element={<Home openedPage='home' />} />
         <Route path="/jumper" element={<Jumper />} />
       </Routes>
     </BrowserRouter>
