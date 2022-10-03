@@ -4,15 +4,10 @@
  *
  * This component is for the homepage. This is only element on the main page at "/"
  */
-
+ import React from 'react'
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Menu from "../../components/menu/Menu";
-import Dashboard from "../dashboard/Dashboard";
-import Contactpage from "./components/contactpage";
-import Gamepage from "./components/gamepage/Gamepage";
-import Homepage from "./components/homepage";
 import SideIllustration from "./components/illustrationSide/SideIllustration";
 import { namePage, allPages } from "../../../types/pagesType";
 

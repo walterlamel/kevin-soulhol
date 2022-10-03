@@ -5,7 +5,7 @@
  * Display all game
  * 
  */
-
+import React from 'react'
 import GameCard from "./GameCard";
 
 

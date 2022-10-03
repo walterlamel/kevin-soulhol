@@ -1,4 +1,4 @@
-import { ObjectType } from "typescript";
+import React from 'react'
 import { request } from "../../../services/requestApi";
 
 

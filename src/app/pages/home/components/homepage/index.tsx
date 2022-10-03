@@ -5,7 +5,7 @@
  * Display main element of the site
  * 
  */
-
+import React from 'react'
 import Multichoice from "../chatBox/Multichoice.js";
 import Experiences from "../experiences/Experiences.js";
 import ListeWorkCards from "../works/ListeWorkCards.js";

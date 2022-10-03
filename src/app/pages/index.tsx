@@ -6,6 +6,7 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
+ import React from 'react'
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';

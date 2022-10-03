@@ -4,7 +4,7 @@
  *
  * Show the big illustration with the landscape and all element reacting with
  */
-
+import React from 'react'
 import {
        useState,
        useCallback,

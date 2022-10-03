@@ -5,7 +5,7 @@
  * Display informations about the user connected
  * 
  */
-
+ import React from 'react'
 import DeconnectionButton from "../../components/boutons/deconnectionButton/deconnectionButton";
 import SectionProjet from "./components/SectionProjet";
 import SectionUser from "./components/SectionUser";
