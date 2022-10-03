@@ -41,8 +41,13 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
 
        useEffect(() => {
               if (projet.repertory) {
-                     let url = "/imgs/" + projet.repertory + "/main.png";
-                     setSrc(url);
+                     let url = "/imgs/" + projet.repertory + "/main";
+                     let url_and_ext = url + ".png";
+
+                     const img = new Image();
+                     img.src = url_and_ext;
+                     img.onload = () => setSrc(url_and_ext);
+                     img.onerror = () => setSrc(url + ".jpg");
               }
        }, [projet]);
 

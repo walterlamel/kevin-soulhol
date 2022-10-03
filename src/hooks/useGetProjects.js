@@ -10,6 +10,7 @@ const useGetProjects = ({ params, refresh }) => {
 
        async function get() {
               const res = await request("projects", "GET", params);
+              
               if (res.res) {
                      setList(res.data);
               } else {

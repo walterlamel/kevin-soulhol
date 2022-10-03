@@ -20,33 +20,28 @@ const ListeWorkCards = () => {
               setLength(list.length);
        }, [list]);
 
-       /** Permet l'infinity en copiant le premier élément au fond */
-       useEffect(() => {
-              const elems = document.querySelectorAll(".work-card");
-              const elem = elems[currentSee - 3];
-              const container = document.querySelector(
-                     ".liste-work-card .slider",
-              );
-              if (container && elem) {
-                     container.appendChild(elem.cloneNode(true));
-              }
-       }, [currentSee]);
-
        function getTo(page) {
-              if (page <= 0) {
-                     page = 1;
-                     setWidthMoving(0);
-              } else {
-                     let exp = document.querySelectorAll(".work-card");
-                     if (page < currentSee) {
-                            let elem = exp[page - 1];
-                            setWidthMoving((prev) => prev - elem.clientWidth);
+              if (list) {
+                     if (page <= 0) {
+                            page = 1;
+                            setWidthMoving(0);
+                     } else if (page > list.length) {
+                            page = 1;
+                            setWidthMoving(0);
                      } else {
-                            let elem = exp[page - 1];
-                            setWidthMoving((prev) => prev + elem.clientWidth);
+                            let exp = document.querySelectorAll(".work-card");
+                            let moving = 0;
+                            exp.forEach((element, key) => {
+                                   if (key >= page - 1) {
+                                          return;
+                                   }
+
+                                   moving = moving + element.clientWidth;
+                            });
+                            setWidthMoving((prev) => moving);
                      }
+                     setCurrentSee(page);
               }
-              setCurrentSee(page);
        }
 
        function next() {
@@ -59,7 +54,7 @@ const ListeWorkCards = () => {
                      res = currentSee % length;
                      res === 0 ? (res = length) : (res = res);
               }
-              return res;
+              return res ? res : 0;
        }
 
        return (
@@ -68,21 +63,15 @@ const ListeWorkCards = () => {
                             className="slider no-visible-scroll"
                             animate={{ x: -widthMoving }}
                      >
-                            {list &&
-                                   list?.map((work, key) => {
-                                          work && (
-                                                 <WorkCard
-                                                        key={key}
-                                                        projet={work}
-                                                        actif={
-                                                               currentSee ===
-                                                               key + 1
-                                                        }
-                                                        getTo={getTo}
-                                                        Key={key}
-                                                 />
-                                          );
-                                   })}
+                            {list?.map((work, key) => (
+                                   <WorkCard
+                                          key={key}
+                                          projet={work}
+                                          actif={currentSee === key + 1}
+                                          getTo={getTo}
+                                          Key={key}
+                                   />
+                            ))}
                      </motion.div>
                      <div className="container-summary-slides" onClick={next}>
                             {currentSee && (

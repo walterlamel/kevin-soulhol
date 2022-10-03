@@ -1,9 +1,14 @@
-#Site personnel
+# Site personnel
 
-Ce projet a été réalisé avec React.
+Ce projet a été réalisé avec React et Adonisjs
 
 - Runner : saute sans s'arrêter sauf si reclique sur espace
 
+# A faire
+
+- Jeu Morpion
+- Améliorer le story helper
+- Email dans contact
 
 ## Access BDD
 
