@@ -14,7 +14,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
-// Use consistent styling
+//styling
 import './styles/main.scss';
 
 

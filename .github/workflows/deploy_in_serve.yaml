@@ -7,6 +7,7 @@ on:
 
 env:
        NODE_VERSION: "12"
+       DIR_ON_SERVER: ./www
 
 jobs:
        build:
@@ -14,40 +15,11 @@ jobs:
               steps:
                      - uses: actions/checkout@master
 
-                     - name: Set up node
-                       uses: actions/setup-node@master
+                     - name: FTP
+                       uses: SamKirkland/FTP-Deploy-Action@4.3.2
                        with:
-                              node-version: ${{ env.NODE_VERSION }}
-                              cache: "npm"
-
-                     - name: npm install
-                       run: npm install
-
-                     - name: Build
-                       run: npm run build
-
-                     - name: create artifact
-                       uses: actions/upload-artifact@v1
-                       with:
-                              name: react-github-actions-build
-                              path: build
-
-       deploy:
-              runs-on: ubuntu-latest
-              needs: build
-              steps:
-                     - name: Get artifact
-                       uses: actions/download-artifact@v1
-                       with:
-                              name: react-github-actions-build
-                              path: ./build
-
-                     - name: Deploy
-                       uses: easingthemes/ssh-deploy@v2
-                       env:
-                              SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-                              SOURCE: "build"
-                              REMOTE_HOST: ${{ secrets.HOST }}
-                              REMOTE_USER: ${{ secrets.USER }}
-                              REMOTE_PORT: ${{ secrets.PORT }}
-                              TARGET: ${{ secrets.PATH }}kevin-soulhol
+                              server: ${{ secrets.HOST_FTP }}
+                              username: ${{ secrets.USER_FTP }}
+                              password: ${{ secrets.PASS_FTP }}
+                              local-dir: ./build
+                              server-dir: ${{ env.DIR_ON_SERVER }}

@@ -8,29 +8,21 @@
 import React from 'react'
 import GameCard from "./GameCard";
 
+import listGames from '../../../../../data/listeGames';
+import { Helmet } from 'react-helmet-async';
 
- const games = [
-    {
-           name: "Jumper",
-           link: "/jumper",
-           color: "pink",
-           visible: true,
-    },
-    {
-           name: "Aide aux scenari",
-           link: "http://api-story.kevin-soulhol.fr/",
-           color: "orange",
-           visible: true,
-    },
-];
 
 
 const Gamepage = () => {
     return (
-        <div className="gamepage otherpage">
+       <>
+       <Helmet>  
+              <title>Jeux</title>
+       </Helmet>
+       <div className="gamepage otherpage">
             <h2 className="accent">Jeux.</h2>
             <ul>
-            {games.map((game) => {
+            {listGames.map((game) => {
                                           if (game.visible)
                                                  return (
                                                         <GameCard
@@ -45,6 +37,8 @@ const Gamepage = () => {
 
             </ul>
         </div>
+       </>
+        
     )
 }
 

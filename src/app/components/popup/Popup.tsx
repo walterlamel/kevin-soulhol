@@ -5,7 +5,9 @@
  * Gère toutes les popups.
  * 
  */
- import React from 'react'
+ import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react'
 import {useDispatch, useSelector } from "react-redux";
 import { closePopup, openedPopup, insidePopup } from './slice/popupSlice';
 
@@ -33,7 +35,8 @@ const Popup = () => {
             <div className="container-popup" id='bg-popup' onClick={e => handleClick(e)}>
             <div className="popup">
                 <div className="container-popup-header">
-                    <div className="closer"  onClick={() => dispatch(closePopup())}>x</div>
+                    <div className="closer"  onClick={() => dispatch(closePopup())}>
+                    <FontAwesomeIcon icon={faClose} /></div>
                 </div>
                 <div className="container-popup-contain">
                     {inside}

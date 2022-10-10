@@ -90,9 +90,13 @@
 @media screen and (max-width:550px) {
     .popup{
         position: absolute;
-        //top: 2em;
-        height: 80%;
+        bottom: 0;
+        height: 90%;
+        width: 100vw;
+        max-width: none;
         overflow: hidden;
+        padding: 1em;
+        box-shadow: 0 0 15px rgba(255, 255, 255,0.3);
     }
 
     .container-popup-contain{
@@ -106,6 +110,10 @@
         .container-slider{
             flex: auto;
             height: 250px;
+        }
+
+        .container-text{
+            padding: 0 !important;
         }
     }
 

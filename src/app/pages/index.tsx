@@ -19,7 +19,7 @@ import {allPages} from "../../types/pagesType";
 import useIsConnect from '../../hooks/useIsConnect';
 
 function App() {
-  const {isConnect} = useIsConnect(); //lance la détection de la session automatiquement. A garder.
+  const {isConnect} = useIsConnect(); //lance la détection de la session automatiquement. A garder !
 
   return (
     <BrowserRouter>
