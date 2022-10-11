@@ -21,7 +21,7 @@ const Home = ({openedPage}:{ openedPage: namePage}) => {
        <>
        <Helmet>
               <title>Home</title>
-              <meta name="description" content="Mi-developpeur, mi-graphiste, et re-mi-developpeur derrière, je suis capable de produire un site internet d'un bout à l'autre. Réfléchir à son graphisme, à son UX, à son ambiance, mais aussi écrire son code, son back, et gérer sa mise en ligne. " />
+              <meta name="description" content="Mi-developpeur, mi-graphiste, et re-mi-developpeur derrière, je suis capable de produire un site internet d'un bout à l'autre. Réfléchir à son graphisme, à son UX, à son ambiance, mais aussi écrire son code, son back, et gérer sa mise en ligne." />
        </Helmet>
        <div className="page home">
               <SideIllustration />
