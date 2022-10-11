@@ -1,4 +1,4 @@
-const WindowGame = ({ children, classContain, size, gameName }) => {
+const WindowGame = ({ children, classContain, size, gameName, desc }) => {
        return (
               <div className="windowGame">
                      <div className="containName">
@@ -6,17 +6,14 @@ const WindowGame = ({ children, classContain, size, gameName }) => {
                             <h2>{gameName}</h2>
 
                             <div className="descript-game">
-                                   <p>
-                                          Petit jeu de saut très librement
-                                          inspiré du jeu offline du T-Rex.
-                                   </p>
+                                   <p>{desc}</p>
                             </div>
                      </div>
                      <div
                             className={
                                    "container-window-game" + " " + classContain
                             }
-                            style={size}
+                            //style={size}
                      >
                             {children}
                      </div>

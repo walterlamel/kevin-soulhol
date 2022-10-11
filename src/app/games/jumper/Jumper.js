@@ -7,6 +7,7 @@ import Ennemy from "./Ennemy";
 import Player from "./Player";
 
 import options from "./optionRunner";
+import listGames from "../../../data/listeGames";
 
 const Jumper = () => {
        const [isMobile, setIsMobile] = useState(false);
@@ -119,6 +120,7 @@ const Jumper = () => {
                      classContain={options.ClassContainer}
                      size={options.WindowSize}
                      gameName="Runner"
+                     desc={listGames[0].desc}
               >
                      {stateGame === 0 && (
                             <div

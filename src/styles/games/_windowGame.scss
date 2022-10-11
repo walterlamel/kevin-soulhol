@@ -27,11 +27,27 @@
 
     .container-window-game{
         width: 90vw;
-        height: 90vh;
+        height: 70vh;
         border-radius: 15px;
-        background-color: $color_font;
         position: relative;
         overflow: hidden;
 
+    }
+}
+
+
+
+
+@media screen and (max-width:840px) {
+    .windowGame{
+
+        .containName{
+            display: none;
+        }
+
+        .container-window-game{
+            width: 100%;
+            height: 100%;
+        }
     }
 }

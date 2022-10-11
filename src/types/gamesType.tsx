@@ -3,5 +3,7 @@ export interface gameType {
  link: string;
  color?: string;
  backgroundImage?: string;
- visible: boolean   ;
+ visible: boolean;
+ component?: JSX.Element;
+ desc? : string;
 }

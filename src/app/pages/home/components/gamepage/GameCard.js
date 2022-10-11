@@ -1,4 +1,4 @@
-const GameCard = ({ name, link, color }) => {
+const GameCard = ({ name, link, color = "grey" }) => {
        return (
               <a href={link}>
                      <li

@@ -7,8 +7,8 @@ Ce projet a été réalisé avec React et Adonisjs
 # A faire
 
 - Jeu Morpion
-- Améliorer le story helper
 - Email dans contact
+- Alléger toutes les images
 
 ## Access BDD
 

@@ -17,6 +17,7 @@ import { selectUser } from './slices/userSlice';
 
 import {allPages} from "../../types/pagesType";
 import useIsConnect from '../../hooks/useIsConnect';
+import listGames from '../../data/listeGames';
 
 function App() {
   const {isConnect} = useIsConnect(); //lance la détection de la session automatiquement. A garder !
@@ -27,14 +28,17 @@ function App() {
           titleTemplate="%s | Kevin Soulhol"
           defaultTitle="Kevin Soulhol"
           htmlAttributes={{ lang: "fr" }}
-          ></Helmet>
+          ><link rel="icon" type="image/png" sizes="32x32" href="/logo.png"></link></Helmet>
         <Popup />
       <Routes>
         {allPages.map(page => (
           <Route key={page.link} path={"/"+ page.link} element={page.authRequired ? <RequireAuth><Home openedPage={page.link} /></RequireAuth> : <Home openedPage={page.link} />} />
         ))}
         <Route path="/" element={<Home openedPage='home' />} />
-        <Route path="/jumper" element={<Jumper />} />
+        {listGames.map((game, key) => (
+          <Route key={key} path={game.link} element={game.component} />
+        ))}
+        
       </Routes>
     </BrowserRouter>
   );
