@@ -5,23 +5,24 @@
 
 
  import { AnimatePresence, motion } from "framer-motion";
+import { isMobile } from "react-device-detect";
 import { useSelector } from "react-redux";
 import { selectStatut } from "../slices/morpionSlice";
 
  const BackgroundColor = () => {
     const currentPlayer = useSelector(selectStatut);
     
-    
+    const speedAnimate = 2;
     const variantsBGPlayer = {
         hidden : { 
             width:"0%",
-            transition : { duration : 0.4, ease: "circOut"}
+            transition : { duration : speedAnimate, ease: "circOut"}
         },
         visible : { 
-            width:"500%",
-            transition : { duration : 1.3, delay: 0, ease: "circOut"}
+            width: isMobile ? "500%" : "200%",
+            transition : { duration : speedAnimate, ease: "circOut"}
         },
-    }
+    };
 
     return (
         <>

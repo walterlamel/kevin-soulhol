@@ -6,16 +6,6 @@ Ce projet a été réalisé avec React et Adonisjs
 
 # A faire
 
-- Jeu Morpion
 - Email dans contact
 - Alléger toutes les images
-
-## Access BDD
-
-- user_id :number
-- projet_id :number
-
-## Type BDD
-
-- title :string
-- desc :string
+- mentions Légales Story Helper

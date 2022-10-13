@@ -24,7 +24,8 @@ export interface MorpionInitialType {
     player1Point : number;
     player2Point : number;
     grille: tableGrilleType;
-}
+    firstPlayerForTurn: 1 | 2;
+};
 
 
 
@@ -34,22 +35,41 @@ const initialState: MorpionInitialType = {
         lastwinner: 0,
         player1Point: 0,
         player2Point: 0,
-        grille: initialGrille
+        grille: initialGrille,
+        firstPlayerForTurn: 1
+};
+
+export type dataPlayerType = {
+    name: string;
+}
+interface objectDataPlayerType {
+    [key: string]: dataPlayerType
 }
 
-type payloadTypeForChangeGrille = { ligne : number, colonne : number}
+export const dataPlayers: objectDataPlayerType = {
+    "player1" : {
+        name: "Poo"
+    },
+    "player2" : {
+        name: "Bomber"
+    },
+    "" : {
+        name: ""
+    }
+}
 
 export const MorpionSlice = createSlice({
     name: "morpion",
     initialState,
     reducers: {
         startGame(state){
-            state.statut = "player1"
+            state.firstPlayerForTurn = state.firstPlayerForTurn === 1 ? 2 : 1;
+            state.statut = state.firstPlayerForTurn === 1 ? "player1" : "player2";
             state.grille = initialGrille
         },
         restartGame(state){
             state.statut = ""
-            state.grille = initialGrille
+            state.grille = initialGrille;
         },
         changePlayer(state){
             state.statut = state.statut === "player1" ? "player2" : "player1";

@@ -1,4 +1,4 @@
-import { faUserAstronaut, faBomb, faPoo } from "@fortawesome/free-solid-svg-icons";
+import { faBomb, faPoo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { rowType } from "../slices/morpionSlice";
 
