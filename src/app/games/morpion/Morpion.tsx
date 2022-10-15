@@ -20,7 +20,7 @@ import BackgroundColor from './components/BackgroundColor';
 
 export const Morpion = () => {
     return (
-        <WindowGame classContain='game-morpion' size={{width: "90%", height: "60%"}} gameName="Morpion" desc={listGames[1].desc} >
+        <WindowGame classContain='game-morpion' gameName={listGames[1].name} desc={listGames[1].desc} >
             <Provider store={store}>
                     <Grille />
                     <Points />

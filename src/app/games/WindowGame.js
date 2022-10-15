@@ -1,6 +1,6 @@
-const WindowGame = ({ children, classContain, size, gameName, desc }) => {
+const WindowGame = ({ children, classContain, gameName, desc }) => {
        return (
-              <div className="windowGame">
+              <div className={"windowGame " + gameName}>
                      <div className="containName">
                             <div className="surcouche">Game</div>
                             <h2>{gameName}</h2>

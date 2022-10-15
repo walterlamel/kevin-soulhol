@@ -1,15 +1,16 @@
 import Jumper from "../app/games/jumper/Jumper";
 import { Morpion } from "../app/games/morpion/Morpion";
+import Runner from "../app/games/runner/Runner";
 import { gameType } from "../types/gamesType";
 
 export const listGames: Array<gameType> = [
     {
-           name: "Jumper",
-           link: "/jumper",
+           name: "Runner",
+           link: "/runner",
            color: "pink",
-           component: <Jumper />,
+           component: <Runner />,
            visible: false,
-           desc: "Petit jeu de saut très librement inspiré du jeu offline du T-Rex."
+           desc: "Petit jeu d'adresse où le but est d'éviter les obstacles et d'attraper les bonus vert. Essayez d'aller le plus loin possible !"
     },
     {
        name: "Morpion",

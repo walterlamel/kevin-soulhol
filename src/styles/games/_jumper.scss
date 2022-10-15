@@ -1,28 +1,122 @@
+$colorBonus : rgb(143, 236, 106);
+
+.windowGame.Runner{
+    cursor: none;
+}
+
 .container-jumper{
     position: relative;
     background-color: white;
+    width: 300px !important;
+    max-height: 600px;
+    user-select: none;
+    cursor: none;
 
-    #player{
-        width: 30px;
-        background-color: $color_strong;
-        aspect-ratio: 1;
+    .space-drag{
         position: absolute;
-    }
-
-    .screen{
+        bottom: 0;
         width: 100%;
         height: 100%;
-        z-index: 50;
+        cursor: pointer;
+        background: radial-gradient(circle at 50% 150%, rgb(176, 60, 187) -50%, rgba(255,255,255, 0) 80%);
+        user-select: none;
+        pointer-events: none;
+
+        .player{
+            width: 30px;
+            background-color: $color_strong;
+            aspect-ratio: 1;
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            border-radius: 3px;
+            user-select: none;
+            pointer-events: inherit;
+        }
+    }
+
+    
+
+    .screen{
         position: absolute;
-        //background-color: red;
+        width: 100%;
+        height: 100%;
+        z-index: 80;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: black;
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 1.5em;
+        flex-direction: column;
+        background-color: rgba(190, 44, 159, 0.3);
+        user-select: none;
+
+        color: $color_background;
+
+        .statut{         
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: bolder;
+        }
+    }
+
+    .gameover{
+        padding: 2em;
+        justify-content: flex-start;
+        align-items: flex-end;
+        background-color: rgba(190, 44, 159, 0.9);
+        color: white;
+
+        .statut{
+            color: white;
+        }
+
+        .details{
+            font-size: 0.8em;
+        }
+
+        .contain-infos-game{
+            border-top: 1px solid white;
+            margin-top: 1em;
+            padding-top: 1em;
+            text-align: right;
+            font-size: 0.9em;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+
+            table{
+                width: 100%;
+            }
+        }
+    }
+
+
+    .container-ennemies{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        user-select: none;
+        pointer-events: none;
+
+        
+        .ennemy{
+            width: 30px;
+            aspect-ratio: 1;
+            border-radius: 5px;
+            background-color: $color_background;
+            position: absolute;
+            top: 0;
+        }
+
+        .touched{
+            background-color: rgb(231, 94, 30);
+            box-shadow: 0 0 30px rgb(231, 94, 30);
+        }
+
+        .bonus{
+            background-color: $colorBonus;
+            border-radius: 100%;
+            box-shadow: 0 0 5px $colorBonus;
+        }
     }
 
     .score{
@@ -31,13 +125,29 @@
         bottom: 5px;
         color: $color_background;
         font-weight: bold;
+        user-select: none;
+        pointer-events: none;
     }
 
-    .ennemy{
-        //width: 30px;
-        //height: 30px;
-        background-color: $color_strong2;
-        position: absolute;
-        bottom: 0;
+    .btn-pause{
+        padding: 15px;
+        background-color: $color_strong;
+        color: white;
+        position: relative;
+        margin: auto;
+        max-width: max-content;
+        border-radius: 10px;
+        cursor: pointer;
     }
+
+    .contain-btn{
+        width: 100%;
+        position: fixed;
+        bottom: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 90;
+    }
+
 }
