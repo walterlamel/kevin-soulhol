@@ -61,7 +61,7 @@ const Ennemy = ({index, destroy} : {index: number, destroy: Function}) => {
             case "fall":
                 interval = setInterval(() => {
                     fall();
-                }, isMobile ? 50 : 10)
+                }, 10)
                 break;
             case "destruct" :
                 destroy(index)
