@@ -27,6 +27,7 @@ interface initialStateType {
     level: number;
     speedAppearEnnemy: number;
     bonusCatched: number;
+    bonusMissed: number;
 }
 
 
@@ -41,7 +42,8 @@ export const initialState : initialStateType= {
     },
     level : 1,
     speedAppearEnnemy: optionsRunner.initialTimeBetweenTwoEnnemy,
-    bonusCatched: 0
+    bonusCatched: 0,
+    bonusMissed: 0
 }
 
 export const RunnerSlice = createSlice({
@@ -81,12 +83,16 @@ export const RunnerSlice = createSlice({
         takeBonus(state){
             state.score = state.score + optionsRunner.bonusPoint;
             state.bonusCatched += 1;
+        },
+        missBonus(state){
+            state.bonusMissed += 1;
+            console.log(state.bonusMissed)
         }
     }
 })
 
 
-export const {startGame, restartGame, pauseGame, gameOver, addScore, changeColisonPlayer, levelUp, takeBonus } = RunnerSlice.actions;
+export const {startGame, restartGame, pauseGame, gameOver, addScore, changeColisonPlayer, levelUp, takeBonus, missBonus } = RunnerSlice.actions;
 
 export const selectStatut = (state:RootState) => state.runner.statutRunner;
 export const selectScore = (state:RootState) => state.runner.score;
@@ -94,6 +100,7 @@ export const selectColisionPlayer = (state:RootState) => state.runner.colisionPl
 export const selectLevel = (state:RootState) => state.runner.level;
 export const selectSpeedAppearEnnemy = (state:RootState) => state.runner.speedAppearEnnemy;
 export const selectBonusCatched = (state: RootState) => state.runner.bonusCatched;
+export const selectBonusMissed = (state: RootState) => state.runner.bonusMissed;
 
 export default RunnerSlice.reducer;
 

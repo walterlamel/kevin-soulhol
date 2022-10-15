@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import { useDispatch, useSelector } from "react-redux";
-import { pauseGame, restartGame, selectBonusCatched, selectScore, selectStatut, startGame } from "../slices/runnerSlice";
+import { pauseGame, restartGame, selectBonusCatched, selectBonusMissed, selectScore, selectStatut, startGame } from "../slices/runnerSlice";
+import ShareBtn from "./ShareBtn";
 
 const TOUCH_START = " ";
 const TOUCH_PAUSE = "Escape";
@@ -10,6 +11,7 @@ const Screen = () => {
     const dispatch = useDispatch();
     const score = useSelector(selectScore);
     const bonusCatched = useSelector(selectBonusCatched);
+    const bonusMissed = useSelector(selectBonusMissed);
     const statutGame = useSelector(selectStatut);
 
 
@@ -29,8 +31,11 @@ const Screen = () => {
         dispatch(startGame());
     }
 
-    function restart(){
-        dispatch(restartGame())
+    function restart(e : React.MouseEvent<HTMLDivElement, MouseEvent>){
+        let target : HTMLDivElement = e.target as HTMLDivElement;
+        if(target.id !== "share-btn"){
+            dispatch(restartGame())
+        }
     }
 
     function pause(){
@@ -53,7 +58,7 @@ const Screen = () => {
             </div>
         )}
         { statutGame === "gameover" && (
-            <div className="screen gameover" onClick={restart}>
+            <div className="screen gameover" onClick={e => restart(e)}>
                 <p className="statut">GAME OVER</p>
                 <p className="details">{isMobile ? "Touch " : "Press space "} for restart</p>
                 <div className="contain-infos-game">
@@ -63,11 +68,16 @@ const Screen = () => {
                             <td>{score}</td>
                         </tr>
                         <tr>
-                            <td>Bonus attrapé </td>
+                            <td>Bonus attrapés </td>
                             <td>{bonusCatched}</td>
+                        </tr>
+                        <tr>
+                            <td>Bonus ratés </td>
+                            <td>{bonusMissed}</td>
                         </tr>
                     </table>
                 </div>
+                <ShareBtn />
             </div>
         )}
         </>

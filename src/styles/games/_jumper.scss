@@ -1,7 +1,6 @@
 $colorBonus : rgb(143, 236, 106);
 
 .windowGame.Runner{
-    cursor: none;
     height: 100vh;
 }
 
@@ -11,7 +10,6 @@ $colorBonus : rgb(143, 236, 106);
     width: 300px !important;
     max-height: 600px;
     user-select: none;
-    cursor: none;
 
     .space-drag{
         position: absolute;
@@ -65,6 +63,7 @@ $colorBonus : rgb(143, 236, 106);
         align-items: flex-end;
         background-color: rgba(190, 44, 159, 0.9);
         color: white;
+        flex-direction: column;
 
         .statut{
             color: white;

@@ -1,3 +1,13 @@
+/**
+ * 
+ * Game : Runner
+ * 
+ * Le joueur doit éviter des obstacles qui tombent, en déplaçant sa souris. Parfois, des bonus tombent, qui augmentent le score du joueur.
+ * 
+ */
+
+
+import { isMobile } from "react-device-detect";
 import { Provider,  } from "react-redux";
 import listGames from "../../../data/listeGames";
 import WindowGame from "../WindowGame";
@@ -18,9 +28,12 @@ const Runner = ( ) => {
                     <ContainerEnnemies />
                     <Player />
                     <Score />
-                    <div className="contain-btn">
-                        <BtnPause />
-                    </div>
+                    {isMobile && (
+                        <div className="contain-btn">
+                            <BtnPause />
+                        </div>
+                    )}
+                    
             </Provider>
         </WindowGame>
     )

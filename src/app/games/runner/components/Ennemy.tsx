@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useDispatch, useSelector } from "react-redux";
-import { gameOver, positionType, selectColisionPlayer, selectLevel, selectStatut, takeBonus } from "../slices/runnerSlice";
+import { gameOver, missBonus, positionType, selectColisionPlayer, selectLevel, selectStatut, takeBonus } from "../slices/runnerSlice";
 import { optionsRunner } from "../slices/runnerSlice";
 
 
@@ -41,7 +41,6 @@ const Ennemy = ({index, destroy} : {index: number, destroy: Function}) => {
         //const sumValue:number = Object.values(randArray).reduce((a, b) => a + b);
         let cumul = 0;
         let rand = Math.floor(Math.random() * (sumWithInitial - cumul) + cumul);
-        console.log(randArray)
         let res : boolean = false;
         for (let index = 0; index < randArray.length; index++) {
             const element = randArray[index];
@@ -80,7 +79,11 @@ const Ennemy = ({index, destroy} : {index: number, destroy: Function}) => {
     //detruit l'élément quand il est hors du champs
     useEffect(() => {
         if(Window && Window.clientHeight && positionY >= Window.clientHeight + 50){
-            setAction("destruct")
+            setAction("destruct");
+
+            if(isBonus){
+                dispatch(missBonus());
+            }
         }
     }, [positionY, Window]);
 
