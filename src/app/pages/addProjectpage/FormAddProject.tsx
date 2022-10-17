@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { request } from "../../../services/requestApi";
 
 
@@ -7,9 +8,12 @@ type tplotOptions = {
 }
   
 export const FormAddProject = () => {
+    const navigate = useNavigate();
+    const [errorMsg, setErrorMsg] = useState<string>("");
 
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
         e.preventDefault();
+        setErrorMsg("")
         const formData:FormData = new FormData(e.target as HTMLFormElement)
         const dataToSend:tplotOptions = {};
 
@@ -22,10 +26,13 @@ export const FormAddProject = () => {
         let result = await request("projects/", "POST", dataToSend);
         console.log(result)
         if(result.data.errors){
+            setErrorMsg(result.data.errors[0].title);
             result.data.errors.forEach(function(codeerror:any){
                 let inp = document.querySelector('input[name="'+ codeerror.source.pointer+'"]');
                 inp?.classList.add('error')
             });
+        } else {
+            navigate("/")
         }
     }
 
@@ -82,6 +89,7 @@ export const FormAddProject = () => {
 
                 <input type="submit" value="Ajouter" />
 
+                <p className="error-message">{errorMsg}</p>
             </form>
         </div>
     )

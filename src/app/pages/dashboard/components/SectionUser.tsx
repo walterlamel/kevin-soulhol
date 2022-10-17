@@ -40,17 +40,17 @@ export const SectionUser = () => {
                     <tr>
                         {
                           Object.keys(headerTable).map((key, index) => (
-                            <td key={key}>{key}</td>
+                            <td key={index}>{key}</td>
                           ))
                         }
                     </tr>
                 </thead>
                 <tbody>
                         {listUsers.map((user, key) => (
-                            <tr>
+                            <tr key={key}>
                                 {
                                     Object.keys(headerTable).map((key, i) => (
-                                        <td key={key}>{user[key]}</td>
+                                        <td key={i}>{user[key]}</td>
                                     ))
                                 }
                             </tr>

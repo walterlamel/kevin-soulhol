@@ -5,6 +5,7 @@ import Slider from "../../../../components/slider/Slider";
 
 import { useDispatch } from "react-redux";
 import { createPopup } from "../../../../components/popup/slice/popupSlice";
+import { useVerifImagePath } from "../../../../../hooks/useVerifImagePath";
 
 const variants = {
        open: {
@@ -36,20 +37,10 @@ const variants = {
 };
 
 const WorkCard = ({ projet, actif, getTo, Key }) => {
-       const [src, setSrc] = useState("");
+       const { source } = useVerifImagePath(
+              "/imgs/" + projet.repertory + "/main",
+       );
        const dispatch = useDispatch();
-
-       useEffect(() => {
-              if (projet.repertory) {
-                     let url = "/imgs/" + projet.repertory + "/main";
-                     let url_and_ext = url + ".png";
-
-                     const img = new Image();
-                     img.src = url_and_ext;
-                     img.onload = () => setSrc(url_and_ext);
-                     img.onerror = () => setSrc(url + ".jpg");
-              }
-       }, [projet]);
 
        return (
               <motion.div
@@ -94,13 +85,13 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                             </div>
                      </div>
                      <div className="container-img">
-                            <img src={src} />
+                            <img src={source} />
                      </div>
               </motion.div>
        );
 };
 
-const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
+export const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
        const [imgs, setImgs] = useState([]);
 
        useEffect(() => {

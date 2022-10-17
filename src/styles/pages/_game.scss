@@ -24,15 +24,20 @@
     font-weight: bolder;
     letter-spacing: 0.7em;
     text-align: center;
+    opacity: 0.8;
 
     .reflect{
         background-color: white;
-        height: 500%;
+        height: 700%;
         width: 100%;
         position: absolute;
         left: -70%;
         transform: rotate(20deg);
         opacity: 0.2;
 
+    }
+
+    &:hover{
+        opacity: 1;
     }
 }

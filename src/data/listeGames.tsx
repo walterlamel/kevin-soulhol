@@ -9,7 +9,7 @@ export const listGames: Array<gameType> = [
            link: "/runner",
            color: "pink",
            component: <Runner />,
-           visible: false,
+           visible: true,
            desc: "Petit jeu d'adresse où le but est d'éviter les obstacles et d'attraper les bonus vert. Essayez d'aller le plus loin possible !"
     },
     {

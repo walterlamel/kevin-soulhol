@@ -60,7 +60,7 @@ export const Phases = {
               choices: ["idle07"],
        },
        407: {
-              text: "Je sais bien, je sais bien ! Bonne visite à vous alors. Et prenez-donc cet objet.",
+              text: "Je sais bien, je sais bien ! Bonne visite à vous alors.",
               choices: ["take_gold", "retour01"],
        },
        408: {

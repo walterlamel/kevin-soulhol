@@ -5,6 +5,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    max-height: 2176px;
 }
 
 .otherpage{
@@ -19,7 +20,7 @@
     position: relative;
     padding: 100px;
     width: 100%;
-    overflow: hidden;
+    overflow: scroll;
 
     .motion {
         height: 100%;

@@ -1,11 +1,11 @@
-interface requestReponseType{
+export interface requestReponseType{
        res: boolean;
        data: JSON | Array<any>;
        message: string;
        error?: any;
    }
    
-   interface paramsRequestType{
+export interface paramsRequestType{
        title?:string;
        date?:string;
        type?:string;

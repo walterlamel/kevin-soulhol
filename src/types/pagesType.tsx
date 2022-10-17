@@ -5,11 +5,18 @@ import Dashboard from "../app/pages/dashboard/Dashboard";
 import Contactpage from "../app/pages/home/components/contactpage";
 import Gamepage from "../app/pages/home/components/gamepage/Gamepage";
 import Homepage from "../app/pages/home/components/homepage";
+import Works from "../app/pages/works/Works";
+
+export interface pageType {
+    link: string;
+    authRequired: boolean;
+    elemReact: JSX.Element;
+}
 
 
 
 // différentes pages existantes
-export const allPages = [
+export const allPages : pageType[] = [
     {
         link: "home",
         authRequired: false,
@@ -35,6 +42,11 @@ export const allPages = [
         authRequired: true,
         elemReact : <FormAddProject />
     },
-] as const;
+    {
+        link: "works",
+        authRequired: false,
+        elemReact: <Works />
+    }
+];
 
 export type namePage = typeof allPages[number]['link'];

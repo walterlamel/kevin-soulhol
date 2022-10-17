@@ -25,7 +25,7 @@ const Home = ({openedPage}:{ openedPage: namePage}) => {
        </Helmet>
        <div className="page home">
               <SideIllustration />
-              <div className="container-main-page">
+              <div className="container-main-page no-visible-scroll">
                      <Inside openedPage={openedPage} />
               </div>
        </div>

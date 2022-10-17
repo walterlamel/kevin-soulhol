@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import { useDispatch, useSelector } from "react-redux";
 import { pauseGame, restartGame, selectBonusCatched, selectBonusMissed, selectScore, selectStatut, startGame } from "../slices/runnerSlice";
-import ShareBtn from "./ShareBtn";
 
 const TOUCH_START = " ";
 const TOUCH_PAUSE = "Escape";
@@ -77,7 +76,6 @@ const Screen = () => {
                         </tr>
                     </table>
                 </div>
-                <ShareBtn />
             </div>
         )}
         </>

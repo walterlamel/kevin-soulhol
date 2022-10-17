@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { request } from "../services/requestApi";
+import { paramsRequestType } from "../services/requestApi";
+import ProjectType from "../types/projectType";
 
-const useGetProjects = ({ params, refresh }) => {
-       const [list, setList] = useState([]);
+const useGetProjects = ({ params, refresh } : {params : paramsRequestType, refresh? : number}) => {
+       const [list, setList] = useState<ProjectType[]>([]);
 
        useEffect(() => {
               get();

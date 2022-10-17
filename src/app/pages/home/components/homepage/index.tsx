@@ -6,6 +6,8 @@
  * 
  */
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { allPages } from '../../../../../types/pagesType';
 import Multichoice from "../chatBox/Multichoice.js";
 import Experiences from "../experiences/Experiences.js";
 import ListeWorkCards from "../works/ListeWorkCards.js";
@@ -37,6 +39,8 @@ const Homepage = () => {
                       quelques-uns des projets sur lesquels j'ai
                       travaillé. Du graphisme, des sites web, un
                       peu d'illustration...
+                      <br/>
+                      <Link to={"/" + allPages[5].link}>Cliquez ici, pour tous les voir.</Link>   
                </p>
                <ListeWorkCards />
         </section>
