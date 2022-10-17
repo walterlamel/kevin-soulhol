@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 const SectionProjet = () => {
     const [reload, setReload] = useState<number>(0);
-    const {list} = useGetProjects({params: {}, refresh : reload});
+    const {list} = useGetProjects({params: { filter : {}}, refresh : reload});
     const [openedModal, setOpenedModal] = useState(false);
     const [selectedItem, setSelectedItem] = useState<ProjectType | null>(null);
     const [selectedKeyToModif, setSelectedKeyToModif] = useState<keyof ProjectType|null>(null);

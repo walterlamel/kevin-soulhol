@@ -15,22 +15,35 @@ export interface paramsRequestType{
        repertory?:string;
        in_homepage?:boolean;
        is_brouillon?:boolean;
+       filter?: {
+              asc?: "asc" | "desc";
+              orderBy?: string;
+              type?: string;
+              in_homepage?:boolean;
+              is_brouillon?:boolean;
+       } | string;
    }
    
    export async function request<requestReponseType>(item:string, method:string, params:paramsRequestType) {
    
           let url = process.env.REACT_APP_API_USER + item;
+
+          if(params.filter && typeof params.filter !== "string"){
+              params.filter = JSON.stringify(params.filter)
+          }
+
           if (params) {
                  url = url + "?";
                  Object.keys(params).forEach((key:string) => {
                         url = url + "&" + key + "=" + params[key as keyof paramsRequestType];
-                 });
+                 });    
           }
 
           //console.log(url)
           let addoptions = {}
           
           if(method !== "GET"){
+              
               addoptions = {body : JSON.stringify(params)}
           }
    
@@ -39,10 +52,13 @@ export interface paramsRequestType{
                  credentials: "include",
                  ...addoptions
           })
-                 .then((res) => res.json())
+                 .then((res) => { 
+                     //console.log(res); 
+                     return res.json() 
+                     })
                  .then(
                         (data) => {
-                               
+                               //console.log(data)
                                return{
                                       res: true,
                                       data: data,

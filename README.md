@@ -9,5 +9,5 @@ Ce projet a été réalisé avec React et Adonisjs
 - Email dans contact
 - Alléger toutes les images
 - mentions Légales Story Helper
-- corriger texte qui ajoute une pièce dans le chatbox
-- Partager score Runner
+- Modifier ses infos de compte
+- Ajouter un compte

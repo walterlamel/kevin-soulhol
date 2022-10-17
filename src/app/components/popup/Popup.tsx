@@ -16,7 +16,7 @@ import { closePopup, openedPopup, insidePopup } from './slice/popupSlice';
 const Popup = () => {
     const dispatch = useDispatch();
     const opened = useSelector(openedPopup);
-    const inside = useSelector(insidePopup);
+    const inside = useSelector(insidePopup)
 
 
     function handleClick(e:React.MouseEvent<HTMLDivElement, MouseEvent>){

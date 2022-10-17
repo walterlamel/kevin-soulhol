@@ -8,7 +8,11 @@ import { InsidePopup } from "../home/components/works/WorkCard";
 
 const Works =() => {
 
-    const {list} = useGetProjects({ params : { is_brouillon: false }});
+    const {list} = useGetProjects({ params : { filter : {
+        is_brouillon: false,
+        orderBy: "date",
+        asc: "desc"
+    } }});
     const dispatch = useDispatch();
 
     return (

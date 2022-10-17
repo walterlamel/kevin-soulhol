@@ -4,7 +4,7 @@
  *
  * This component is for the homepage. This is only element on the main page at "/"
  */
- import React from 'react'
+ import React, { useEffect } from 'react'
 import { AnimatePresence, motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Menu from "../../components/menu/Menu";
@@ -15,7 +15,10 @@ import { namePage, allPages } from "../../../types/pagesType";
 
 const Home = ({openedPage}:{ openedPage: namePage}) => {
 
-
+       //Remonte la page en haut pour chaque changement
+       useEffect(() => {
+              window.scrollTo({top : 0, behavior: "smooth"})
+       }, [openedPage])
 
     return (
        <>

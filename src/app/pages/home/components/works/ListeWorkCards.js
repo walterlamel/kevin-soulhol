@@ -13,7 +13,14 @@ const ListeWorkCards = () => {
        const [widthMoving, setWidthMoving] = useState(0);
        const [length, setLength] = useState(0);
        const { list } = useGetProjects({
-              params: { in_homepage: 1, is_brouillon: 0 },
+              params: {
+                     filter: {
+                            in_homepage: 1,
+                            is_brouillon: 0,
+                            orderBy: "date",
+                            asc: "desc",
+                     },
+              },
        });
 
        useEffect(() => {
