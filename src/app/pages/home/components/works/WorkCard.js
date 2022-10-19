@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-import Slider from "../../../../components/slider/Slider";
-
 import { useDispatch } from "react-redux";
 import { createPopup } from "../../../../components/popup/slice/popupSlice";
 import { useVerifImagePath } from "../../../../../hooks/useVerifImagePath";
@@ -53,20 +49,7 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                      whileTap={{ scale: 0.95 }}
                      onClick={(e) => {
                             if (actif) {
-                                   dispatch(
-                                          createPopup(
-                                                 <InsidePopup
-                                                        id={projet.id}
-                                                        date={projet.date}
-                                                        titre={projet.title}
-                                                        desc={projet.desc}
-                                                        link={projet.link}
-                                                        repertory={
-                                                               projet.repertory
-                                                        }
-                                                 />,
-                                          ),
-                                   );
+                                   dispatch(createPopup(projet));
                             } else {
                                    getTo(Key + 1);
                             }
@@ -88,57 +71,6 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                             <img src={source} />
                      </div>
               </motion.div>
-       );
-};
-
-export const InsidePopup = ({ id, date, titre, desc, link, repertory }) => {
-       const [imgs, setImgs] = useState([]);
-
-       useEffect(() => {
-              getImages().then((imgs) => {
-                     setImgs(imgs);
-              });
-       }, [id, repertory]);
-
-       async function getImages() {
-              var formData = new FormData();
-              formData.append("repertory", repertory);
-
-              const requestOptions = {
-                     method: "POST",
-                     body: formData,
-              };
-
-              return await fetch(
-                     process.env.REACT_APP_URL_GET_PROJECTS_IMAGES,
-                     requestOptions,
-              )
-                     .then((res) => res.json())
-                     .then(
-                            (res) => {
-                                   return res;
-                            },
-                            (err) => {
-                                   console.log(err);
-                                   return [];
-                            },
-                     );
-       }
-
-       return (
-              <div className="inside-popup-experience">
-                     <div className="container-text">
-                            <span className="date">{date}</span>
-                            <span className="titre">{titre}</span>
-                            <div className="container-desc">{desc}</div>
-                            {link && (
-                                   <a className="link-to-site" href={link}>
-                                          Visiter le site
-                                   </a>
-                            )}
-                     </div>
-                     <Slider childs={imgs} />
-              </div>
        );
 };
 

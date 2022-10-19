@@ -4,7 +4,6 @@ import useGetProjects from "../../../hooks/useGetProjects";
 import { useVerifImagePath } from "../../../hooks/useVerifImagePath";
 import Popup from "../../components/popup/Popup";
 import { createPopup } from "../../components/popup/slice/popupSlice";
-import { InsidePopup } from "../home/components/works/WorkCard";
 
 const Works =() => {
 
@@ -26,15 +25,7 @@ const Works =() => {
             <div className="contain-list-work">
                 {list.map((work,key) => (
                     <div className="work-elem" key={key} onClick={ e => {
-                            dispatch(createPopup(<InsidePopup id={work.id}
-                                date={work.date}
-                                titre={work.title}
-                                desc={work.desc}
-                                link={work.link}
-                                repertory={
-                                    work.repertory
-                                }
-                            />));
+                            dispatch(createPopup(work));
                         }}>
                         <div className="bg">
                             <ImgBack path={"/imgs/" + work.repertory + "/main"} />

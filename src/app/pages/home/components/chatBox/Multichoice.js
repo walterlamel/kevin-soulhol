@@ -81,6 +81,7 @@ const Multichoice = () => {
                             navigate("/games");
                             break;
                      case "connect":
+                            console.log("ici");
                             dispatch(openLogin());
                             break;
                      case "take_gold":

@@ -66,7 +66,9 @@ const SectionProjet = () => {
     }
 
     return (
-        <section>
+        <>
+        {isAdmin && (
+            <section>
             <h3>Projects</h3>
             <table>
                 <thead>
@@ -97,6 +99,9 @@ const SectionProjet = () => {
             <button onClick={e => navigate('/add')}>Ajouter un projet</button>
             <ModalText open={openedModal} closeModal={closeModal} selectedItem={selectedItem} selectedKeyToModif={selectedKeyToModif} reloading={reloading}/>
         </section>
+        )}
+        </>
+        
     )
 }
 

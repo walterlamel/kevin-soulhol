@@ -14,7 +14,7 @@ const DeconnectionButton = () => {
                      .then((res) => res.json())
                      .then(
                             (data) => {
-                                   console.log(data);
+                                   //console.log(data);
                                    dispatch(getSessionFailed());
                                    return true;
                             },
@@ -24,7 +24,7 @@ const DeconnectionButton = () => {
                             },
                      );
        }
-       return <button onClick={(e) => deconnection()}>Deconnection</button>;
+       return <button onClick={(e) => deconnection()}>Se déconnecter</button>;
 };
 
 export default DeconnectionButton;

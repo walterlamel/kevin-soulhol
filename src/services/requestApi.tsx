@@ -15,6 +15,7 @@ export interface paramsRequestType{
        repertory?:string;
        in_homepage?:boolean;
        is_brouillon?:boolean;
+       //recherche de projet
        filter?: {
               asc?: "asc" | "desc";
               orderBy?: string;
@@ -22,7 +23,14 @@ export interface paramsRequestType{
               in_homepage?:boolean;
               is_brouillon?:boolean;
        } | string;
+       //user
+       nom?: string;
+       prenom?: string;
+       email?: string;
+       password?: string;
+       confirm_mdp?: string;
    }
+
    
    export async function request<requestReponseType>(item:string, method:string, params:paramsRequestType) {
    

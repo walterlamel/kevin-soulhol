@@ -24,7 +24,7 @@ export const FormAddProject = () => {
         }
 
         let result = await request("projects/", "POST", dataToSend);
-        console.log(result)
+        //console.log(result)
         if(result.data.errors){
             setErrorMsg(result.data.errors[0].title);
             result.data.errors.forEach(function(codeerror:any){

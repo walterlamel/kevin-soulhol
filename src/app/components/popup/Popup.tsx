@@ -9,6 +9,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import {useDispatch, useSelector } from "react-redux";
+import { InsidePopup } from './components/InsidePopup';
 import { closePopup, openedPopup, insidePopup } from './slice/popupSlice';
 
 
@@ -39,7 +40,7 @@ const Popup = () => {
                     <FontAwesomeIcon icon={faClose} /></div>
                 </div>
                 <div className="container-popup-contain">
-                    {inside}
+                    <InsidePopup element={inside} />
                 </div>
             </div>
         </div>

@@ -69,20 +69,21 @@
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-                width: max-content;
+                width: 100%;
 
                 
 
                 .type{
                     opacity: 0.7;
                     font-size: 0.8em;
+                    color: $color_strong;
                 }
             }
         }
 
         #tobecontinued{
             position: relative;
-            top: 95px;
+            top: 76px;
             width: max-content;
         }
 

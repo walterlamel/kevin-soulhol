@@ -1,7 +1,66 @@
 .dashboard-page{
+    
+    $color : $color_strong2;
+    $color-error : rgb(156, 26, 26);
+
 
     section{
         padding-top: 100px;
+    }
+
+    .container-infos{
+        display: grid;
+        gap: 1em;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contain-label{
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .btn-validation{
+            position: absolute;
+            right: 2px;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 3px;
+            border : 2px solid $color;
+            color: $color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btn-validation.error{
+            border : 2px solid $color-error;
+            color: $color-error;
+        }
+
+        
+    }
+
+    .message-error{
+        margin-top: 1em;       
+        font-size: 0.9em;
+        color: $color-error;
+
+        span{
+            margin-left: 1em;
+        }
+    }
+
+    input,
+    textarea{
+        width: 100%;
+        padding: 5px;
+        background-color: $color_background_1;
+        color: white;
+        border: none;
+        outline: none;
+        padding: 15px;
+        font-family: $font_family;
     }
 
     table{

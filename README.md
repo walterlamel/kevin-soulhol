@@ -9,5 +9,4 @@ Ce projet a été réalisé avec React et Adonisjs
 - Email dans contact
 - Alléger toutes les images
 - mentions Légales Story Helper
-- Modifier ses infos de compte
 - Ajouter un compte

@@ -131,6 +131,8 @@ body{
 
 
 
+
+
 @media screen and (max-width:550px) {
     h2{
         font-size: 40px;
@@ -140,6 +142,10 @@ body{
     h3{
         font-size: 30px;
         line-height: 25px;
+    }
+
+    #root{
+        margin-bottom: 4em;
     }
 }
 

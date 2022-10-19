@@ -51,7 +51,7 @@ const EXP = [
        {
               date: "2014",
               titre: "Edition de livre",
-              type: "stage",
+              type: "Stage",
               lieu: "Toulouse - Presses Universitaire du Mirail",
               desc: "Durant ma licence de Lettres Modernes (que j'ai eu !), nous avons pu réaliser un stage de trois mois. Je l'ai fait au sein des Presses Universitaires du Midi où j'ai commencé à pratiquer la création graphique, la gestion de ressources numériques, ainsi que la recherche iconographique.",
        },

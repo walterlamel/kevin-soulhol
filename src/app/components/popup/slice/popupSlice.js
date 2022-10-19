@@ -28,10 +28,3 @@ export const openedPopup = (state) => state.popup.opened;
 export const insidePopup = (state) => state.popup.inside;
 
 export default popupSlice.reducer;
-
-/**
- * Using :
- *
- * import {useDispatch } from "react-redux";
- * import {openPopup} from "../popup/slice/popupSlice";
- */

@@ -1,6 +1,7 @@
 //types
 
 import FormAddProject from "../app/pages/addProjectpage/FormAddProject";
+import AddUserPage from "../app/pages/AddUser/AddUserPage";
 import Dashboard from "../app/pages/dashboard/Dashboard";
 import Contactpage from "../app/pages/home/components/contactpage";
 import Gamepage from "../app/pages/home/components/gamepage/Gamepage";
@@ -46,6 +47,11 @@ export const allPages : pageType[] = [
         link: "works",
         authRequired: false,
         elemReact: <Works />
+    },
+    {
+        link: "adduser",
+        authRequired: true,
+        elemReact: <AddUserPage />
     }
 ];
 
