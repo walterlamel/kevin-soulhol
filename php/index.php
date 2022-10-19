@@ -9,10 +9,8 @@ header('Content-Type: application/json; charset=utf-8');
 
 header("Access-Control-Allow-Origin: *");
 
-
 if (isset($_POST['repertory']) && $_POST['repertory'] !== 'null' && $_POST['repertory']) {
-
-    $url = '../public/imgs/' . $_POST['repertory'];
+    $url = '../imgs/' . $_POST['repertory'];
 
     $images = preg_grep('~\.(jpeg|jpg|png)$~', scandir($url));
     $files = array();

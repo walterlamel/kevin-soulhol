@@ -35,15 +35,11 @@ export const InsidePopup = ({ element } : {element : elementType}) => {
                   body: formData,
            };
 
-           console.log(process.env.REACT_APP_URL_GET_PROJECTS_IMAGES)
-           console.log(requestOptions)
-
            return await fetch(
                   process.env.REACT_APP_URL_GET_PROJECTS_IMAGES ?? "",
                   requestOptions,
            )
                   .then((res) => {
-                     console.log(res)
                      return res.json()
                   })
                   .then(
