@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import Slider from "../../slider/Slider";
 
 interface elementType {
@@ -16,7 +15,6 @@ interface elementType {
 }
 
 export const InsidePopup = ({ element } : {element : elementType}) => {
-       const navigate = useNavigate();
     const [imgs, setImgs] = useState([]);
 
 
@@ -37,11 +35,17 @@ export const InsidePopup = ({ element } : {element : elementType}) => {
                   body: formData,
            };
 
+           console.log(process.env.REACT_APP_URL_GET_PROJECTS_IMAGES)
+           console.log(requestOptions)
+
            return await fetch(
                   process.env.REACT_APP_URL_GET_PROJECTS_IMAGES ?? "",
                   requestOptions,
            )
-                  .then((res) => res.json())
+                  .then((res) => {
+                     console.log(res)
+                     return res.json()
+                  })
                   .then(
                          (res) => {
                                 return res;
