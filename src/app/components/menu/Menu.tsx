@@ -19,6 +19,7 @@ import { toggleLogin } from "../login/slice/loginSlice";
 import Login from "../login/Login";
 import { loadingUser, selectUser } from "../../pages/slices/userSlice";
 import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
+import useAnalyticsEventTracker from '../../../services/GoogleAnalytics';
 
 
  //types
@@ -72,6 +73,7 @@ export default Menu;
 
 
 const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
+    const gaEventTracker = useAnalyticsEventTracker('MenuClick')
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(selectUser);
@@ -85,13 +87,16 @@ const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
     function handleClick(){
         if(toPage){
             navigate("/"+toPage);
+            gaEventTracker(toPage);
         }
         if(toDo){
             if(toDo === "login"){
                 dispatch(toggleLogin())
+                gaEventTracker("login");
             }
             if(toDo === "dashboard"){
                 navigate('/dashboard');
+                gaEventTracker("dashboard");
             }
         }
 

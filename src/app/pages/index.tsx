@@ -19,6 +19,11 @@ import {allPages} from "../../types/pagesType";
 import useIsConnect from '../../hooks/useIsConnect';
 import listGames from '../../data/listeGames';
 
+import ReactGA from 'react-ga';
+import { TRACKING_ID } from '../../services/GoogleAnalytics';
+ReactGA.initialize(TRACKING_ID);
+
+
 function App() {
   const {isConnect} = useIsConnect(); //lance la détection de la session automatiquement. A garder !
 
