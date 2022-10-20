@@ -11,7 +11,6 @@ import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Popup from '../components/popup/Popup';
-import Jumper from '../games/jumper/Jumper';
 import Home from './home/Home';
 import { selectUser } from './slices/userSlice';
 
@@ -21,9 +20,9 @@ import listGames from '../../data/listeGames';
 
 import ReactGA from 'react-ga';
 import { TRACKING_ID } from '../../services/GoogleAnalytics';
-//ReactGA.initialize(TRACKING_ID);
+
 ReactGA.initialize(TRACKING_ID, {
-  debug: true,
+  debug: false,
   titleCase: false
 });
 

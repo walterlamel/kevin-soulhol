@@ -1,4 +1,3 @@
-import Jumper from "../app/games/jumper/Jumper";
 import { Morpion } from "../app/games/morpion/Morpion";
 import Runner from "../app/games/runner/Runner";
 import { gameType } from "../types/gamesType";
