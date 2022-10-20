@@ -30,24 +30,34 @@ const Slider = ({ childs }) => {
 
        return (
               <div className="container-slider">
-                     <motion.div
-                            className="ico-next"
-                            whileHover={"hover"}
-                            whileTap={"tap"}
-                            variants={variants_arrow}
-                            onClick={(e) => goTo(currentSeenImg + 1)}
-                     >
-                            <FontAwesomeIcon icon={faArrowRight} />
-                     </motion.div>
-                     <motion.div
-                            className="ico-prev"
-                            whileHover={"hover"}
-                            whileTap={"tap"}
-                            variants={variants_arrow}
-                            onClick={(e) => goTo(currentSeenImg - 1)}
-                     >
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                     </motion.div>
+                     {childs.length !== 0 && (
+                            <>
+                                   <motion.div
+                                          className="ico-next"
+                                          whileHover={"hover"}
+                                          whileTap={"tap"}
+                                          variants={variants_arrow}
+                                          onClick={(e) =>
+                                                 goTo(currentSeenImg + 1)
+                                          }
+                                   >
+                                          <FontAwesomeIcon
+                                                 icon={faArrowRight}
+                                          />
+                                   </motion.div>
+                                   <motion.div
+                                          className="ico-prev"
+                                          whileHover={"hover"}
+                                          whileTap={"tap"}
+                                          variants={variants_arrow}
+                                          onClick={(e) =>
+                                                 goTo(currentSeenImg - 1)
+                                          }
+                                   >
+                                          <FontAwesomeIcon icon={faArrowLeft} />
+                                   </motion.div>
+                            </>
+                     )}
                      <div className="overflower">
                             <motion.div
                                    className="scroller"

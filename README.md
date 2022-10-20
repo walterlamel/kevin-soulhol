@@ -2,11 +2,13 @@
 
 Ce projet a été réalisé avec React et Adonisjs
 
-- Runner : saute sans s'arrêter sauf si reclique sur espace
+Présente mes différents travaux ainsi que mon parcours. Quelques jeux fait avec React se trouve également dessus.
+
+Une API adonisjs fait fonctionner les sessions et récupère les projets.
+
+L'illustration a été faite par moi-même sous Illustrator.
 
 # A faire
 
 - Email dans contact
-- Alléger toutes les images
 - mentions Légales Story Helper
-- Ajouter un compte
