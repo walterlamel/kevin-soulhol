@@ -30,7 +30,7 @@ const Slider = ({ childs }) => {
 
        return (
               <div className="container-slider">
-                     {childs.length <= 1 && (
+                     {childs.length > 1 && (
                             <>
                                    <motion.div
                                           className="ico-next"
