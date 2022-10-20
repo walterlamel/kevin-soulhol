@@ -6,7 +6,7 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
- import React from 'react'
+ import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -21,11 +21,19 @@ import listGames from '../../data/listeGames';
 
 import ReactGA from 'react-ga';
 import { TRACKING_ID } from '../../services/GoogleAnalytics';
-ReactGA.initialize(TRACKING_ID);
+//ReactGA.initialize(TRACKING_ID);
+ReactGA.initialize(TRACKING_ID, {
+  debug: true,
+  titleCase: false
+});
 
 
 function App() {
   const {isConnect} = useIsConnect(); //lance la détection de la session automatiquement. A garder !
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  }, [])
 
   return (
     <BrowserRouter>

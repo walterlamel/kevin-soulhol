@@ -5,7 +5,7 @@ export const TRACKING_ID = "G-PM8XC1VWGM"; // TRACKING_ID
 
 /**
  * Hook qui permet d'envoyer l'action à google Analytics
- * @param category 
+ * @param category The type of interaction (e.g. 'play')
  * @returns 
  */
 const useAnalyticsEventTracker = (category : string) => {

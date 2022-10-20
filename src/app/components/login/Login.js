@@ -13,6 +13,7 @@ import {
 } from "../../pages/slices/userSlice";
 import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
 import { motion } from "framer-motion";
+import ReactGA from "react-ga";
 
 const Login = () => {
        const dispatch = useDispatch();
@@ -57,6 +58,9 @@ const Login = () => {
                                    } else {
                                           dispatch(getSessionSuccess(data));
                                           dispatch(closeLogin());
+                                          ReactGA.set({
+                                                 userMail: identifiant,
+                                          });
                                    }
                             },
                             (err) => {
