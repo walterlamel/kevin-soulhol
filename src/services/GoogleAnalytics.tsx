@@ -1,6 +1,6 @@
 import ReactGA from 'react-ga';
 
-export const TRACKING_ID = "G-PM8XC1VWGM"; // TRACKING_ID
+export const TRACKING_ID = process.env.REACT_APP_TRACKING_ID; // TRACKING_ID
 
 
 /**
