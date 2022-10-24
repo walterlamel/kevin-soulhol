@@ -87,7 +87,7 @@ export const Messages = {
        idle05: { text: "Pas très bien...", to: 408 },
        idle06: { text: "Moui c'est vrai...", to: 406 },
        idle07: { text: "Bonne idée !", to: 407 },
-       works00: { text: "Y aller.", to: 302 },
+       works00: { text: "Y aller.", to: "works" },
        works01: { text: "Je veux voir vos travaux.", to: 301, accent: "fort" },
        games001: { text: "Je veux jouer à des jeux", to: 303, accent: "fort" },
        games002: { text: "Revoir les jeux", to: 303 },

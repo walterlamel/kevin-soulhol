@@ -20,6 +20,7 @@ import listGames from '../../data/listeGames';
 
 import ReactGA from 'react-ga';
 import { TRACKING_ID } from '../../services/GoogleAnalytics';
+import { logoStructuredData } from '../../structuredData/logo';
 
 ReactGA.initialize(TRACKING_ID, {
   debug: false,
@@ -40,8 +41,14 @@ function App() {
           titleTemplate="%s | Kevin Soulhol"
           defaultTitle="Kevin Soulhol"
           htmlAttributes={{ lang: "fr" }}
-          ><link rel="icon" type="image/png" sizes="32x32" href="/logo.png"></link></Helmet>
-        <Popup />
+          ><link rel="icon" type="image/png" sizes="32x32" href="/logo.png"></link>
+      </Helmet>
+      
+      <script type="application/ld+json">
+        {JSON.stringify(logoStructuredData)}
+      </script>
+
+      <Popup />
       <Routes>
         {allPages.map(page => (
           <Route key={page.link} path={"/"+ page.link} element={page.authRequired ? <RequireAuth><Home openedPage={page.link} /></RequireAuth> : <Home openedPage={page.link} />} />

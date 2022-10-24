@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { Phases, Messages } from "../../../../../data/chatchoices";
+import { allPages } from "../../../../../types/pagesType";
 import { openLogin } from "../../../../components/login/slice/loginSlice";
 import MessagesBulle from "./MessagesBulle";
 
@@ -76,6 +77,10 @@ const Multichoice = () => {
                      default:
                             return;
                      case "contact":
+                            navigate("/" + allPages[1].link);
+                            break;
+                     case "works":
+                            navigate("/" + allPages[5].link);
                             break;
                      case "games":
                             navigate("/games");
