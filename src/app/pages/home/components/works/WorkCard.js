@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { createPopup } from "../../../../components/popup/slice/popupSlice";
-import { useVerifImagePath } from "../../../../../hooks/useVerifImagePath";
+import { Suspense } from "react";
+import { useImage } from "react-image";
 
 const variants = {
        open: {
@@ -33,9 +34,12 @@ const variants = {
 };
 
 const WorkCard = ({ projet, actif, getTo, Key }) => {
-       const { source } = useVerifImagePath(
-              "/imgs/" + projet.repertory + "/main",
-       );
+       const { src } = useImage({
+              srcList: [
+                     "/imgs/" + projet.repertory + "/main.png",
+                     "/imgs/" + projet.repertory + "/main.jpg",
+              ],
+       });
        const dispatch = useDispatch();
 
        return (
@@ -68,7 +72,9 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                             </div>
                      </div>
                      <div className="container-img">
-                            <img src={source} />
+                            <Suspense>
+                                   <img src={src} />
+                            </Suspense>
                      </div>
               </motion.div>
        );

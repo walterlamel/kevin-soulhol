@@ -4,7 +4,7 @@
  *
  * Show the big illustration with the landscape and all element reacting with
  */
-import React from 'react'
+import React, {Suspense} from 'react'
 import {
        useState,
        useCallback,
@@ -13,6 +13,7 @@ import {
 import ElementsWorld from "../../../../../data/elementsworld";
 import Conversation from "./components/Conversation";
 import Element from "./components/Element";
+import { useImage } from "react-image";
 
 
 //Met à jour le width de l'image
@@ -34,6 +35,9 @@ function useClientRect() {
 
 const SideIllustration = () => {
        const {ref} = useClientRect();
+       const {src} = useImage({
+           srcList: "/imgs/world.png"
+       })
 
 
        return (
@@ -43,10 +47,10 @@ const SideIllustration = () => {
                             <Element elem={elem} key={key} />
                      ))}
                      <Conversation />
-                     <img
-                     src="/imgs/world.png"
-                     alt="main-illustration"
-                     ref={ref} />
+                     
+                     <Suspense>
+                     <img src={src} alt="main-illustration" ref={ref} />
+                     </Suspense>
                      
               </div>
        );
