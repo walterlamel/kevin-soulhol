@@ -4,7 +4,7 @@
  *
  * Show the big illustration with the landscape and all element reacting with
  */
-import React from 'react'
+import React, {Suspense} from 'react'
 import {
        useState,
        useCallback,
@@ -37,16 +37,20 @@ const SideIllustration = () => {
 
 
        return (
-              <div className="container-side-illustration" /*style={{width: rect}}*/ >
-                     { /*<MainIllustration changeWidth={setWidth} /> */ }
-                     {ElementsWorld.map((elem, key) => (
-                            <Element elem={elem} key={key} />
-                     ))}
+              <div className="container-side-illustration">
+                     <Suspense fallback={<div></div>}>
+                            {ElementsWorld.map((elem, key) => (
+                                   <Element elem={elem} key={key} />
+                            ))}
+                     </Suspense>
                      <Conversation />
-                     <img
-                     src="/imgs/world.png"
-                     alt="main-illustration"
-                     ref={ref} />
+                     <Suspense fallback={<div></div>}>
+                            <img
+                            src="/imgs/world.png"
+                            alt="main-illustration"
+                            ref={ref} />
+
+                     </Suspense>
                      
               </div>
        );
