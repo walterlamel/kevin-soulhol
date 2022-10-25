@@ -77,6 +77,7 @@ const ListeWorkCards = () => {
                                           actif={currentSee === key + 1}
                                           getTo={getTo}
                                           Key={key}
+                                          visible={currentSee + 1 > key}
                                    />
                             ))}
                      </motion.div>

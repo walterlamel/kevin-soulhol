@@ -33,7 +33,7 @@ const variants = {
        },
 };
 
-const WorkCard = ({ projet, actif, getTo, Key }) => {
+const WorkCard = ({ projet, actif, getTo, Key, visible }) => {
        const { src } = useImage({
               srcList: [
                      "/imgs/" + projet.repertory + "/main.png",
@@ -42,6 +42,8 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
               ],
        });
        const dispatch = useDispatch();
+
+       console.log(Key, visible);
 
        return (
               <motion.div
@@ -73,9 +75,11 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                             </div>
                      </div>
                      <div className="container-img">
-                            <Suspense fallback={<img />}>
-                                   <img src={src} />
-                            </Suspense>
+                            {visible && (
+                                   <Suspense fallback={<img />}>
+                                          <img src={src} />
+                                   </Suspense>
+                            )}
                      </div>
               </motion.div>
        );
