@@ -38,6 +38,7 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
               srcList: [
                      "/imgs/" + projet.repertory + "/main.png",
                      "/imgs/" + projet.repertory + "/main.jpg",
+                     "",
               ],
        });
        const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const WorkCard = ({ projet, actif, getTo, Key }) => {
                             </div>
                      </div>
                      <div className="container-img">
-                            <Suspense>
+                            <Suspense fallback={<img />}>
                                    <img src={src} />
                             </Suspense>
                      </div>
