@@ -1,5 +1,7 @@
 //types
 
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faCode, faCodeCommit, faEnvelopeOpenText, faHouse } from "@fortawesome/free-solid-svg-icons";
 import FormAddProject from "../app/pages/addProjectpage/FormAddProject";
 import AddUserPage from "../app/pages/AddUser/AddUserPage";
 import Dashboard from "../app/pages/dashboard/Dashboard";
@@ -12,6 +14,9 @@ export interface pageType {
     link: string;
     authRequired: boolean;
     elemReact: JSX.Element;
+    inMenu?: boolean;
+    text?: string;
+    icon?: IconProp;
 }
 
 
@@ -19,37 +24,46 @@ export interface pageType {
 // différentes pages existantes
 export const allPages : pageType[] = [
     {
-        link: "home",
+        link: "/",
         authRequired: false,
-        elemReact : <Homepage />
+        elemReact : <Homepage />,
+        inMenu: true,
+        text: "Accueil",
+        icon: faHouse
     },
     {
-        link: "contacts",
+        link: "/contacts",
         authRequired: false,
-        elemReact : <Contactpage />
+        elemReact : <Contactpage />,
+        inMenu: true,
+        text: "Contacts",
+        icon: faEnvelopeOpenText
     },
     {
-        link: "games",
+        link: "/games",
         authRequired: false,
         elemReact : <Gamepage />
     },
     {
-        link: "dashboard",
+        link: "/dashboard",
         authRequired: true,
         elemReact : <Dashboard />
     },
     {
-        link: "add",
+        link: "/add",
         authRequired: true,
         elemReact : <FormAddProject />
     },
     {
-        link: "works",
+        link: "/works",
         authRequired: false,
-        elemReact: <Works />
+        elemReact: <Works />,
+        inMenu: false,
+        text: "Travaux",
+        icon: faCode
     },
     {
-        link: "adduser",
+        link: "/adduser",
         authRequired: true,
         elemReact: <AddUserPage />
     }

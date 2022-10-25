@@ -43,8 +43,6 @@ const WorkCard = ({ projet, actif, getTo, Key, visible }) => {
        });
        const dispatch = useDispatch();
 
-       console.log(Key, visible);
-
        return (
               <motion.div
                      className="work-card"

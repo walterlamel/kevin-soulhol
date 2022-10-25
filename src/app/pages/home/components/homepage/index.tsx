@@ -40,7 +40,7 @@ const Homepage = () => {
                       travaillé. Du graphisme, des sites web, un
                       peu d'illustration...
                       <br/>
-                      <Link to={"/" + allPages[5].link}>Cliquez ici, pour tous les voir.</Link>   
+                      <Link to={allPages[5].link}>Cliquez ici, pour tous les voir.</Link>   
                </p>
                <ListeWorkCards />
         </section>

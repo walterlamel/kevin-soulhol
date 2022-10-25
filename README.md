@@ -13,5 +13,3 @@ L'illustration a été faite par moi-même sous Illustrator.
 - Email dans contact
 - mentions Légales Story Helper
 - ajouter image directement via l'admin ?
-- Baisser taille image du main (et ne pas l'afficher dans le scrolling)
-- gérer le cache ?

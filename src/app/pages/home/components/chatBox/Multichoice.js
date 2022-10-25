@@ -77,16 +77,15 @@ const Multichoice = () => {
                      default:
                             return;
                      case "contact":
-                            navigate("/" + allPages[1].link);
+                            navigate(allPages[1].link);
                             break;
                      case "works":
-                            navigate("/" + allPages[5].link);
+                            navigate(allPages[5].link);
                             break;
                      case "games":
                             navigate("/games");
                             break;
                      case "connect":
-                            console.log("ici");
                             dispatch(openLogin());
                             break;
                      case "take_gold":

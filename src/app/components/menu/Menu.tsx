@@ -8,9 +8,8 @@
  import React from 'react'
  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  import {
-        faEnvelopeOpenText,
         faUserAstronaut,
-        faHouse,
+        faNavicon,
  } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
@@ -20,41 +19,18 @@ import Login from "../login/Login";
 import { loadingUser, selectUser } from "../../pages/slices/userSlice";
 import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
 import useAnalyticsEventTracker from '../../../services/GoogleAnalytics';
+import { allPages } from '../../../types/pagesType';
 
 
- //types
- interface Props{
-    clickFunction?: Function,
-    ico: IconProp,
-    text: string,
-    link?: string
-    toPage?: string
-    toDo?: string | false
-}
+
+
 
 
 
 const Menu = () => {
     const user = useSelector(selectUser);
-
-    //Element du menu
-    const menuItems:Array<Props> = [
-        {
-            ico:faHouse,
-            text: "Accueil",
-            toPage: "home"
-        },
-        {
-            ico: faEnvelopeOpenText,
-            text: "Contacts",
-            toPage: "contacts",
-        },
-        {
-            ico: faUserAstronaut,
-            text: user ? user.prenom + " " + user.nom : "Se connecter",
-            toDo: user ? "dashboard" : "login"
-        }
-    ];
+    let menuItems = allPages.filter((value) => value.inMenu === true);
+    
 
     return (
         <div className="menu">
@@ -62,6 +38,11 @@ const Menu = () => {
                 {menuItems.map((item, key) => (
                     <ItemMenu key={key} {...item} />
                 ))}
+                <ItemMenu
+                    icon = { faUserAstronaut }
+                    text= { user ? user.prenom + " " + user.nom : "Se connecter" }
+                    toDo = { user ? "dashboard" : "login" }
+                />
             </ul>
             <Login />
         </div>
@@ -71,24 +52,31 @@ const Menu = () => {
 export default Menu;
 
 
+ //types
+ interface Props{
+    clickFunction?: Function,
+    icon?: IconProp,
+    text?: string,
+    link?: string
+    toDo?: string | false
+}
 
-const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
+
+const ItemMenu = ({clickFunction, icon = faNavicon, text = "", link, toDo}:Props) => {
     const gaEventTracker = useAnalyticsEventTracker('MenuClick')
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(selectUser);
     const loading = useSelector(loadingUser);
-    const linkHref = link ? {
-        href : link
-    } : {};
     
 
 
     function handleClick(){
-        if(toPage){
-            navigate("/"+toPage);
-            gaEventTracker(toPage);
+        if(link){
+            navigate(link);
+            gaEventTracker(link);
         }
+        
         if(toDo){
             if(toDo === "login"){
                 dispatch(toggleLogin())
@@ -110,9 +98,9 @@ const ItemMenu = ({clickFunction, ico, text, link, toPage, toDo}:Props) => {
         className={toDo === "dashboard" ? "menu-item container-connect-session" : "menu-item"}
         onClick={handleClick}
  >
-        <a {...linkHref}>
+        <a>
                <div className="icon">
-                {toDo === "dashboard" && loading ? (<LoaderLogin />) : (<FontAwesomeIcon icon={ico} />)} 
+                {toDo === "dashboard" && loading ? (<LoaderLogin />) : (<FontAwesomeIcon icon={icon} />)} 
                </div>
                <div className="container-text">
                     <span>{text}</span>
