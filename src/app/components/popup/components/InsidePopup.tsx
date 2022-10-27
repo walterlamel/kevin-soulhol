@@ -8,6 +8,7 @@ interface elementType {
     desc?: string;
     link?: string;
     repertory?: string;
+    images?: any[];
 
     titre?: string;
     lieu?: string;
@@ -73,7 +74,7 @@ export const InsidePopup = ({ element } : {element : elementType}) => {
                             </a>
                     )}
                 </div>
-                <Slider childs={imgs} />
+                <Slider childs={element.images} />
             </div>
         ) : (
             <div className="inside-popup-experience">

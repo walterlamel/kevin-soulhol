@@ -21,6 +21,7 @@ import listGames from '../../data/listeGames';
 import ReactGA from 'react-ga';
 import { TRACKING_ID } from '../../services/GoogleAnalytics';
 import { logoStructuredData } from '../../structuredData/logo';
+import Confirm from '../components/confirm/Confirm';
 
 ReactGA.initialize(TRACKING_ID, {
   debug: false,
@@ -47,6 +48,8 @@ function App() {
       <script type="application/ld+json">
         {JSON.stringify(logoStructuredData)}
       </script>
+
+      <Confirm />
 
       <Popup />
       <Routes>

@@ -1,3 +1,5 @@
+import { isUndefined } from "util";
+
 export interface requestReponseType{
        res: boolean;
        data: JSON | Array<any>;
@@ -15,6 +17,9 @@ export interface paramsRequestType{
        repertory?:string;
        in_homepage?:boolean;
        is_brouillon?:boolean;
+       coverimage?: Blob;
+       images?: Blob[];
+       [key:string] : any;
        //recherche de projet
        filter?: {
               asc?: "asc" | "desc";
@@ -29,31 +34,49 @@ export interface paramsRequestType{
        email?: string;
        password?: string;
        confirm_mdp?: string;
-   }
+}
+
 
    
    export async function request<requestReponseType>(item:string, method:string, params:paramsRequestType) {
    
           let url = process.env.REACT_APP_API_USER + item;
+          
+          const data = new FormData();
 
           if(params.filter && typeof params.filter !== "string"){
               params.filter = JSON.stringify(params.filter)
           }
 
+       
+
           if (params) {
+
+                 if(!params.coverimage?.size){
+                     delete params.coverimage;
+                 }
+
                  url = url + "?";
                  Object.keys(params).forEach((key:string) => {
                         url = url + "&" + key + "=" + params[key as keyof paramsRequestType];
-                 });    
+                 });
+
+                 
+                 
+                 Object.keys(params).forEach((key:string) => {
+                     data.append(key, params[key as keyof paramsRequestType]);
+                 })
+                 
           }
+          
 
           //console.log(url)
           let addoptions = {}
           
           if(method !== "GET"){
-              
-              addoptions = {body : JSON.stringify(params)}
+              addoptions = {body : data}
           }
+
    
           return await fetch(url, {
                  method: method,

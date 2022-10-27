@@ -14,6 +14,8 @@ import ProjectType from "../../../../types/projectType";
 import React, { FormEvent, useEffect, useState } from "react";
 import useIsAdmin from "../../../../hooks/hooksSession";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { displayConfirm } from "../../../components/confirm/slice/ConfirmSlice";
 
 
 
@@ -74,14 +76,10 @@ const SectionProjet = () => {
                 <thead>
                     <tr>
                         <td>Nom du projet</td>
-                        <td>Courte description</td>
-                        <td className="littleRow">Description</td>
                         <td>Type</td>
                         <td>Date</td>
-                        <td className="littleRow">Link</td>
                         {isAdmin && (
                             <>
-                            <td>Répertoire</td>
                             <td className="littleRow">Brouillon</td>
                             <td className="littleRow">Homepage</td>
                             <td>Supprimer</td>
@@ -110,13 +108,21 @@ export default SectionProjet;
 
 export const LigneProjet = ({item, reloading, openModal}:{item:ProjectType, reloading:Function, openModal:Function}) => {
     const {isAdmin} = useIsAdmin();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     async function deleteItem(){
         if(!isAdmin){ return }
         if(item == null){ return; }
-        await request("projects/"+item.id, "delete", {});
-        reloading()
+        dispatch(displayConfirm({ 
+            text : "Confirmez-vous de vouloir supprimer '"+item.title+"'",
+            btn_accept : "Supprimer", 
+            accept: async () => {
+                await request("projects/"+item.id, "delete", {});
+                reloading()
+            }
+        }))
     }
 
     async function updateItem(){
@@ -128,15 +134,11 @@ export const LigneProjet = ({item, reloading, openModal}:{item:ProjectType, relo
 
     return (
         <tr>
-            <td onClick={e => {openModal(item, "title")}}>{item.title}</td>
-            <td onClick={e => {openModal(item, "short_desc")}}>{item.short_desc.slice(0, 30)}...</td>
-            <td className="littleRow" onClick={e => {openModal(item, "desc")}}><FontAwesomeIcon icon={faEye} /></td>
-            <td onClick={e => {openModal(item, "type")}}>{item.type}</td>
-            <td onClick={e => {openModal(item, "date")}}>{item.date}</td>
-            <td className="littleRow" onClick={e => {openModal(item, "link")}}><FontAwesomeIcon icon={faLink} /></td>
+            <td onClick={ e => navigate("/add", { state : {id : item.id}})}>{item.title}</td>
+            <td onClick={ e => navigate("/add", { state : {id : item.id}})}>{item.type}</td>
+            <td onClick={ e => navigate("/add", { state : {id : item.id}})}>{item.date}</td>
             {isAdmin && (
                 <>
-                <td onClick={e => {openModal(item, "repertory")}}>{item.repertory}</td>
                 <td className="littleRow">
                     <input 
                         type="checkbox" 

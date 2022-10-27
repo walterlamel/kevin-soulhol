@@ -1,0 +1,65 @@
+.screen-confirm{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .contain-confirm{
+        width: min-content;
+        background-color: $color_background_1;
+        padding: 4em 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .contain-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1em;
+            cursor: pointer;
+        }
+
+        h3{
+            margin-bottom: 1em;
+        }
+
+        .text{
+            width: 100%;
+            margin-bottom: 2em;
+            text-align: center;
+        }
+
+        .contain-btns{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .btn{
+                padding: 15px;
+                border: none;
+                outline: none;
+                background-color: $color_strong;
+                text-transform: uppercase;
+                font-weight: bolder;
+                color: white;
+                margin: 5px;
+                text-align: center;
+                cursor: pointer;
+                letter-spacing: 0.3em;
+                width: max-content;
+            }
+
+            .cancel-btn{
+                background-color: $color_background_2;
+            }
+        }
+    }
+}

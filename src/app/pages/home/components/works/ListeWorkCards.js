@@ -15,7 +15,7 @@ const ListeWorkCards = () => {
        const { list } = useGetProjects({
               params: {
                      filter: {
-                            in_homepage: 1,
+                            in_homepage: true,
                             is_brouillon: 0,
                             orderBy: "date",
                             asc: "desc",

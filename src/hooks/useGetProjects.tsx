@@ -17,7 +17,7 @@ const useGetProjects = ({ params, refresh } : {params : paramsRequestType, refre
                      setList(res.data);
               } else {
                      setList([]);
-                     console.log(res);
+                     //console.log(res);
               }
        }
 

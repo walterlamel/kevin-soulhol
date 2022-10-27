@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { createPopup } from "../../../../components/popup/slice/popupSlice";
 import { Suspense } from "react";
-import { useImage } from "react-image";
 
 const variants = {
        open: {
@@ -34,13 +33,6 @@ const variants = {
 };
 
 const WorkCard = ({ projet, actif, getTo, Key, visible }) => {
-       const { src } = useImage({
-              srcList: [
-                     "/imgs/" + projet.repertory + "/main.png",
-                     "/imgs/" + projet.repertory + "/main.jpg",
-                     "",
-              ],
-       });
        const dispatch = useDispatch();
 
        return (
@@ -75,7 +67,17 @@ const WorkCard = ({ projet, actif, getTo, Key, visible }) => {
                      <div className="container-img">
                             {visible && (
                                    <Suspense fallback={<img />}>
-                                          <img src={src} />
+                                          <img
+                                                 src={
+                                                        process.env
+                                                               .REACT_APP_API_USER +
+                                                        "uploads/" +
+                                                        (projet.main_img !==
+                                                        null
+                                                               ? projet.main_img
+                                                               : "")
+                                                 }
+                                          />
                                    </Suspense>
                             )}
                      </div>

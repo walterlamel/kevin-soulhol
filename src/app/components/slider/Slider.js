@@ -72,7 +72,16 @@ const Slider = ({ childs }) => {
                                                         className="contain-img"
                                                         key={key}
                                                  >
-                                                        <img src={img} alt="" />
+                                                        <img
+                                                               src={
+                                                                      process
+                                                                             .env
+                                                                             .REACT_APP_API_USER +
+                                                                      "uploads/" +
+                                                                      img.path
+                                                               }
+                                                               alt=""
+                                                        />
                                                  </div>
                                           ))}
                             </motion.div>

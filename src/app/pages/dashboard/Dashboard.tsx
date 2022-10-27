@@ -178,7 +178,6 @@ interface ButtonProps {
     error: boolean;
 }
 export const ValidButton = ({valueBase, valueLast, namevalue, functionClick, loading, error} : ButtonProps) => {
-    console.log(loading)
     return (
         <AnimatePresence initial={false}>
             {valueBase !== valueLast && (

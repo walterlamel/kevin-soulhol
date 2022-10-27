@@ -13,3 +13,5 @@ L'illustration a été faite par moi-même sous Illustrator.
 - Email dans contact
 - mentions Légales Story Helper
 - ajouter image directement via l'admin ?
+- Modal Prompt
+- Nom auto random pour image save
