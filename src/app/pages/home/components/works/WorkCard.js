@@ -71,7 +71,6 @@ const WorkCard = ({ projet, actif, getTo, Key, visible }) => {
                                                  src={
                                                         process.env
                                                                .REACT_APP_API_USER +
-                                                        "uploads/" +
                                                         (projet.main_img !==
                                                         null
                                                                ? projet.main_img
