@@ -79,8 +79,8 @@ export const FormAddProject = () => {
                 inp?.classList.add('error')
             });
         } else {
-            console.log(result)
-            //navigate("/")
+            //console.log(result)
+            navigate("/")
         }
     }
 
