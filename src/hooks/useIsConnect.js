@@ -6,7 +6,6 @@ import {
        getSessionSuccess,
 } from "../app/pages/slices/userSlice";
 import { request } from "../services/requestApi";
-import useIsAdmin from "./hooksSession";
 
 export const useIsConnect = () => {
        const [isConnect, setIsConnect] = useState(false);
@@ -24,7 +23,7 @@ export const useIsConnect = () => {
        async function getApi() {
               dispatch(getSession());
               let res = await request('isConnect', 'GET', {});
-              console.log(res)
+              
               if(res.data && res.data.user){
                      let data = res.data;
                      dispatch(
