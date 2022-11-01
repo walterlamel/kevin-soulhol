@@ -20,7 +20,7 @@
     position: relative;
     padding: 100px;
     width: 100%;
-    overflow: scroll;
+    //overflow: scroll;
 
     .motion {
         height: 100%;
@@ -53,6 +53,7 @@
     //height: 1435px;
     width: 463px;
     flex-shrink: 0;
+    z-index: 40;
 
 
     .container-img{
