@@ -72,7 +72,6 @@ export const FormAddProject = () => {
             result = await request("projects/", "POST", dataToSend);
         }
 
-        console.log(result)
 
         if(result.data.errors){
             setErrorMsg(result.data.errors[0].title);

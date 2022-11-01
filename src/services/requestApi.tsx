@@ -68,7 +68,6 @@ export interface paramsRequestType{
                  
           }
           
-          console.log(data)
           
 
           //console.log(url)
@@ -85,7 +84,7 @@ export interface paramsRequestType{
                  ...addoptions
           })
                  .then((res) => { 
-                     console.log(res); 
+                     //console.log(res); 
                      return res.json() 
                      })
                  .then(
