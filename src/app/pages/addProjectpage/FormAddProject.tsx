@@ -72,14 +72,17 @@ export const FormAddProject = () => {
             result = await request("projects/", "POST", dataToSend);
         }
 
+        console.log(result)
+
         if(result.data.errors){
             setErrorMsg(result.data.errors[0].title);
             result.data.errors.forEach(function(codeerror:any){
                 let inp = document.querySelector('label[for="'+ codeerror.source.pointer+'"]');
                 inp?.classList.add('error')
             });
+        } else if (result && !result.res) {
+            setErrorMsg("Une erreur est survenue lors de l'enregistrement : " + result.message);
         } else {
-            //console.log(result)
             navigate("/")
         }
     }

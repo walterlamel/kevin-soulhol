@@ -54,11 +54,12 @@ export interface paramsRequestType{
                      delete params.coverimage;
                  }
 
-                 url = url + "?";
-                 Object.keys(params).forEach((key:string) => {
-                        url = url + "&" + key + "=" + params[key as keyof paramsRequestType];
-                 });
-
+                 if(method === "GET"){
+                     url = url + "?";
+                     Object.keys(params).forEach((key:string) => {
+                            url = url + "&" + key + "=" + params[key as keyof paramsRequestType];
+                     });
+                 }
                  
                  
                  Object.keys(params).forEach((key:string) => {
@@ -67,6 +68,8 @@ export interface paramsRequestType{
                  
           }
           
+          console.log(data)
+          
 
           //console.log(url)
           let addoptions = {}
@@ -74,6 +77,7 @@ export interface paramsRequestType{
           if(method !== "GET"){
               addoptions = {body : data}
           }
+
    
           return await fetch(url, {
                  method: method,
@@ -81,7 +85,7 @@ export interface paramsRequestType{
                  ...addoptions
           })
                  .then((res) => { 
-                     //console.log(res); 
+                     console.log(res); 
                      return res.json() 
                      })
                  .then(
