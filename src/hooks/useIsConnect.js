@@ -5,6 +5,7 @@ import {
        getSessionFailed,
        getSessionSuccess,
 } from "../app/pages/slices/userSlice";
+import { request } from "../services/requestApi";
 import useIsAdmin from "./hooksSession";
 
 export const useIsConnect = () => {
@@ -22,38 +23,27 @@ export const useIsConnect = () => {
 
        async function getApi() {
               dispatch(getSession());
-              await fetch(process.env.REACT_APP_API_USER + "isConnect", {
-                     credentials: "include",
-              })
-                     .then((res) => res.json())
-                     .then(
-                            (data) => {
-                                   //console.log(data);
-                                   if (data.user) {
-                                          dispatch(
-                                                 getSessionSuccess(data.user),
-                                          );
-                                          setIsConnect(true);
-                                          setId(data.user.id);
-                                          setPrenom(data.user.prenom);
-                                          setName(data.user.nom);
-                                          setFullName(
-                                                 data.user.prenom +
-                                                        " " +
-                                                        data.user.nom,
-                                          );
-                                          setEmail(data.user.email);
-                                   } else {
-                                          dispatch(getSessionFailed());
-                                          setIsConnect(false);
-                                   }
-                            },
-                            (err) => {
-                                   console.log(err);
-                                   setIsConnect(false);
-                                   dispatch(getSessionFailed());
-                            },
+              let res = await request('isConnect', 'GET', {});
+              console.log(res)
+              if(res.data && res.data.user){
+                     let data = res.data;
+                     dispatch(
+                            getSessionSuccess(data.user),
                      );
+                     setIsConnect(true);
+                     setId(data.user.id);
+                     setPrenom(data.user.prenom);
+                     setName(data.user.nom);
+                     setFullName(
+                            data.user.prenom +
+                                   " " +
+                                   data.user.nom,
+                     );
+                     setEmail(data.user.email);
+              } else {
+                     dispatch(getSessionFailed());
+                     setIsConnect(false);
+              }
        }
 
        return { isConnect, name, prenom, fullname, email, id };

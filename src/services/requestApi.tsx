@@ -40,7 +40,7 @@ export interface paramsRequestType{
    
    export async function request<requestReponseType>(item:string, method:string, params:paramsRequestType) {
    
-          let url = process.env.REACT_APP_API_USER + item;
+          let url = process.env.REACT_APP_API_USER + '/' + item;
           
           const data = new FormData();
 

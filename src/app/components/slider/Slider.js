@@ -77,7 +77,6 @@ const Slider = ({ childs }) => {
                                                                       process
                                                                              .env
                                                                              .REACT_APP_API_USER +
-                                                                      "uploads/" +
                                                                       img.path
                                                                }
                                                                alt=""

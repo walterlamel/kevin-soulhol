@@ -6,7 +6,7 @@ import { request } from "../../../../services/requestApi";
 import { displayConfirm } from "../../../components/confirm/slice/ConfirmSlice";
 
 const SelectImg = ({ index, img, deleting } : { index : number, img : any, deleting : Function }) => {
-    const [path, setPath] = useState<string>(process.env.REACT_APP_API_USER + "uploads/"+img.path ?? "");
+    const [path, setPath] = useState<string>(process.env.REACT_APP_API_USER + img.path ?? "");
     const [load, setLoad] = useState<boolean>(false);
     const [inp, setInp] = useState<HTMLInputElement | null>(null)
     const ref = useRef<HTMLInputElement>(null);

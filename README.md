@@ -8,6 +8,22 @@ Une API Adonisjs fait fonctionner les sessions et récupère les projets.
 
 L'illustration a été faite par moi-même sous Illustrator.
 
+## Pré-requis
+
+- Node.js & NPM
+
+## Installation
+
+```
+git clone https://github.com/walterlamel/alfred.git api-users
+```
+
+## Démarrage
+
+- Installer les dépendances avec `npm install`
+- Lancer le site avec `npm start`
+
+
 # A faire
 
 - Email dans contact

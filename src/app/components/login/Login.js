@@ -14,6 +14,7 @@ import {
 import LoaderLogin from "../loaders/loaderLogin/loaderLogin";
 import { motion } from "framer-motion";
 import ReactGA from "react-ga";
+import { request } from "../../../services/requestApi";
 
 const Login = () => {
        const dispatch = useDispatch();
@@ -37,37 +38,14 @@ const Login = () => {
               e.preventDefault();
               dispatch(getSession());
 
-              fetch(process.env.REACT_APP_API_USER + "login", {
-                     method: "POST",
-                     headers: {
-                            "Content-Type": "application/json",
-                     },
-                     credentials: "include",
-                     body: JSON.stringify({
-                            email: identifiant,
-                            password: password,
-                     }),
-              })
-                     .then((res) => res.json())
-                     .then(
-                            (data) => {
-                                   if (data.code) {
-                                          dispatch(
-                                                 getSessionFailed(data.message),
-                                          );
-                                   } else {
-                                          dispatch(getSessionSuccess(data));
-                                          dispatch(closeLogin());
-                                          ReactGA.set({
-                                                 userMail: identifiant,
-                                          });
-                                   }
-                            },
-                            (err) => {
-                                   console.log(err);
-                                   getSessionFailed(err.message);
-                            },
-                     );
+              let res = await request('login', "POST", {email: identifiant, password: password});
+              if(res){
+                     dispatch(getSessionSuccess(res.data));
+                     dispatch(closeLogin());
+                     ReactGA.set({
+                            userMail: identifiant,
+                     });
+              }
               return;
        }
 
