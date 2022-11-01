@@ -17,7 +17,7 @@ const ListeWorkCards = () => {
                      filter: {
                             in_homepage: true,
                             is_brouillon: 0,
-                            orderBy: "date",
+                            orderBy: "type",
                             asc: "desc",
                      },
               },

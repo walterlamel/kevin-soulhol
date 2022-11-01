@@ -1,4 +1,3 @@
-import { isUndefined } from "util";
 
 export interface requestReponseType{
        res: boolean;
@@ -45,9 +44,8 @@ export interface paramsRequestType{
           const data = new FormData();
 
           if(params.filter && typeof params.filter !== "string"){
-              params.filter = JSON.stringify(params.filter)
+              params.filter = JSON.stringify(params.filter);
           }
-
        
 
           if (params) {
@@ -76,7 +74,6 @@ export interface paramsRequestType{
           if(method !== "GET"){
               addoptions = {body : data}
           }
-
    
           return await fetch(url, {
                  method: method,
