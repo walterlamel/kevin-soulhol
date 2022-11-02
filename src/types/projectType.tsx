@@ -8,5 +8,6 @@ export default interface ProjectType {
     repertory: string;
     is_brouillon: boolean;
     in_homepage: boolean;
+    main_img: string;
     [key:string]: string|boolean|number;
 }

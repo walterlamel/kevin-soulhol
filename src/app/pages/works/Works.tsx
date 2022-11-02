@@ -51,7 +51,7 @@ const Works =() => {
                             dispatch(createPopup(work));
                         }}>
                         <div className="bg">
-                            <ImgBack path={"/imgs/" + work.repertory + "/main"} />
+                            <ImgBack path={process.env.REACT_APP_API_USER + work.main_img} />
                         </div>
                         <div className="texts">
                             <div className="title">{work.title}</div>
@@ -70,8 +70,7 @@ const Works =() => {
 export default Works;
 
 
-const ImgBack = ({path} : { path : string}) => {
-    const {source} = useVerifImagePath(path);
+const ImgBack = ({path} : { path : string | undefined}) => {
 
-    return <img src={source} alt="" />
+    return <img src={path} alt="" />
 }

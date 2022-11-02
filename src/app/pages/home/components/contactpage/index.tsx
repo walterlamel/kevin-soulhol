@@ -37,6 +37,11 @@ const Contactpage = () => {
                         <FontAwesomeIcon icon={faPhone} /><span>{process.env.REACT_APP_AUTHOR_TELEPHONE}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="https://github.com/walterlamel?tab=repositories" target="_blanck">
+                        <img src={process.env.REACT_APP_API_USER + '/uploads/github.svg'} alt="github" /><span>Mon Github</span>
+                    </a>
+                </li>
             </ul>
         </div>
         </>
