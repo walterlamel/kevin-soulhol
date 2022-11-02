@@ -2,12 +2,14 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { outilType } from '../../../hooks/useGetTools';
 import { request } from "../../../services/requestApi";
 import SelectImg from "./components/SelectImg"
+import SelectTool from './components/SelectTool';
 
 
 type tplotOptions = {
-    [key: string]: FormDataEntryValue | FormDataEntryValue[]
+    [key: string]: FormDataEntryValue | FormDataEntryValue[] | outilType[]
 }
   
 export const FormAddProject = () => {
@@ -19,6 +21,7 @@ export const FormAddProject = () => {
     const [load, setLoad] = useState<boolean>(false);
     const [allImg, setAllImg] = useState<any[]>([]);
     const [index, setIndex] = useState<number>(0);
+    const [selectedTools, setSelectedTools] = useState<Array<outilType>>([]);
 
     useEffect(() => {
         const getProj = async () => {
@@ -32,6 +35,7 @@ export const FormAddProject = () => {
                 setIndex(index)
             }
             setAllImg(n)
+            setSelectedTools(proj.data[0].outils)
             
         }
 
@@ -49,6 +53,7 @@ export const FormAddProject = () => {
         });
 
         const formData:FormData = new FormData(e.target as HTMLFormElement)
+        
         const dataToSend:tplotOptions = {};
 
 
@@ -63,6 +68,9 @@ export const FormAddProject = () => {
         if(!dataToSend.in_homepage){
             dataToSend.in_homepage = "false";
         }
+
+        dataToSend.outils = selectedTools;
+        
 
 
         let result;
@@ -123,6 +131,20 @@ export const FormAddProject = () => {
         setAllImg(n)
     }
 
+    async function changeSelectedTools({ add, supp } : {add : outilType, supp: outilType}){
+        let newT = [... selectedTools];
+        if(add){
+            newT.push(add);
+        }
+
+        if(supp){
+            newT = newT.filter( value => value.id !== supp.id)
+
+        }
+
+        setSelectedTools(newT);
+    }
+
 
     return (
         <div className="pageFormAdd otherpage">
@@ -169,9 +191,13 @@ export const FormAddProject = () => {
                     <input type="checkbox" name="is_brouillon" id="" defaultChecked={project.is_brouillon} />
                 </label>
 
-                <label htmlFor="is_brouillon" className="checbox-label">
+                <label htmlFor="outils">
+                    Outils utilisés
+                    <SelectTool changeSelectedTools={changeSelectedTools} usedTools={project.outils} />                    
+                </label>
+
+                <label htmlFor="is_brouillon">
                     Image principale
-                    
                 </label>
 
 

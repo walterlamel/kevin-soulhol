@@ -1,5 +1,32 @@
 .work-page{
 
+    .container-filter-tools{
+        display: flex;
+        position: relative;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 1em;
+
+        .filter-outil{
+            opacity: 0.3;
+            width: 50px;
+            aspect-ratio: 1;
+            cursor: pointer;
+
+            img{
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: contain;
+            }
+        }
+
+        .filter-outil.select{
+            opacity: 1;
+        }
+    }
+
+
     .contain-list-work{
         display: grid;
         gap: 1em;

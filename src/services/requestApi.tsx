@@ -26,6 +26,8 @@ export interface paramsRequestType{
               type?: string;
               in_homepage?:boolean;
               is_brouillon?:boolean;
+              outils?:number|false;
+              with_project?: boolean;
        } | string;
        //user
        nom?: string;
@@ -48,6 +50,12 @@ export interface paramsRequestType{
           }
        
 
+          if(params.outils && typeof params.outils !== "string"){
+              params.outils.map((o : any,k : number) => { params.outils[k] = JSON.stringify(o)})
+          }
+
+          //console.log(params)
+
           if (params) {
 
                  if(!params.coverimage?.size){
@@ -63,7 +71,13 @@ export interface paramsRequestType{
                  
                  
                  Object.keys(params).forEach((key:string) => {
-                     data.append(key, params[key as keyof paramsRequestType]);
+                     if(Array.isArray(params[key as keyof paramsRequestType])){
+                            for (var i = 0; i < params[key as keyof paramsRequestType].length; i++) {
+                                   data.append(key + '[]', params[key as keyof paramsRequestType][i])
+                            }
+                     } else {
+                            data.append(key, params[key as keyof paramsRequestType]);
+                     }
                  })
                  
           }
@@ -77,7 +91,8 @@ export interface paramsRequestType{
               addoptions = {body : data}
           }
 
-   
+          //console.log(addoptions)
+
           return await fetch(url, {
                  method: method,
                  credentials: "include",
