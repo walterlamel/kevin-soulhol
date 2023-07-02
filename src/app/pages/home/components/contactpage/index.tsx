@@ -27,15 +27,15 @@ const Contactpage = () => {
 
         <ul>
           <li>
-            <a href={"mailto:" + process.env.REACT_APP_AUTHOR_EMAIL}>
+            <a href={"mailto:" + import.meta.env.VITE_REACT_APP_AUTHOR_EMAIL}>
               <FontAwesomeIcon icon={faEnvelopeOpenText} />
-              <span>{process.env.REACT_APP_AUTHOR_EMAIL}</span>
+              <span>{import.meta.env.VITE_REACT_APP_AUTHOR_EMAIL}</span>
             </a>
           </li>
           <li>
-            <a href={"tel:" + process.env.REACT_APP_AUTHOR_TELEPHONE}>
+            <a href={"tel:" + import.meta.env.VITE_REACT_APP_AUTHOR_TELEPHONE}>
               <FontAwesomeIcon icon={faPhone} />
-              <span>{process.env.REACT_APP_AUTHOR_TELEPHONE}</span>
+              <span>{import.meta.env.VITE_REACT_APP_AUTHOR_TELEPHONE}</span>
             </a>
           </li>
           <li>
@@ -44,7 +44,7 @@ const Contactpage = () => {
               target="_blanck"
             >
               <img
-                src={process.env.REACT_APP_API_USER + "/uploads/github.svg"}
+                src={import.meta.env.REACT_APP_API_USER + "/uploads/github.svg"}
                 alt="github"
               />
               <span>Mon Github</span>

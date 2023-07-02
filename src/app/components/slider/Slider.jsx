@@ -63,7 +63,10 @@ const Slider = ({ childs }) => {
           {childs &&
             childs.map((img, key) => (
               <div className="contain-img" key={key}>
-                <img src={process.env.REACT_APP_API_USER + img.path} alt="" />
+                <img
+                  src={import.meta.env.VITE_REACT_APP_API_USER + img.path}
+                  alt=""
+                />
               </div>
             ))}
         </motion.div>

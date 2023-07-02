@@ -36,7 +36,7 @@ export const InsidePopup = ({ element }: { element: elementType }) => {
     };
 
     return await fetch(
-      process.env.REACT_APP_URL_GET_PROJECTS_IMAGES ?? "",
+      import.meta.env.VITE_REACT_APP_URL_GET_PROJECTS_IMAGES ?? "",
       requestOptions
     )
       .then((res) => {

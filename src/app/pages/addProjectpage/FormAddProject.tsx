@@ -27,7 +27,9 @@ export const FormAddProject = () => {
       const proj = await request("projects/" + location.state.id, "GET", {});
       setProject(proj.data[0]);
 
-      setCoverImg(process.env.REACT_APP_API_USER + proj.data[0].main_img);
+      setCoverImg(
+        import.meta.env.VITE_REACT_APP_API_USER + proj.data[0].main_img
+      );
       let n = [...allImg];
       for (let index = 0; index < proj.data[0].images.length; index++) {
         n.push(index);

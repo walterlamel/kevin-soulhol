@@ -1,6 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../../store/store";
 
-const initialState = {
+interface IInitial {
+  session: IStateSession;
+}
+
+interface IStateSession {
+  user: boolean;
+  loading: boolean;
+  messageLogin: string | false;
+  isConnect: boolean;
+}
+
+const initialState: IInitial = {
   session: {
     user: false,
     loading: false,
@@ -21,7 +33,7 @@ export const userSlice = createSlice({
       state.session.user = action.payload;
       state.session.isConnect = true;
     },
-    getSessionFailed(state, action) {
+    getSessionFailed(state, action: PayloadAction<string>) {
       state.session.loading = false;
       state.session.user = initialState.session.user;
       state.session.messageLogin = action.payload;
@@ -30,9 +42,10 @@ export const userSlice = createSlice({
   },
 });
 
-export const selectUser = (state) => state.app.session.user;
-export const messageLogin = (state) => state.app.session.messageLogin;
-export const loadingUser = (state) => state.app.session.loading;
+export const selectUser = (state: RootState) => state.app.session.user;
+export const messageLogin = (state: RootState) =>
+  state.app.session.messageLogin;
+export const loadingUser = (state: RootState) => state.app.session.loading;
 
 export const { getSession, getSessionSuccess, getSessionFailed } =
   userSlice.actions;

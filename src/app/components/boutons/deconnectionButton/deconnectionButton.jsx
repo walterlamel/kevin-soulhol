@@ -5,7 +5,7 @@ const DeconnectionButton = () => {
   const dispatch = useDispatch();
 
   async function deconnection() {
-    return await fetch(process.env.REACT_APP_API_USER + "disconnect", {
+    return await fetch(import.meta.env.VITE_REACT_APP_API_USER + "disconnect", {
       credentials: "include",
     })
       .then((res) => res.json())

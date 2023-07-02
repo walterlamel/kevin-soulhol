@@ -34,7 +34,7 @@ export const useIsConnect = () => {
       setFullName(data.user.prenom + " " + data.user.nom);
       setEmail(data.user.email);
     } else {
-      dispatch(getSessionFailed());
+      dispatch(getSessionFailed(res.message));
       setIsConnect(false);
     }
   }

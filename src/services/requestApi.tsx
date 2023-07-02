@@ -43,7 +43,7 @@ export async function request<requestReponseType>(
   method: string,
   params: paramsRequestType
 ) {
-  let url = process.env.REACT_APP_API_USER + "/" + item;
+  let url = import.meta.env.VITE_REACT_APP_API_USER + "/" + item;
 
   const data = new FormData();
 

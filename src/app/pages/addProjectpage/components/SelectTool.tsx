@@ -71,7 +71,11 @@ export const OneTool = ({
       onClick={handleClick}
     >
       <img
-        src={process.env.REACT_APP_API_USER + "/uploads/" + (outil?.icon ?? "")}
+        src={
+          import.meta.env.VITE_REACT_APP_API_USER +
+          "/uploads/" +
+          (outil?.icon ?? "")
+        }
         alt={outil.name}
       />
     </div>

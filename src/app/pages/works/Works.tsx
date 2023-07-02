@@ -62,7 +62,9 @@ const Works = () => {
             >
               <img
                 src={
-                  process.env.REACT_APP_API_USER + "/uploads/" + (o?.icon ?? "")
+                  import.meta.env.VITE_REACT_APP_API_USER +
+                  "/uploads/" +
+                  (o?.icon ?? "")
                 }
                 alt={o.name}
               />
@@ -80,7 +82,7 @@ const Works = () => {
             >
               <div className="bg">
                 <ImgBack
-                  path={process.env.REACT_APP_API_USER + work.main_img}
+                  path={import.meta.env.VITE_REACT_APP_API_USER + work.main_img}
                 />
               </div>
               <div className="texts">

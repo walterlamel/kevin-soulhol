@@ -15,7 +15,7 @@ const SelectImg = ({
   deleting: Function;
 }) => {
   const [path, setPath] = useState<string>(
-    process.env.REACT_APP_API_USER + img.path ?? ""
+    import.meta.env.VITE_REACT_APP_API_USER + img.path ?? ""
   );
   const [load, setLoad] = useState<boolean>(false);
   const [inp, setInp] = useState<HTMLInputElement | null>(null);

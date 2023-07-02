@@ -65,7 +65,7 @@ const WorkCard = ({ projet, actif, getTo, Key, visible }) => {
           <Suspense fallback={<img />}>
             <img
               src={
-                process.env.REACT_APP_API_USER +
+                import.meta.env.VITE_REACT_APP_API_USER +
                 (projet.main_img !== null ? projet.main_img : "")
               }
             />
