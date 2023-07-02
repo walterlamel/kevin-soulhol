@@ -57,8 +57,6 @@ export default class Connecter {
                      body: dataSend,
               };
 
-              console.log(this.path_ajax);
-
               return await fetch(this.path_ajax, requestOptions)
                      .then((res) => res.json())
                      .then(

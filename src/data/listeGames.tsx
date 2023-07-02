@@ -1,3 +1,4 @@
+import Hangman from "../app/games/hangman/Hangman";
 import { Morpion } from "../app/games/morpion/Morpion";
 import Runner from "../app/games/runner/Runner";
 import { gameType } from "../types/gamesType";
@@ -17,6 +18,13 @@ export const listGames: Array<gameType> = [
        component: <Morpion />,
        visible: true,
        desc: "Un simple jeu de morpion classique afin de revisiter les bases"
+    },
+    {
+       name: "Hangman",
+       link: "hangman",
+       component: <Hangman />,
+       visible: true,
+       desc: "Le jeu du pendu, tout simplement : trouvez le mot secret en trouvant les lettres qui le composent. Attention, il y a un nombre d'erreur limité."
     }
 ];
 

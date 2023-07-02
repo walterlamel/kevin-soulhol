@@ -86,7 +86,6 @@ export const RunnerSlice = createSlice({
         },
         missBonus(state){
             state.bonusMissed += 1;
-            console.log(state.bonusMissed)
         }
     }
 })

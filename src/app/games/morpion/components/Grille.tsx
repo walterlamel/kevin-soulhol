@@ -77,7 +77,6 @@ export const Grille =  () => {
     
     function checkWinCase(cell1:rowType, cell2:rowType, cell3:rowType){
         if(cell1 !== 0 && cell1 === cell2 && cell2 === cell3){
-            console.log(cell1, cell2, cell3)
             return cell1;
         }
         return null;
