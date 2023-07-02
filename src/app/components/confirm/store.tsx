@@ -6,15 +6,15 @@
  *
  */
 
- import { configureStore } from "@reduxjs/toolkit";
- import ConfirmSlice from "./slice/ConfirmSlice";
- 
-  export const storeConfirm = configureStore({
-     reducer: {
-            confirm : ConfirmSlice
-     },
- });
- 
- export default storeConfirm;
- 
- export type RootState = ReturnType<typeof storeConfirm.getState>
+import { configureStore } from "@reduxjs/toolkit";
+import ConfirmSlice from "./slice/ConfirmSlice";
+
+export const storeConfirm = configureStore({
+  reducer: {
+    confirm: ConfirmSlice,
+  },
+});
+
+export default storeConfirm;
+
+export type RootState = ReturnType<typeof storeConfirm.getState>;

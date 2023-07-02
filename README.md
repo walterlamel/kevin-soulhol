@@ -23,7 +23,6 @@ git clone https://github.com/walterlamel/alfred.git api-users
 - Installer les dépendances avec `npm install`
 - Lancer le site avec `npm start`
 
-
 # A faire
 
 - Email dans contact

@@ -1,74 +1,68 @@
-.container-multichoices{
+.container-multichoices {
+  .container-response {
+    min-height: 25px;
+  }
 
-    .container-response{
-        min-height: 25px;
+  .container-bulles {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 2em;
+
+    > div {
+      height: 100%;
     }
 
-    .container-bulles{
-        display: flex;
-        justify-content: flex-start;
-        align-items: stretch;
-        gap: 2em;
+    .message {
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      background-color: $color_background_1;
+      position: relative;
+      cursor: pointer;
 
-        >div{
-            height: 100%;
-        }
+      &:after {
+        content: "";
+        display: inline-block;
+        height: 0;
+        width: 0;
+        border-right: 25px solid $color_background_1;
+        border-bottom: 25px solid transparent;
+        position: absolute;
+        bottom: -16px;
+        right: 11px;
+      }
 
-        .message{
-            padding: 0.5em 1em;
-            border-radius: 6px;
-            background-color: $color_background_1;
-            position: relative;
-            cursor: pointer;
-
-            &:after{
-                content: '';
-                display : inline-block;
-                height : 0;
-                width : 0;
-                border-right : 25px solid $color_background_1;
-                border-bottom : 25px solid transparent;
-                position: absolute;
-                bottom: -16px;
-                right: 11px;
-            }
-
-            input{
-                background-color: transparent;
-                outline: none;
-                border: none;
-                border-bottom: 1px solid $color_font;
-                color: $color_font;
-                font-family: $font_family;
-            }
-        }
-
-        .message.fort{
-            background-color: $color_strong;
-
-            &:after{
-                border-right : 25px solid $color_strong;
-            }
-        }
-
-        .message.light{
-            background-color: $color_background_2;
-            opacity: 0.6;
-
-            &:after{
-                border-right : 25px solid $color_background_2;
-            }
-        }
+      input {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid $color_font;
+        color: $color_font;
+        font-family: $font_family;
+      }
     }
 
+    .message.fort {
+      background-color: $color_strong;
+
+      &:after {
+        border-right: 25px solid $color_strong;
+      }
+    }
+
+    .message.light {
+      background-color: $color_background_2;
+      opacity: 0.6;
+
+      &:after {
+        border-right: 25px solid $color_background_2;
+      }
+    }
+  }
 }
 
-
-
-
-
-@media screen and (max-width:1130px) {
-    .container-multichoices .container-bulles{
-        flex-wrap: wrap;
-    }
+@media screen and (max-width: 1130px) {
+  .container-multichoices .container-bulles {
+    flex-wrap: wrap;
+  }
 }

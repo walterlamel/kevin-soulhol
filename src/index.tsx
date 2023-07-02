@@ -5,21 +5,19 @@
  * code.
  */
 
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './app/pages';
-import reportWebVitals from './reportWebVitals';
-import { HelmetProvider } from 'react-helmet-async';
-import { Provider } from 'react-redux';
-import store from './store/store';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./app/pages";
+import reportWebVitals from "./reportWebVitals";
+import { HelmetProvider } from "react-helmet-async";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 //styling
-import './styles/main.scss';
-
+import "./styles/main.scss";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 
 root.render(

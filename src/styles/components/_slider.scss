@@ -1,69 +1,65 @@
-.container-slider{
-    flex:55%;
-    flex-shrink: 0;
-    background-color: $color_background_1;
+.container-slider {
+  flex: 55%;
+  flex-shrink: 0;
+  background-color: $color_background_1;
+  position: relative;
+
+  .overflower {
+    overflow: hidden;
+    border-radius: 12px;
     position: relative;
+    height: 100%;
+    display: flex;
 
-    .overflower{
-        overflow: hidden;
-        border-radius: 12px;
-        position: relative;
+    .scroller {
+      width: fit-content;
+      min-width: 100%;
+      display: flex;
+      height: 100%;
+      user-select: none;
+
+      max-height: 380px;
+
+      .contain-img {
+        width: 100%;
         height: 100%;
-        display: flex;
+        flex-shrink: 0;
 
-        .scroller{
-            width: fit-content;
-            min-width: 100%;
-            display: flex;
-            height: 100%;
-            user-select: none;
-            
-            max-height: 380px;
-
-            .contain-img{
-                width: 100%;
-                height: 100%;
-                flex-shrink: 0;
-
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                }
-            }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
         }
+      }
     }
+  }
 
-    .ico-prev,
-    .ico-next{
-        position: absolute;
-        z-index: 1;
-        right: -20px;
-        top: 49%;
-        margin: auto;
-        border-radius: 100%;
-        background-color: $color_font;
-        color: $color_background;
-        width: 25px;
-        height: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
+  .ico-prev,
+  .ico-next {
+    position: absolute;
+    z-index: 1;
+    right: -20px;
+    top: 49%;
+    margin: auto;
+    border-radius: 100%;
+    background-color: $color_font;
+    color: $color_background;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 
-    .ico-prev{
-        right: auto;
-        left: -20px;
-    }
-    
+  .ico-prev {
+    right: auto;
+    left: -20px;
+  }
 }
 
-
-
-
-@media screen and (max-width:650px) {
-    .container-slider .overflower .scroller .contain-img img{
-        object-fit: cover;
-    }
+@media screen and (max-width: 650px) {
+  .container-slider .overflower .scroller .contain-img img {
+    object-fit: cover;
+  }
 }

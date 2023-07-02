@@ -1,123 +1,116 @@
-.container-popup{
-    background-color: rgba(0, 0, 0, 0.2);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 50;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.container-popup {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.popup{
-    border-radius: 15px;
-    background-color: $color_background;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #000;
+.popup {
+  border-radius: 15px;
+  background-color: $color_background;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px;
+  max-width: 90%;
+  cursor: default;
+  max-width: 1100px;
+
+  .container-popup-header {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    .closer {
+      cursor: pointer;
+    }
+  }
+
+  .container-popup-contain {
+    padding: 2em;
+  }
+}
+
+.inside-popup-experience {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  flex: 100%;
+  max-height: 965px;
+
+  .container-text {
+    flex: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px 25px;
-    max-width: 90%;
-    cursor: default;
-    max-width: 1100px;
+    padding: 2em;
+    text-align: center;
+    justify-content: space-between;
+    height: 100%;
 
-    .container-popup-header{
-        width: 100%;
-        display: flex;
-        justify-content: end;
-
-        .closer{
-            cursor: pointer;
-        }
+    .date {
+      text-transform: uppercase;
+      color: $color_background_2;
+      font-weight: bold;
     }
 
-    .container-popup-contain{
-        padding: 2em;
+    .titre {
+      text-transform: uppercase;
+      color: $color_strong2;
+      font-weight: bold;
+      font-size: 2em;
     }
+
+    .lieu {
+      color: $color_background_2;
+      font-weight: bold;
+      margin-bottom: 2em;
+    }
+
+    .container-desc {
+      height: 100%;
+      text-align: left;
+      padding-bottom: 1em;
+      padding-top: 2em;
+      hyphens: auto;
+    }
+  }
 }
 
+@media screen and (max-width: 550px) {
+  .popup {
+    position: absolute;
+    bottom: 0;
+    height: 90%;
+    width: 100vw;
+    max-width: none;
+    overflow: hidden;
+    padding: 1em;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
 
+  .container-popup-contain {
+    overflow: hidden;
+    overflow-y: scroll;
+  }
 
-.inside-popup-experience{
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    position: relative;
-    flex: 100%;
-    max-height:965px;
+  .inside-popup-experience {
+    flex-direction: column;
 
-    .container-text{
-        flex:100%;
-        display: flex;
-        flex-direction: column;
-        padding: 2em;
-        text-align: center;
-        justify-content: space-between;
-        height: 100%;
-
-        .date{
-            text-transform: uppercase;
-            color: $color_background_2;
-            font-weight: bold;
-        }
-
-        .titre{
-            text-transform: uppercase;
-            color: $color_strong2;
-            font-weight: bold;
-            font-size: 2em;
-        }
-
-        .lieu{
-            color: $color_background_2;
-            font-weight: bold;
-            margin-bottom: 2em;
-        }
-
-        .container-desc{
-            height: 100%;
-            text-align: left;
-            padding-bottom: 1em;
-            padding-top: 2em;
-            hyphens: auto;
-        }
-
+    .container-slider {
+      flex: auto;
+      height: 250px;
+      margin-top: 1em;
     }
 
+    .container-text {
+      padding: 0 !important;
+    }
+  }
 }
-
-
-@media screen and (max-width:550px) {
-    .popup{
-        position: absolute;
-        bottom: 0;
-        height: 90%;
-        width: 100vw;
-        max-width: none;
-        overflow: hidden;
-        padding: 1em;
-        box-shadow: 0 0 15px rgba(255, 255, 255,0.3);
-    }
-
-    .container-popup-contain{
-        overflow: hidden;
-        overflow-y: scroll;
-    }
-
-    .inside-popup-experience{
-        flex-direction: column;
-
-        .container-slider{
-            flex: auto;
-            height: 250px;
-            margin-top: 1em;
-        }
-
-        .container-text{
-            padding: 0 !important;
-        }
-    }
-
-}
-
