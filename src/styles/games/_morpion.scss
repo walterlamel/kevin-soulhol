@@ -1,210 +1,194 @@
-.game-morpion{
+.game-morpion {
+  background-color: $color_background;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 60%;
 
-    background-color: $color_background;
+  div {
+    z-index: 1;
+    position: relative;
+  }
+
+  .contain-morpion {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+  }
+
+  .container-points {
+    position: absolute;
     width: 90%;
-    height: 60%;
+    z-index: 1;
+    display: flex;
 
+    .container-player {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
 
-    div {
-        z-index: 1;
-        position: relative;
-    }
-
-    .contain-morpion{
+      .containPoints {
+        width: 55px;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        font-weight: bold;
+        color: white;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
-    }
+        border: 4px solid $color_background;
+        font-size: 1.2em;
+      }
 
-    .container-points{
-        position: absolute;
-        width: 90%;
-        z-index: 1;
-        display: flex;
-
-        .container-player{
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 1em;
-
-            .containPoints{
-                width: 55px;
-                aspect-ratio: 1;
-                border-radius: 100%;
-                font-weight: bold;
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: 4px solid $color_background;
-                font-size: 1.2em;
-            }
-
-            p{
-                font-size: 0.8;
-                font-weight: bolder;
-                text-transform: uppercase;
-                letter-spacing: 0.2em;
-                width: 100%;
-                text-align: center;
-                color: $color_background;
-            }
-        }
-
-        .container-player.player1{
-            left: 0;
-
-            .containPoints{
-                background-color: $color_strong;
-            }
-        }
-
-        .container-player.player2{
-            right: 0;
-
-            .containPoints{
-                background-color: $color_strong2;
-                
-            }
-        }
-
-
-
-
-    }
-
-    
-
-    
-
-    .whoturn{
-        text-align: center;
-        text-transform: uppercase;
+      p {
+        font-size: 0.8;
         font-weight: bolder;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
         width: 100%;
-
-        .name{
-            color: white;
-            font-size: 3em;
-        }
-
-        .soustitre{
-            position: relative;
-            top: -1em;
-            color: $color_background;
-        }
-    }
-
-    .btn-restart{
         text-align: center;
-
-        .counter{
-            text-transform: uppercase;
-            font-size: 2em;
-            font-weight: bolder;
-        }
+        color: $color_background;
+      }
     }
 
+    .container-player.player1 {
+      left: 0;
 
-    .grille-morpion{
-        position: relative;
-        z-index: 2;
-        margin: 1em;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 5px;
-        width: 100%;
-        max-width: 500px;
-        max-height: 500px;
-        aspect-ratio: 1;
-
-
-        .box {
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: $color_background;
-            font-size: 55px;
-            aspect-ratio: 1;
-        }
-
-        .box.un{
-            color: $color_strong;
-        }
-
-        .box.deux{
-            color: $color_strong2;
-        }
-    }
-
-    .grille-morpion.end{
-        .box{
-            background-color: $color_background_1;
-        }
-
-        .box.victory-case{
-            background-color: white;
-        }
-    }
-
-    .bg-player{
-        width: 0%;
-        aspect-ratio: 1;
-        position: absolute;
-        z-index: 0;
-        top: -170vh;
-        left: -1000px;
+      .containPoints {
         background-color: $color_strong;
-        transform-origin: center center;
-        border-radius: 100%;
-    
+      }
     }
 
-    .bg-player.player2{
+    .container-player.player2 {
+      right: 0;
+
+      .containPoints {
         background-color: $color_strong2;
-        left: auto;
-        top: auto;
-        bottom: -170vh;
-        right: -1000px;
+      }
     }
+  }
+
+  .whoturn {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    width: 100%;
+
+    .name {
+      color: white;
+      font-size: 3em;
+    }
+
+    .soustitre {
+      position: relative;
+      top: -1em;
+      color: $color_background;
+    }
+  }
+
+  .btn-restart {
+    text-align: center;
+
+    .counter {
+      text-transform: uppercase;
+      font-size: 2em;
+      font-weight: bolder;
+    }
+  }
+
+  .grille-morpion {
+    position: relative;
+    z-index: 2;
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    aspect-ratio: 1;
+
+    .box {
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_background;
+      font-size: 55px;
+      aspect-ratio: 1;
+    }
+
+    .box.un {
+      color: $color_strong;
+    }
+
+    .box.deux {
+      color: $color_strong2;
+    }
+  }
+
+  .grille-morpion.end {
+    .box {
+      background-color: $color_background_1;
+    }
+
+    .box.victory-case {
+      background-color: white;
+    }
+  }
+
+  .bg-player {
+    width: 0%;
+    aspect-ratio: 1;
+    position: absolute;
+    z-index: 0;
+    top: -170vh;
+    left: -1000px;
+    background-color: $color_strong;
+    transform-origin: center center;
+    border-radius: 100%;
+  }
+
+  .bg-player.player2 {
+    background-color: $color_strong2;
+    left: auto;
+    top: auto;
+    bottom: -170vh;
+    right: -1000px;
+  }
 }
 
+@media screen and (max-width: 840px) {
+  .game-morpion {
+    flex-direction: column;
 
-
-@media screen and (max-width:840px) {
-    .game-morpion{
-        flex-direction: column;
-
-        .grille-morpion{
-            padding: 1em;
-        }
+    .grille-morpion {
+      padding: 1em;
     }
+  }
 
-    .game-morpion .bg-player{
-        top: -850px;
-        left: -500px;
-    }
+  .game-morpion .bg-player {
+    top: -850px;
+    left: -500px;
+  }
 
-    .game-morpion .bg-player.player2{
-        right: -500px;
-        bottom: -850px;
-    }
+  .game-morpion .bg-player.player2 {
+    right: -500px;
+    bottom: -850px;
+  }
 
-    .game-morpion .container-points{
-        position: relative;
-        bottom: 15px;
-    }
+  .game-morpion .container-points {
+    position: relative;
+    bottom: 15px;
+  }
 }

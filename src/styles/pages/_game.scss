@@ -1,43 +1,40 @@
-.gamepage{
-
-    ul{ 
-        display: grid;
-        grid-template-columns:  repeat(1, 1fr);
-        //grid-template-rows: repeat(6, 1fr);
-        grid-gap: 10px;
-    }
+.gamepage {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    //grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+  }
 }
 
+.game-card {
+  border-radius: 10px;
+  background-color: $color_background_2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
 
-.game-card{
-    border-radius: 10px;
-    background-color: $color_background_2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100px;
-    cursor: pointer;
-    overflow: hidden;
-    position: relative;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 0.7em;
+  text-align: center;
+  opacity: 0.8;
 
-    text-transform: uppercase;
-    font-weight: bolder;
-    letter-spacing: 0.7em;
-    text-align: center;
-    opacity: 0.8;
+  .reflect {
+    background-color: white;
+    height: 700%;
+    width: 100%;
+    position: absolute;
+    left: -70%;
+    transform: rotate(20deg);
+    opacity: 0.2;
+  }
 
-    .reflect{
-        background-color: white;
-        height: 700%;
-        width: 100%;
-        position: absolute;
-        left: -70%;
-        transform: rotate(20deg);
-        opacity: 0.2;
-
-    }
-
-    &:hover{
-        opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
+  }
 }

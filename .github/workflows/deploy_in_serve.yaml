@@ -1,35 +1,35 @@
 name: Deploy on Serve
 run-name: ${{ github.actor }} lance le deploiement
 on:
-       push:
-              branches:
-                     - master
+  push:
+    branches:
+      - master
 
 env:
-       NODE_VERSION: "12"
-       DIR_ON_SERVER: ./www/
+  NODE_VERSION: "12"
+  DIR_ON_SERVER: ./www/
 
 jobs:
-       build:
-              runs-on: ubuntu-latest
-              steps:
-                     - uses: actions/checkout@master
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
 
-                     - uses: actions/setup-node@master
-                       with:
-                              node-version: ${{ env.NODE_VERSION }}
-                              cache: "npm"
-                              cache-dependency-path: ./package-lock.json
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+          cache-dependency-path: ./package-lock.json
 
-                     - run: npm install
+      - run: npm install
 
-                     - run: CI= npm run build
+      - run: CI= npm run build
 
-                     - name: FTP
-                       uses: SamKirkland/FTP-Deploy-Action@4.3.2
-                       with:
-                              server: ${{ secrets.HOST_FTP }}
-                              username: ${{ secrets.USER_FTP }}
-                              password: ${{ secrets.PASS_FTP }}
-                              local-dir: ./build/
-                              server-dir: ${{ env.DIR_ON_SERVER }}
+      - name: FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{ secrets.HOST_FTP }}
+          username: ${{ secrets.USER_FTP }}
+          password: ${{ secrets.PASS_FTP }}
+          local-dir: ./build/
+          server-dir: ${{ env.DIR_ON_SERVER }}

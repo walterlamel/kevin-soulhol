@@ -1,192 +1,185 @@
-.dashboard-page{
-    
-    $color : $color_strong2;
-    $color-error : rgb(156, 26, 26);
+.dashboard-page {
+  $color: $color_strong2;
+  $color-error: rgb(156, 26, 26);
 
+  section {
+    padding-top: 100px;
+  }
 
-    section{
-        padding-top: 100px;
+  .container-infos {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contain-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .btn-validation {
+      position: absolute;
+      right: 2px;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 3px;
+      border: 2px solid $color;
+      color: $color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
 
-    .container-infos{
-        display: grid;
-        gap: 1em;
-        grid-template-columns: 1fr 1fr;
+    .btn-validation.error {
+      border: 2px solid $color-error;
+      color: $color-error;
+    }
+  }
+
+  .message-error {
+    margin-top: 1em;
+    font-size: 0.9em;
+    color: $color-error;
+
+    span {
+      margin-left: 1em;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 5px;
+    background-color: $color_background_1;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-family: $font_family;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      font-size: 0.7em;
+      opacity: 0.7;
+
+      td {
+        border: none;
+      }
     }
 
-    .contain-label{
-        position: relative;
-        display: flex;
-        align-items: center;
-
-        .btn-validation{
-            position: absolute;
-            right: 2px;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 3px;
-            border : 2px solid $color;
-            color: $color;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .btn-validation.error{
-            border : 2px solid $color-error;
-            color: $color-error;
-        }
-
-        
+    td {
+      padding: 5px;
+      border: 1px solid $color_strong2;
+      cursor: pointer;
     }
 
-    .message-error{
-        margin-top: 1em;       
-        font-size: 0.9em;
-        color: $color-error;
+    .littleRow {
+      text-align: center;
+    }
+  }
 
-        span{
-            margin-left: 1em;
-        }
+  .container-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+      min-height: 200px;
+      width: 500px;
+      border-radius: 5px;
+      background-color: $color_background_2;
+      border: 5px solid $color_background_1;
+      overflow: hidden;
+      padding-top: 0.5em;
+      box-shadow: 0 0 10px black;
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
-    input,
-    textarea{
-        width: 100%;
-        padding: 5px;
-        background-color: $color_background_1;
-        color: white;
+    td {
+      cursor: pointer;
+    }
+
+    label {
+      font-size: 0.8em;
+      opacity: 0.6;
+      color: $color_strong2;
+      padding: 1em;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 500px;
+      border: none;
+      background-color: transparent;
+      padding: 15px;
+      color: white;
+      font-family: $font_family;
+      padding-right: 60px;
+
+      &:focus {
         border: none;
         outline: none;
-        padding: 15px;
-        font-family: $font_family;
+      }
     }
 
-    table{
-        width: 100%;
-        border-collapse: collapse;
-
-        thead{
-            font-size: 0.7em;
-            opacity: 0.7;
-
-            td{
-                border: none;
-            }
-        }
-
-        td{
-            padding: 5px;
-            border: 1px solid $color_strong2;
-            cursor: pointer;
-        }
-
-        .littleRow{
-            text-align: center;
-        }
+    input[type="submit"] {
+      padding: 15px;
+      color: white;
+      background-color: $color_strong2;
+      position: absolute;
+      bottom: 5px;
+      top: 5px;
+      right: 5px;
+      width: auto;
+      height: 95%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bolder;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1.8em;
+      cursor: pointer;
     }
+  }
 
-    .container-modal{
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        form{
-            min-height: 200px;
-            width: 500px;
-            border-radius: 5px;
-            background-color: $color_background_2;
-            border: 5px solid $color_background_1;
-            overflow: hidden;
-            padding-top: 0.5em;
-            box-shadow: 0 0 10px black;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        td{
-            cursor: pointer;
-        }
-
-        label{
-            font-size: 0.8em;
-            opacity: 0.6;
-            color: $color_strong2;
-            padding: 1em;
-        }
-
-        textarea{
-           width: 100%; 
-           min-height: 500px;
-           border: none;
-           background-color: transparent;
-           padding: 15px;
-           color: white;
-           font-family: $font_family;
-           padding-right:60px;
-
-           &:focus{
-            border: none;
-            outline: none;
-           }
-        }
-
-        input[type='submit']{
-            padding: 15px;
-            color: white;
-            background-color: $color_strong2;
-            position: absolute;
-            bottom: 5px;
-            top: 5px;
-            right: 5px;
-            width: auto;
-            height: 95%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bolder;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 1.8em;
-            cursor: pointer;
-        }
-    }
-
-    button{
-        background-color: $color_strong2;
-        color: white;
-        padding: 1em;
-        border: none;
-        outline: none;
-        border-radius: 5px;
-        font-weight: bolder;
-        margin-top: 2em;
-        cursor: pointer;
-    }
+  button {
+    background-color: $color_strong2;
+    color: white;
+    padding: 1em;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    margin-top: 2em;
+    cursor: pointer;
+  }
 }
 
+@media screen and (max-width: 550px) {
+  .dashboard-page {
+    table {
+      font-size: 0.7em;
 
+      td {
+        padding: 1px;
+      }
 
-
-@media screen and (max-width:550px) {
-    .dashboard-page{
-        table{
-        font-size: 0.7em;
-
-            td{
-                padding: 1px;
-            }
-
-            .littleRow{
-                width: 10px;
-            }
-        }
+      .littleRow {
+        width: 10px;
+      }
     }
+  }
 }

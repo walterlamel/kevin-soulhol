@@ -6,15 +6,15 @@
  *
  */
 
- import { configureStore } from "@reduxjs/toolkit";
- import RunnerReducer from "./slices/runnerSlice";
- 
-  export const storeRunner = configureStore({
-     reducer: {
-            runner : RunnerReducer
-     },
- });
- 
- export default storeRunner;
- 
- export type RootState = ReturnType<typeof storeRunner.getState>
+import { configureStore } from "@reduxjs/toolkit";
+import RunnerReducer from "./slices/runnerSlice";
+
+export const storeRunner = configureStore({
+  reducer: {
+    runner: RunnerReducer,
+  },
+});
+
+export default storeRunner;
+
+export type RootState = ReturnType<typeof storeRunner.getState>;

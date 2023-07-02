@@ -1,107 +1,101 @@
-.menu{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    padding: 30px 84px;
-    z-index: 90;
+.menu {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 30px 84px;
+  z-index: 90;
 
+  display: flex;
+  justify-content: flex-end;
+
+  font-size: 0.9em;
+
+  background: linear-gradient($color_background, rgba(201, 71, 71, 0));
+
+  ul {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 6em;
 
-    font-size: 0.9em;
+    .menu-item a,
+    .menu-item {
+      display: flex;
+      cursor: pointer;
 
-    background: linear-gradient($color_background, rgba(201, 71, 71, 0));
+      .icon {
+        margin-right: 2em;
+      }
+    }
+  }
 
-    ul{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap:6em;
+  .container-login {
+    position: absolute;
+    top: 66px;
+    z-index: 2;
+  }
 
-        .menu-item a,
-        .menu-item{
-            display: flex;
-            cursor: pointer;
-    
-            .icon{
-                margin-right: 2em;
-            }
-        }
+  .container-connect-session {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      border-radius: 100%;
+      background-color: $color_background_1;
+      width: 40px;
+      height: 40px;
+      margin-right: 1em !important;
+      color: $color_strong2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 5px $color_strong2;
     }
 
-    .container-login{
-        position: absolute;
-        top: 66px;
-        z-index: 2;
+    .container-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-size: 0.8em;
+      text-align: left;
+
+      .identifiant {
+        font-size: 12px;
+      }
     }
-
-    .container-connect-session{
-        display: flex;
-        align-items: center;
-
-        .icon{
-            border-radius: 100%;
-            background-color: $color_background_1;
-            width: 40px;
-            height: 40px;
-            margin-right: 1em !important;
-            color: $color_strong2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 5px $color_strong2;
-        }
-
-        .container-text{
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            font-size: 0.8em;
-            text-align: left;
-
-            .identifiant{
-                font-size: 12px;
-            }
-        }
-    }
-
-    
+  }
 }
 
+@media screen and (max-width: 1130px) {
+  .menu {
+    padding: 15px;
 
+    ul {
+      gap: 2.5em;
+      font-size: 0.8em;
 
-@media screen and (max-width:1130px) {
-    .menu{
-        padding: 15px;
-
-        ul{
-            gap: 2.5em;
-            font-size: 0.8em;
-
-            .menu-item{
-                a{
-                    .icon{
-                        margin-right: 5px ;
-                    }
-                }
-                    .icon{
-                        margin-right: 5px;
-                    }
-                
-            }
+      .menu-item {
+        a {
+          .icon {
+            margin-right: 5px;
+          }
         }
-
-        .container-connect-session{
-            .icon{
-                margin-right: 10px;
-            }
-
-            .container-text{
-                display: none;
-            }
+        .icon {
+          margin-right: 5px;
         }
+      }
     }
-        
+
+    .container-connect-session {
+      .icon {
+        margin-right: 10px;
+      }
+
+      .container-text {
+        display: none;
+      }
+    }
+  }
 }

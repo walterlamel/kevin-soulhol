@@ -4,7 +4,7 @@ services:
   web:
     image: httpd
     volumes:
-    - ./website:/usr/local/apache2/htdocs
+      - ./website:/usr/local/apache2/htdocs
     environment:
       - HOST=0.0.0.0
     ports:

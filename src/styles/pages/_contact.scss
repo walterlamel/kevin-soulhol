@@ -1,20 +1,19 @@
-.contactpage{
+.contactpage {
+  li {
+    margin: 1em 0;
 
-    li{
-        margin: 1em 0;
-
-        svg{
-            color: $color_strong2;
-        }
-
-        span{
-            margin-left: 1em;
-        }
-
-        img{
-            width: 18px;
-            aspect-ratio: 1;
-            vertical-align: baseline;
-        }
+    svg {
+      color: $color_strong2;
     }
+
+    span {
+      margin-left: 1em;
+    }
+
+    img {
+      width: 18px;
+      aspect-ratio: 1;
+      vertical-align: baseline;
+    }
+  }
 }
