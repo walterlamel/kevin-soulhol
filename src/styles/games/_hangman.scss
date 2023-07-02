@@ -1,0 +1,169 @@
+$mainColor : white;
+
+.game-hangman{
+
+    background-color: $color_strong2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 60%;
+    color: $mainColor;
+
+    .unknownWord-hangman {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        gap: 1em;
+        width: 100%;
+        margin-bottom: 4em;
+        margin-top: 4em;
+
+        .word {
+            display: flex;
+            flex-direction: row;
+            justify-content:center;
+            align-items: center;
+            gap: 1em;
+            width: 100%;
+            font-size: 2em;
+            
+            .letter {
+                font-weight: bold;
+            }
+
+
+        }
+
+
+    }
+
+    .keyboard-hangman {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        align-items: center;
+        gap: 1em;
+        width: 100%;
+        max-width: 800px;
+
+        .keybard-letter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            aspect-ratio: 1;
+            border-radius: 5px;
+            border: 2px solid $mainColor;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $mainColor;
+                color: $color_strong2;
+            }
+        }
+    }
+
+    .lifeCounter-hangman {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        position: absolute;
+        right: 2em;
+        top: 2em;
+        color: $color_strong;
+        font-size: 1.5em;
+    }
+
+    .screen{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        background-color: $color_strong;
+
+        p {
+            span {
+                margin-right: 1em;
+            }
+        }
+
+        button {
+            padding: 1em;
+            border-radius: 5px;
+            background-color: transparent;
+            color: $mainColor;
+            outline: none;
+            border: 2px solid $mainColor;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+    .selector-variant {
+        display: flex;
+        gap: 2em;
+        width: 100%;
+        padding-bottom: 2em;
+        padding-left: 2em;
+
+        div {
+            cursor: pointer;
+
+            &[data-selected=true]{
+                font-weight: bold;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media screen and (max-width:840px) {
+        padding: 2em;
+
+        .unknownWord-hangman {
+            order: 1;
+            margin: 0;
+            .word {
+                font-size: 1em;
+            }
+        }
+
+        .lifeCounter-hangman {
+            order: 0;
+            position: relative;
+            flex-direction: row;
+            flex-wrap: wrap;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+
+        .keyboard-hangman {
+            order: 3;
+            justify-content: center;
+        }
+
+        .selector-variant {
+            order: 4;
+            font-size: 0.9em;
+            flex-wrap: wrap;
+            padding: 0;
+            gap: 1em;
+        }
+    }
+
+}

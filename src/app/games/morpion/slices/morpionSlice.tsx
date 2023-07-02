@@ -93,7 +93,6 @@ export const MorpionSlice = createSlice({
             }
         },
         egalityGame(state){
-            console.log("EGALITY")
             state.statut = "egality";
         }
     }
