@@ -104,7 +104,7 @@ const ItemMenu = ({
         </div>
         <div className="container-text">
           <span>{text}</span>
-          {toDo === "dashboard" && <span>{user.email}</span>}
+          {toDo === "dashboard" && <span>{user?.email}</span>}
         </div>
       </a>
     </li>

@@ -7,7 +7,7 @@ export const useIsAdmin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if (user.roles === "ADMIN") {
+    if (user?.roles === "ADMIN") {
       setIsAdmin(true);
     } else {
       setIsAdmin(false);

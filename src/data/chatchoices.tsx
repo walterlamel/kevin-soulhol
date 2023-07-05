@@ -1,4 +1,6 @@
-export const Phases = {
+import { IMessages, IPhases } from "../types/chatType";
+
+export const Phases: IPhases = {
   1: { text: " ", choices: ["pro01", "account01", "idle01"] },
   2: {
     text: "Avec un ouija. Sinon, plus simplement, en cliquant ci-dessous :",
@@ -69,7 +71,7 @@ export const Phases = {
   },
 };
 
-export const Messages = {
+export const Messages: IMessages = {
   retour01: { text: "Retour", accent: "light", to: 1 },
   pro01: { text: "Je suis un professionnel", to: 200 },
   mail01: { text: "J'ai reçu un e-mail avec des identifiants", to: 201 },

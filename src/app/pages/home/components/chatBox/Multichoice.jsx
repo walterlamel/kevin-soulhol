@@ -7,7 +7,7 @@
  */
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -55,7 +55,7 @@ const Multichoice = () => {
         setCurrentMessages(messages);
         setCurrentPhase(phase_id);
 
-        if (Phases[phase_id].action) {
+        if (Phases[phase_id]?.action) {
           do_action(Phases[phase_id].action, Phases[phase_id].option);
         }
       }, 300);

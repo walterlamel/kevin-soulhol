@@ -1,4 +1,6 @@
-const ElementsWorld = [
+import { IWorldElement } from "../types/worldType";
+
+const ElementsWorld: IWorldElement[] = [
   {
     id: "trone_glace",
     name: "Ner'zhul",

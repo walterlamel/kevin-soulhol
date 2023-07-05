@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { request } from "../services/requestApi";
-import { paramsRequestType } from "../services/requestApi";
+
 import ProjectType from "../types/projectType";
+import { paramsRequestType } from "../types/apiType";
 
 const useGetProjects = ({
   params,

@@ -1,20 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../../store/store";
-
-interface IInitial {
-  session: IStateSession;
-}
-
-interface IStateSession {
-  user: boolean;
-  loading: boolean;
-  messageLogin: string | false;
-  isConnect: boolean;
-}
+import { IInitial } from "../../../types/storeType";
 
 const initialState: IInitial = {
   session: {
-    user: false,
+    user: undefined,
     loading: false,
     messageLogin: false,
     isConnect: false,

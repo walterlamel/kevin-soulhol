@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { request } from "../services/requestApi";
+import { paramsRequestType } from "../types/apiType";
 
-const useGetUsers = ({ params, refresh }) => {
+const useGetUsers = ({
+  params,
+  refresh,
+}: {
+  params: paramsRequestType;
+  refresh: number;
+}) => {
   const [listUsers, setListUsers] = useState([]);
 
   useEffect(() => {

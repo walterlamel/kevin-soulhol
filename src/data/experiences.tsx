@@ -1,4 +1,6 @@
-const EXP = [
+import { IExperience } from "../types/experienceType";
+
+const EXP: IExperience[] = [
   {
     date: "2020-2021",
     titre: "Développeur web",
